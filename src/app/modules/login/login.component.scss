@@ -1,0 +1,19 @@
+.background {
+  margin: 0;
+  padding: 0;
+  background-color: #2A3B57;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.icono{
+  width: 40%;
+  height: 40%;
+  padding: 0;
+}
+
+.fila {
+  margin-bottom: 0; /* ajusta el valor según sea necesario */
+}
