@@ -1,0 +1,26 @@
+.header{
+  border-bottom: 1px solid var(#5C5C5C);
+  }
+  .header span{
+      display: block;
+  }
+  .header .headerTitle{
+      color:black;
+      font-size: 1.8em;
+      font-weight: 400;
+  }
+  .header .subHeaderTitle{
+      color: #5C5C5C;
+      padding-top: 5px;
+      padding-bottom:5px;
+      display: inline-block;
+
+  }
+
+  .header .assignName{
+    font-size: 1.2em;
+    color:#082B42;
+    font-weight: 700;
+    display: inline-block !important;
+    margin-left: 5px;
+  }

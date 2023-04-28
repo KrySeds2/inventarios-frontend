@@ -1,0 +1,48 @@
+<!-- <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="header" >
+      <tr class="custom-header">
+          <th style="text-align: center; background-color: #2A3B57; color: white;">No° </th>
+          <th style="text-align: center; background-color: #2A3B57; color: white;">Nombre</th>
+          <th style="text-align: center; background-color: #2A3B57; color: white;">Anaqueles</th>
+          <th style="text-align: center; background-color: #2A3B57; color: white;">Ver anaqueles</th>
+          <th style="text-align: center; background-color: #2A3B57; color: white;">Estado</th>
+          <th style="text-align: center; background-color: #2A3B57; color: white;">Editar</th>
+          <th style="text-align: center; background-color: #2A3B57; color: white;">Eliminar</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+      <tr>
+          <td style="max-width: 5%; text-align: center;">{{product.numero}}</td>
+          <td style="max-width: 20%; text-align: center;">{{product.nombre}}</td>
+          <td style="max-width: 20%; text-align: center;">{{product.anaqueles}}</td>
+          <td style="max-width: 10%; text-align: center;"><i class="pi pi-eye"></i></td>
+          <td style="max-width: 20%; text-align: center;">
+            <p-inputSwitch (ngModelChange)="handleChange(product)" [(ngModel)]="product.estado"></p-inputSwitch>
+          </td>
+          <td style="max-width: 10%; text-align: center;"><i class="pi pi-file-edit"></i></td>
+          <td style="max-width: 10%; text-align: center;"><i class="pi pi-trash"></i></td>
+      </tr>
+  </ng-template>
+</p-table> -->
+<p-table [value]="data" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="header">
+    <tr class="custom-header">
+      <th *ngFor="let column of columns" style="text-align: center; background-color: #2A3B57; color: white;">
+        {{ column.title }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData>
+    <tr>
+      <td *ngFor="let column of columns" style="max-width: 20%; text-align: center;">
+        {{ rowData[column.field] }}
+        <p-inputSwitch *ngIf="column.field === 'estado'" (ngModelChange)="handleChange(rowData)" [(ngModel)]="rowData[column.field]"></p-inputSwitch>
+        <i *ngIf="column.field === 'verAnaqueles' && rowData[column.field]?.icono" class="{{ rowData[column.field].icono }}"></i>
+        <i *ngIf="column.field === 'edit' && rowData[column.field]?.icono" class="{{ rowData[column.field].icono }}"></i>
+        <i *ngIf="column.field === 'eliminar' && rowData[column.field]?.icono" class="{{ rowData[column.field].icono }}"></i>
+
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+

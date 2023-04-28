@@ -1,0 +1,38 @@
+<mat-sidenav-container  fullscreen>
+  <mat-sidenav  #sidenav mode="side" opened >
+    <mat-toolbar color="primary">
+      <img src="../assets/img/inventories.png" class="imageLogo" />
+
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="./warehouses" mat-list-item (click)="sidenav.open()">
+        <span>Almacenes</span>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a routerLink="./receptions" mat-list-item (click)="sidenav.open()">
+        <span>Recepciones</span>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a routerLink="./raw-materials" mat-list-item (click)="sidenav.open()">
+        <span>Materias Primas</span>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a routerLink="./inventory" mat-list-item (click)="sidenav.open()">
+        <span>Inventario</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <!-- <i class="pi pi-bars" (click)="sidenav.toggle()" style="font-size: 2rem"></i> -->
+    <img src="../assets/img/salir.png" class="imageSalir" />
+
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
