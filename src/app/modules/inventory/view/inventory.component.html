@@ -1,11 +1,41 @@
-<div class="space">
-  <app-title [data]="{
-    header:'Inventario',
-    subHeader:'Lista de inventario'
-  }"></app-title>
-<!-- Barra superior -->
-<app-toolbar></app-toolbar>
-<!-- Tabla -->
-<app-table [columns]="columns" [data]="data"></app-table>
-</div>
-
+<app-main-container >
+  <ng-template appHeader>
+    <app-title [data]="{
+      header:'Inventario',
+      subHeader:'Lista de inventario'
+    }"></app-title>
+  </ng-template>
+<ng-template appButtons></ng-template>
+  <!-- Barra superior -->
+  <app-toolbar></app-toolbar>
+  <!-- Tabla -->
+  <ng-template appBody>
+    <app-table [columns]="columnsTable" [values]="listItems">
+      <ng-template appCaption let-table>
+        <div class="grid grid-nogutter">
+          <!-- <app-button-register class="col-2" (click)="selectedCreate()"> -->
+          <!-- </app-button-register> -->
+          <div class="col-2">
+          </div>
+          <div class="col-offset-2"></div>
+          <div class="col-8">
+          </div>
+        </div>
+      </ng-template>
+      <ng-template appColGroup>
+      </ng-template>
+      <ng-template appBody let-item let-i="rowIndex" let-column="column">
+        <ng-container [ngSwitch]="column.field">
+          <ng-container *ngSwitchCase="'edit'">
+            <t-edit ></t-edit>
+          </ng-container>
+          <ng-container *ngSwitchCase="'status'">
+            <t-status
+              [checked]="item.status">
+            </t-status>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </app-table>
+  </ng-template>
+</app-main-container>
