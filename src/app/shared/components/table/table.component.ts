@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TableComponent implements OnInit {
   @Input() columns!: any[];
   @Input() data!: any[];
+  @Input()checked: boolean;
+  @Output() active = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
@@ -24,7 +26,9 @@ export class TableComponent implements OnInit {
     this.guardarEstadoSwitchs();
     console.log(row);
   }
-
+  execute() {
+    this.active.emit(this.checked);
+  }
   guardarEstadoSwitchs() {
     localStorage.setItem('data', JSON.stringify(this.data));
   }
