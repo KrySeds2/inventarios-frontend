@@ -10,10 +10,12 @@ import { ReceptionsComponent } from './receptions/view/receptions.component';
 import { RawMaterialsComponent } from './raw-materials/view/raw-materials.component';
 import { InventoryComponent } from './inventory/view/inventory.component';
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
-import { TableComponent } from '../shared/components/table/table.component';
-
+// import { TableComponent } from '../shared/components/table/table.component';
+import { TableComponent } from '.././shared/modules/tables/tables.component';
+import { MainContainerComponent } from '../shared/components/main-container/main-container.component';
 @NgModule({
   declarations: [
+    MainContainerComponent,
     SidenavComponent,
     TitleComponent,
     ToolbarComponent,
