@@ -1,0 +1,14 @@
+<ng-container [ngSwitch]="status">
+  <ng-container *ngSwitchCase="'CREADA'">
+      <span class="status created">{{libraryTranslate + 'create'  }}</span>
+  </ng-container>
+  <ng-container *ngSwitchCase="'CANCELADA'">
+      <span class="status cancelled">{{libraryTranslate + 'cancel'  }}</span>
+  </ng-container>
+  <ng-container *ngSwitchCase="'SURTIDA'">
+    <span class="status stocked">{{libraryTranslate + 'stocked'  }}</span>
+  </ng-container>
+  <ng-container *ngSwitchCase="'AUTORIZADA'">
+      <span class="status autorized">{{libraryTranslate + 'autorized'  }}</span>
+  </ng-container>
+</ng-container>

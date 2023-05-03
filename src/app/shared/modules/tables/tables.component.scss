@@ -1,0 +1,111 @@
+:host ::ng-deep {
+  .p-datatable-wrapper{
+    max-height: 70vh;
+    background: #fff;
+  }
+  .p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.5rem 1rem;
+  }
+  .p-datatable-scrollable .p-datatable-tbody > tr > td,
+  .p-datatable-scrollable .p-datatable-tfoot > tr > td,
+  .p-datatable-scrollable .p-datatable-thead > tr > th {
+    // display: flex;
+    place-content: center;
+  }
+  .p-datatable-scrollable-header {
+    background-color: #082B42 !important;
+  }
+  .p-datatable .p-datatable-header {
+    background: none;
+    border: none;
+}
+  .p-datatable-thead tr th {
+    font-weight: normal !important;
+    color: #fff !important;
+    background-color:  #082B42 !important;
+    border: none;
+  }
+  .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
+    display: none;
+  }
+  .p-datatable .p-datatable-header {
+    padding: 1rem 0rem !important;
+  }
+}
+.clearButton {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 40rem) {
+  .clearButton {
+    display: none;
+  }
+  .captionResponsive {
+    flex-direction: column;
+    span {
+      margin: 0px !important;
+    }
+  }
+  :host ::ng-deep {
+    .p-datatable-scrollable .p-datatable-tbody > tr,
+    .p-datatable-scrollable .p-datatable-tfoot > tr,
+    .p-datatable-scrollable .p-datatable-thead > tr {
+      display: table-row;
+    }
+    .p-datatable-scrollable .p-datatable-tbody,
+    .p-datatable-scrollable .p-datatable-tfoot,
+    .p-datatable-scrollable .p-datatable-thead {
+      display: table-row-group;
+    }
+    .p-datatable {
+      &.p-datatable-responsive-demo {
+        .p-datatable-thead > tr > th,
+        .p-datatable-tfoot > tr > td {
+          display: none !important;
+        }
+        colgroup {
+          display: none;
+        }
+
+        .p-datatable-tbody > tr > td {
+          text-align: left !important;
+          display: flex;
+          align-items: center;
+          justify-content: space-between !important;
+          min-width: 100% !important;
+          width: 100%;
+          float: left;
+          clear: left;
+          border: 0 none;
+          t-edit div {
+            display: inline-block;
+          }
+          t-image div {
+            display: inline-block;
+          }
+          .p-column-title {
+            padding: 0.4rem;
+            min-width: 30%;
+            display: inline-block;
+            margin: -0.4em 1em -0.4em -0.4rem;
+            font-weight: bold;
+          }
+
+          &:last-child {
+            border-bottom: 1px solid var(--surface-d);
+          }
+        }
+        @media (max-width: 768px) {
+          .p-datatable-tbody > tr > td {
+            display: flex !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.no-result {
+  text-align: center !important;
+  color: #B5B5B5 !important;
+}

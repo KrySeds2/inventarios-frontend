@@ -1,0 +1,77 @@
+<p-table #dt [value]="values" [columns]="columns" dataKey="id" [scrollable]="true" [rowHover]="true"
+  styleClass="p-datatable-responsive-demo" responsiveLayout="stack" [rows]="10" [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="paginator"
+  currentPageReportTemplate="Registros: {totalRecords}" [globalFilterFields]="globalFilterFields"
+  [exportFilename]="exportFilename">
+  <ng-template pTemplate="caption" *ngIf="captionTemplate">
+    <div class="table-header">
+      <div class="flex align-items-center captionResponsive">
+        <div class="col grid-container">
+          <ng-container *ngTemplateOutlet="captionTemplate">
+          </ng-container>
+        </div>
+        <button type="button" pButton pRipple icon="pi pi-file" (click)="dt.exportCSV()" class="mr-2" pTooltip="CSV"
+          tooltipPosition="bottom"></button>
+        <span class="p-input-icon-left p-ml-auto">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="setInputGlobal($event)" [placeholder]="'Busqueda Global'" />
+        </span>
+      </div>
+    </div>
+
+  </ng-template>
+  <ng-template pTemplate="header">
+    <ng-container *ngTemplateOutlet="headerTemplate">
+    </ng-container>
+    <ng-container *ngIf="!headerTemplate">
+      <tr>
+        <ng-container *ngFor="let col of columns">
+          <ng-container>
+            <th [id]="col.field" [pSortableColumn]="col.field" [style]="{
+              'justify-content': (col?.align)?col.align:'center',
+              'min-width': (col?.width)? col.width: '100px',
+              'width': (col?.medWidth)? col.medWidth: null,
+              'max-width': (col?.maxWidth)? col.maxWidth: null
+            }">
+              {{(col.translate)? (col.translate) :col.header}}
+              <ng-container *ngIf="(col.order || col.order === undefined)?true:
+                false">
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+              </ng-container>
+            </th>
+          </ng-container>
+        </ng-container>
+      </tr>
+    </ng-container>
+
+  </ng-template>
+  <ng-template pTemplate="body" let-item let-iTable="rowIndex">
+    <tr>
+      <ng-container *ngFor="let column of columns; let i= index">
+        <ng-container>
+
+          <td [style]="{
+            'justify-content': (column?.align)?column.align:'center',
+            'min-width':column.width,
+            'width': (column?.medWidth)? column.medWidth: null,
+            'max-width': (column?.maxWidth)? column.maxWidth: null,
+            'overflow-wrap': 'anywhere'
+        }">
+            <span class="p-column-title">{{(column.translate)? (column.translate) :column.header}}</span>
+            <ng-container *ngIf="!column.custom">
+              {{item[column.field]}}
+            </ng-container>
+            <ng-container *ngTemplateOutlet="bodyTemplate; context: {$implicit:
+                item, rowIndex:iTable, column: column}" [ngIf]="column.custom">
+            </ng-container>
+          </td>
+        </ng-container>
+      </ng-container>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="15" class="no-result">No se encontraron resultados</td>
+    </tr>
+  </ng-template>
+</p-table>

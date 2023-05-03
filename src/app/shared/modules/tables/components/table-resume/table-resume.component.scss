@@ -1,0 +1,39 @@
+:host::ng-deep .p-card {
+  margin-top: 20px;
+  // width: 100px;
+  text-align: center;
+  box-shadow: none;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-top: 5px;
+}
+.value {
+  font-size: 25px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-weight: 700;
+}
+
+.resume {
+  display: inline;
+  padding: 0 5px 0;
+}
+
+:host::ng-deep .p-card-body {
+  padding: 0.5em;
+  border: 1px solid var(--CS008);
+  border-radius: 5px;
+}
+
+:host::ng-deep .p-card .p-card-content {
+  padding: 0rem;
+}

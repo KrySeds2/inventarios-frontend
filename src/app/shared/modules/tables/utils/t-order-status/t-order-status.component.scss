@@ -1,0 +1,24 @@
+
+.status {
+  border-radius: 15px;
+  padding: 5px 10px;
+  text-align: center;
+  width: 100px;
+  display: inline-block;
+  &.created {
+    background: rgb(238, 238, 238);
+    color: var(--CS001);
+  }
+  &.cancelled {
+    background: var(--CB008);
+    color: rgb(255, 255, 255);
+  }
+  &.stocked {
+    background: var(--CT007);
+    color: #fff;
+  }
+  &.autorized {
+    background: var(--CB005);
+    color: #fff;
+  }
+}

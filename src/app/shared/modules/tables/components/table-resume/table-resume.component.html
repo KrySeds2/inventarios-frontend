@@ -1,0 +1,10 @@
+<div class="grid card-container">
+
+  <p-card>
+    <div *ngFor="let item of _resume" class="resume">
+      <span class="label">{{item.label}}</span>
+      <span class="value" [style.color]="'var('+item.color+')'">{{item.value}}</span>
+    </div>
+  </p-card>
+
+</div>
