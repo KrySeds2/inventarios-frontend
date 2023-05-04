@@ -6,6 +6,7 @@ import { ModuleRoutingModule } from '../module-routing.module';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { RawMaterialsFormComponent } from './raw-materials-form/raw-materials-form.component';
+import { RawMaterialsRoutes } from './raw-materials.routing';
 
 
 
@@ -19,8 +20,8 @@ import { RawMaterialsFormComponent } from './raw-materials-form/raw-materials-fo
   imports: [
     CommonModule,
     SharedModule,
-    ModuleRoutingModule,
-
+    // ModuleRoutingModule,
+    RawMaterialsRoutes
   ]
 })
 export class RawMaterialsModule { }

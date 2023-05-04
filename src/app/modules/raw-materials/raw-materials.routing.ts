@@ -7,10 +7,10 @@ import { RawMaterialsComponent } from './view/raw-materials.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'view',
+    redirectTo:'raw-materials',
     pathMatch:'full'
    },{
-    path:'view',
+    path:'',
     component:RawMaterialsComponent
    },{
     path:'add',
