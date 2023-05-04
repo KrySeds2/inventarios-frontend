@@ -18,19 +18,19 @@ const routes: Routes = [
     children:[
       {
         path: 'warehouses',
-        component: WarehousesComponent
+        loadChildren: () => import('./warehouses/warehouses.module').then( mod => mod.WarehousesModule)
       },
       {
         path: 'receptions',
-        component: ReceptionsComponent
+        loadChildren: () => import('./receptions/receptions.module').then( mod => mod.ReceptionsModule)
       },
       {
         path: 'raw-materials',
-        component: RawMaterialsComponent
+        loadChildren: () => import('./raw-materials/raw-materials.module').then( mod => mod.RawMaterialsModule)
       },
       {
         path: 'inventory',
-        component: InventoryComponent
+        loadChildren: () => import('./inventory/inventory.module').then( mod => mod.InventoryModule)
       },
       {
         path:'**',
