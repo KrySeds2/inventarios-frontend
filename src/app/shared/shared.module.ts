@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { TableCustomModule } from './modules/tables/table-custom.module';
 import { DirectivesModule } from './modules/directives/directives.module';
 import { PrimengImportModule } from './modules/primeng-import/primeng-import.module';
+import { ButtonsModule } from './modules/buttons/buttons.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PrimengImportModule } from './modules/primeng-import/primeng-import.mod
     CommonModule,
     FormsModule,
     DirectivesModule,
-    PrimengImportModule
+    PrimengImportModule,
+    ButtonsModule
 
   ], exports: [
     MatSidenavModule,
@@ -27,7 +29,8 @@ import { PrimengImportModule } from './modules/primeng-import/primeng-import.mod
     FormsModule,
     TableCustomModule,
     DirectivesModule,
-    PrimengImportModule
+    PrimengImportModule,
+    ButtonsModule
   ]
 })
 export class SharedModule { }

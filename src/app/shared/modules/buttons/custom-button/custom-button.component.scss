@@ -1,0 +1,13 @@
+:host::ng-deep {
+  .p-button.p-button-secondary,
+  .p-buttonset.p-button-secondary > .p-button,
+  .p-splitbutton.p-button-secondary > .p-button {
+    background: #ffffff;
+  }
+  .p-button.p-button-secondary:enabled:hover,
+  .p-buttonset.p-button-secondary > .p-button:enabled:hover,
+  .p-splitbutton.p-button-secondary > .p-button:enabled:hover {
+    background: #ffffff;
+    opacity: 0.4;
+  }
+}

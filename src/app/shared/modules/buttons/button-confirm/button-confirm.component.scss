@@ -1,0 +1,9 @@
+.btn,.btn {
+  width: 150px;
+  margin: 0px 10px;
+}
+@media (max-width: 768px) {
+  .btn {
+    margin: 5px 10px;
+  }
+}
