@@ -4,10 +4,10 @@ import { LoginComponent } from './view/login.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'view',
+    redirectTo:'login',
     pathMatch:'full'
     },{
-      path:'view',
+      path:'login',
       component: LoginComponent
     }
 ];
