@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 // Modulos
 import { TableCustomModule } from './modules/tables/table-custom.module';
 import { DirectivesModule } from './modules/directives/directives.module';
@@ -17,15 +17,16 @@ import { ComponentsModule } from './components/components.module';
     DirectivesModule,
     PrimengImportModule,
     ButtonsModule,
-    ComponentsModule
-
+    ComponentsModule,
+    ReactiveFormsModule
   ], exports: [
     FormsModule,
     TableCustomModule,
     DirectivesModule,
     PrimengImportModule,
     ButtonsModule,
-    ComponentsModule
+    ComponentsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
