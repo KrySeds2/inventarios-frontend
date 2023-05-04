@@ -6,6 +6,7 @@ import { ModuleRoutingModule } from '../module-routing.module';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { WarehousesFormComponent } from './warehouses-form/warehouses-form.component';
+import { WarehousesRoutes } from './warehouses.routing';
 
 
 
@@ -19,7 +20,8 @@ import { WarehousesFormComponent } from './warehouses-form/warehouses-form.compo
   imports: [
     CommonModule,
     SharedModule,
-    ModuleRoutingModule,
+    // ModuleRoutingModule,
+    WarehousesRoutes
 
   ]
 })

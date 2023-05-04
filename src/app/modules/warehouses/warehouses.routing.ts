@@ -2,14 +2,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { WarehousesComponent } from './view/warehouses.component';
+import { ShelfsComponent } from '../shelfs/view/shelfs.component';
 
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'view',
+    redirectTo:'warehouses',
     pathMatch:'full'
   },{
-    path:'view',
+    path:'',
     component:WarehousesComponent
   },{
     path:'add',
@@ -17,6 +18,9 @@ const routes: Routes = [
   },{
     path:'edit/:id',
     component:EditComponent
+  },{
+    path:'shelfs',
+    loadChildren: () => import('../shelfs/shelfs.module').then( mod => mod.ShelfsModule)
   }
 ];
 
