@@ -13,6 +13,7 @@ import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component
 // import { TableComponent } from '../shared/components/table/table.component';
 import { TableComponent } from '.././shared/modules/tables/tables.component';
 import { MainContainerComponent } from '../shared/components/main-container/main-container.component';
+import { ShelfsComponent } from './shelfs/shelfs.component';
 @NgModule({
   declarations: [
     MainContainerComponent,
@@ -24,7 +25,8 @@ import { MainContainerComponent } from '../shared/components/main-container/main
     LoginComponent,
     ReceptionsComponent,
     RawMaterialsComponent,
-    InventoryComponent
+    InventoryComponent,
+    ShelfsComponent
   ],
   imports: [
     CommonModule,
