@@ -6,10 +6,10 @@ import { ShelfsComponent } from './view/shelfs.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'view',
+    redirectTo:'shelfs',
     pathMatch:'full'
    },{
-    path:'view',
+    path:'',
     component:ShelfsComponent
    },{
     path:'add',

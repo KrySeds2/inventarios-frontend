@@ -6,6 +6,7 @@ import { ModuleRoutingModule } from '../module-routing.module';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { ShelfsFormComponent } from './shelfs-form/shelfs-form.component';
+import { ShelfsRoutes } from './shelfs.routing';
 
 
 
@@ -19,7 +20,8 @@ import { ShelfsFormComponent } from './shelfs-form/shelfs-form.component';
   imports: [
     CommonModule,
     SharedModule,
-    ModuleRoutingModule,
+    // ModuleRoutingModule,
+    ShelfsRoutes
 
   ]
 })
