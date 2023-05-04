@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
-import { InventoryComponent } from './view/inventory.component';
+import { ReceptionsComponent } from './view/receptions.component';
 
 const routes: Routes = [
   {
@@ -10,14 +10,14 @@ const routes: Routes = [
     pathMatch:'full'
    },{
     path:'view',
-    component:InventoryComponent
+    component:ReceptionsComponent
    },{
     path:'add',
-    component:AddComponent,
+    component:AddComponent
    },{
     path:'edit/:id',
-    component:EditComponent,
+    component:EditComponent
    }
 ];
 
-export const InventoryRoutes = RouterModule.forChild(routes);
+export const ReceptionsRoutes = RouterModule.forChild(routes);
