@@ -1,37 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidenavComponent } from '../shared/components/sidenav/sidenav.component';
-import { TitleComponent } from '../shared/components/title/title.component';
 import { ModuleRoutingModule } from './module-routing.module';
-import { SharedModule } from '../shared/shared.module';
-import { WarehousesComponent } from './warehouses/view/warehouses.component';
-import { LoginComponent } from './login/view/login.component';
-import { ReceptionsComponent } from './receptions/view/receptions.component';
-import { RawMaterialsComponent } from './raw-materials/view/raw-materials.component';
-import { InventoryComponent } from './inventory/view/inventory.component';
-import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
-// import { TableComponent } from '../shared/components/table/table.component';
-import { TableComponent } from '.././shared/modules/tables/tables.component';
-import { MainContainerComponent } from '../shared/components/main-container/main-container.component';
-import { ShelfsComponent } from './shelfs/shelfs.component';
+import { WarehousesModule } from './warehouses/warehouses.module';
+import { ReceptionsModule } from './receptions/receptions.module';
+import { LoginModule } from './login/login.module';
+import { RawMaterialsModule } from './raw-materials/raw-materials.module';
+import { InventoryModule } from './inventory/inventory.module';
+import { ShelfsModule } from './shelfs/shelfs.module';
+import { SharedModule } from 'primeng/api';
+
+
 @NgModule({
   declarations: [
-    MainContainerComponent,
-    SidenavComponent,
-    TitleComponent,
-    ToolbarComponent,
-    TableComponent,
-    WarehousesComponent,
-    LoginComponent,
-    ReceptionsComponent,
-    RawMaterialsComponent,
-    InventoryComponent,
-    ShelfsComponent
   ],
   imports: [
     CommonModule,
     ModuleRoutingModule,
-    SharedModule
+    SharedModule,
+    WarehousesModule,
+    ReceptionsModule,
+    LoginModule,
+    RawMaterialsModule,
+    InventoryModule,
+    ShelfsModule
+
   ]
 })
 export class ModulesModule { }
