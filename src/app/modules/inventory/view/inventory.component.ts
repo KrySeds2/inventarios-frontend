@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryRow } from '../models/inventory-row';
 import { TableHead } from 'src/app/shared/modules/tables/models/tableHead';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory',
@@ -21,7 +22,11 @@ export class InventoryComponent implements OnInit {
 
   ];
   listItems: InventoryRow[] = [];
-  constructor() { }
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.listItems = [
@@ -30,6 +35,10 @@ export class InventoryComponent implements OnInit {
 
       // Agrega más elementos de muestra aquí
     ];
+  }
+
+  selectedCreate(): void {
+    this.router.navigate(['./add'], { relativeTo: this.route });
   }
 
 }

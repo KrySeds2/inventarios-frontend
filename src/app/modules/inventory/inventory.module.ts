@@ -6,6 +6,7 @@ import { InventoryFormComponent } from './inventory-form/inventory-form.componen
 import { InventoryComponent } from './view/inventory.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ModuleRoutingModule } from '../module-routing.module';
+import { InventoryRoutes } from './inventory.routing';
 @NgModule({
   declarations: [
     AddComponent,
@@ -16,8 +17,8 @@ import { ModuleRoutingModule } from '../module-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    ModuleRoutingModule,
-
+    // ModuleRoutingModule,
+    InventoryRoutes
   ]
 })
 export class InventoryModule { }

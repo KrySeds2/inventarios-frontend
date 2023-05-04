@@ -13,7 +13,7 @@
     <app-table [columns]="columnsTable" [values]="listItems">
       <ng-template appCaption let-table>
         <div class="grid grid-nogutter">
-          <app-button-register class="col-3">
+          <app-button-register class="col-3" (click)="selectedCreate()">
           </app-button-register>
         </div>
       </ng-template>
