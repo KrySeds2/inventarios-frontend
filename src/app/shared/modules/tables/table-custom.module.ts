@@ -18,7 +18,7 @@ import { TSetUpComponent } from './utils/t-set-up/t-set-up.component';
 import { TStateComponent } from './utils/t-state/t-state.component';
 import { TStatusComponent } from './utils/t-status/t-status.component';
 import { TViewComponent } from './utils/t-view/t-view.component';
-
+import { TableComponent } from './tables.component';
 @NgModule({
   declarations: [
     TableResumeComponent,
@@ -34,7 +34,8 @@ import { TViewComponent } from './utils/t-view/t-view.component';
     TSetUpComponent,
     TStateComponent,
     TStatusComponent,
-    TViewComponent
+    TViewComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +58,8 @@ import { TViewComponent } from './utils/t-view/t-view.component';
     TSetUpComponent,
     TStateComponent,
     TStatusComponent,
-    TViewComponent
+    TViewComponent,
+    TableComponent
   ]
 })
 export class TableCustomModule { }
