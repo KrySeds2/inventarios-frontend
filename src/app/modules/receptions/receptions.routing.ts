@@ -6,10 +6,10 @@ import { ReceptionsComponent } from './view/receptions.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'view',
+    redirectTo:'receptions',
     pathMatch:'full'
    },{
-    path:'view',
+    path:'',
     component:ReceptionsComponent
    },{
     path:'add',

@@ -6,6 +6,7 @@ import { ModuleRoutingModule } from '../module-routing.module';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { ReceptionsFormComponent } from './receptions-form/receptions-form.component';
+import { ReceptionsRoutes } from './receptions.routing';
 
 
 
@@ -19,7 +20,8 @@ import { ReceptionsFormComponent } from './receptions-form/receptions-form.compo
   imports: [
     CommonModule,
     SharedModule,
-    ModuleRoutingModule,
+    // ModuleRoutingModule,
+    ReceptionsRoutes
 
   ]
 })
