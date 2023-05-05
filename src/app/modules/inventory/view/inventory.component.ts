@@ -36,9 +36,12 @@ export class InventoryComponent implements OnInit {
       // Agrega más elementos de muestra aquí
     ];
   }
-
-  selectedCreate(): void {
-    this.router.navigate(['./add'], { relativeTo: this.route });
-  }
+  // selectedEditConfirm(item:InventoryRow): void {
+  //   console.log('vars',item);
+  //   this.router.navigate(['./edit',item?.id], { relativeTo: this.route });
+  // }
+  // selectedCreate(): void {
+  //   this.router.navigate(['./add'], { relativeTo: this.route });
+  // }
 
 }

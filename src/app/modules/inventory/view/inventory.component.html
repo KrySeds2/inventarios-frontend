@@ -13,7 +13,7 @@
     <app-table [columns]="columnsTable" [values]="listItems">
       <ng-template appCaption let-table>
         <div class="grid grid-nogutter">
-          <app-button-register class="col-3" (click)="selectedCreate()">
+          <app-button-register class="col-3" [routerLink]="['./add']">
           </app-button-register>
         </div>
       </ng-template>
@@ -22,7 +22,7 @@
       <ng-template appBody let-item let-i="rowIndex" let-column="column">
         <ng-container [ngSwitch]="column.field">
           <ng-container *ngSwitchCase="'edit'">
-            <t-edit ></t-edit>
+            <t-edit [routerLink]="['./edit/12131']"></t-edit>
           </ng-container>
           <ng-container *ngSwitchCase="'status'">
             <t-status
