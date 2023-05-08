@@ -1,0 +1,179 @@
+/* Dropdown trriger icon fix font size*/
+.p-dropdown .p-dropdown-trigger .p-dropdown-trigger-icon {
+  font-size: 12px;
+}
+.p-float-label > label {
+  left: 0.5em !important;
+}
+.p-input-icon-left > label {
+  left: 2rem !important;
+}
+.p-input-icon-left{
+  display: block !important;
+}
+/* boxShadow remove*/
+.p-button:enabled:focus {
+  box-shadow: none !important;
+}
+.p-inputtext:enabled:focus:not(.p-state-error) {
+  box-shadow: none !important;
+}
+.p-dropdown:focus {
+  outline: none !important;
+}
+.p-dropdown:not(.p-state-disabled).p-state-focus {
+  box-shadow: none !important;
+}
+.p-accordion .p-accordion-header a:focus {
+  box-shadow: none !important;
+}
+
+/*Custom dropdown*/
+.p-float-label,
+.p-float-label-dropdown {
+  margin-bottom: 1em !important;
+  margin-top: 1em !important;
+}
+.p-float-label-dropdown {
+  display: block;
+  position: relative;
+}
+.p-float-label-dropdown > label {
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0em;
+  top: -0.75em;
+  margin-top: -0.5em;
+  transition: 0.3s ease all;
+  -moz-transition: 0.3s ease all;
+  -webkit-transition: 0.3s ease all;
+  color: #898989;
+  line-height: 1;
+  font-size: 12px;
+}
+
+/*Custom Calendar*/
+.p-calendar {
+  width: 100%;
+}
+.p-calendar input {
+  width: calc(100% - 2.357em);
+}
+.p-calendar.p-calendar-w-btn .p-datepicker-trigger.p-button {
+  width: 2.357em;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-top: 2px;
+  padding-bottom: 1px;
+}
+/*body .p-multiselect{
+  width: 100%;
+}*/
+
+/* Multiselect Dropdown */
+/*.p-multiselect {
+    min-width: 100% !important;
+    height: 33px;
+}*/
+
+.p-multiselect .p-multiselect-trigger .p-multiselect-trigger-icon {
+  font-size: 12px;
+}
+.p-datepicker {
+ /*top: 0 !important;*/
+}
+.grid-nogutter-right {
+  padding-right: 0 !important;
+}
+.grid-nogutter-left {
+  padding-left: 0 !important;
+}
+.grid-nogutter-top {
+  padding-top: 0 !important;
+}
+.grid-nogutter-bottom {
+  padding-bottom: 0 !important;
+}
+.p-tooltip .p-tooltip-text {
+  background-color: var(--CP003) !important;
+}
+
+.grid {
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+  margin-top: 0rem !important;
+
+}
+
+/*MODIFICACION DEL BOTTON DE SUCCES DE PRIMENG POR OTRO COLOR*/
+button.p-button.p-button-success,
+button.p-buttonset.p-button-success > .p-button,
+button.p-splitbutton.p-button-success > .p-button {
+  color: #ffffff;
+  background: var(--CB005);
+  border: 1px solid var(--CB005);
+}
+button.p-button.p-button-success:enabled:hover,
+button.p-buttonset.p-button-success > button.p-button:enabled:hover,
+button.p-splitbutton.p-button-success > .p-button:enabled:hover {
+  background: var(--CB005);
+  border: 1px solid var(--CB005);
+  opacity: 0.8;
+}
+
+/*MODIFICACION DEL BOTTON DE INFO DE PRIMENG POR OTRO COLOR*/
+button.p-button.p-button-secondary,
+button.p-buttonset.p-button-secondary > .p-button,
+button.p-splitbutton.p-button-secondary > .p-button {
+  color: var(--CS003);
+  background: none;
+  border: 1px solid var(--CS003);
+}
+[_nghost-jws-c176]  .create.p-button {
+  color: #ffffff;
+  background-color: var(--CB005);
+  border: 1px solid var(--CB005);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+button.p-button.p-button-secondary:enabled:hover,
+button.p-buttonset.p-button-secondary > .p-button:enabled:hover,
+button.p-splitbutton.p-button-secondary > .p-button:enabled:hover {
+  background: var( --CS003);
+  color: var(--CS006);
+  border-color: var(--CS003);
+}
+/*MODIFICACION DE STEP*/
+.p-steps .p-steps-item .p-menuitem-link {
+  background: none !important;
+}
+.p-steps .p-steps-item {
+  padding-top: 5px;
+}
+/* Modificar padding de fileupload*/
+.p-fileupload .p-fileupload-content {
+  padding: 0px !important;
+  margin-bottom: 10px;
+}
+
+.p-datatable .p-sortable-column .p-sortable-column-icon {
+  display: none;
+}
+
+  .grid-container{
+    margin-right: -0.5rem!important;
+    margin-left: -0.5rem!important;
+    margin-top: -0.5rem!important;
+  }
+
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+  border-color: #F4F6F9 !important;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem:not(.p-highlight):not(.p-disabled):hover .p-menuitem-link {
+    border-color: #F4F6F9 !important;
+}
+.p-splitbutton {
+  width: 100%;
+}
