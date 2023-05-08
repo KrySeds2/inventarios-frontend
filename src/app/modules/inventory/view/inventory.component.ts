@@ -10,18 +10,59 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class InventoryComponent implements OnInit {
   columnsTable: TableHead<InventoryRow>[] = [
-    { header: 'N°', translate:  ``, field: 'position', width: '20px',maxWidth: '20px', align: 'center', custom: false },
+    { header: 'N°', field: 'index', width: '20px', maxWidth: '20px', align: 'center', custom: false },
     { header: 'Almacen', field: 'almacen', width: '90px', maxWidth: '100px', align: 'center' },
     { header: 'Anaquel', field: 'anaquel', width: '90px', maxWidth: '100px', align: 'center' },
     { header: 'Materia Prima', field: 'materiaPrima', width: '90px', maxWidth: '140px', align: 'center' },
     { header: 'Cantidad', field: 'cantidad', width: '90px', maxWidth: '100px', align: 'center' },
     { header: 'Id unico de paquete', field: 'idUnicoPaquete', width: '90px', maxWidth: '120px', align: 'center' },
+    { header: 'Editar', field: 'edit', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit: 'write' },
     { header: 'Fecha de caducidad', field: 'fechaCaducidad', width: '90px', maxWidth: '110px', align: 'center' },
-    { header: 'Editar', field: 'edit', width: '60px', maxWidth: '80px', align: 'center', custom: true, exportable: false, permit: 'write'},
-    { header: 'Estado', field: 'status', width: '60px', maxWidth: '80px', align: 'center', custom: true, exportable: false},
+    { header: 'Estado', field: 'status', width: '60px', maxWidth: '80px', align: 'center', custom: true },
 
   ];
-  listItems: InventoryRow[] = [];
+  listItems: InventoryRow[] = [{
+    index: 1,
+    almacen: 'ALM-01',
+    anaquel: 'ANQL-01',
+    materiaPrima: 'MTP-01',
+    cantidad: 2,
+    idUnicoPaquete: '45896-0324-5632',
+    fechaCaducidad: '12-03-2023',
+    edit: null,
+    status: true
+  },
+  {
+    index: 2,
+    almacen: 'ALM-02',
+    anaquel: 'ANQL-02',
+    materiaPrima: 'MTP-02',
+    cantidad: 10,
+    idUnicoPaquete: '9653-55454-4512',
+    fechaCaducidad: '15-03-2023',
+    edit: null,
+    status: true
+  },{
+    index: 3,
+    almacen: 'ALM-05',
+    anaquel: 'ANQL-01',
+    materiaPrima: 'MTP-02',
+    cantidad: 100,
+    idUnicoPaquete: '6524-5632-56544',
+    fechaCaducidad: '25-03-2023',
+    edit: null,
+    status: false
+  },{
+    index: 4,
+    almacen: 'ALM-03',
+    anaquel: 'ANQL-03',
+    materiaPrima: 'MTP-04',
+    cantidad: 50,
+    idUnicoPaquete: '63963-14523-4563',
+    fechaCaducidad: '02-04-2023',
+    edit: null,
+    status: false
+  }];
 
   constructor(
     private router: Router,
@@ -29,12 +70,7 @@ export class InventoryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.listItems = [
-      { index: 1,position:1, almacen: 'Almacén 1', anaquel: 'Anaquel A', materiaPrima: 'Materia Prima 1', cantidad: 10, idUnicoPaquete: '123', fechaCaducidad: '2023-05-02', edit: null, status: true },
-      { index: 2,position:2, almacen: 'Almacén 2', anaquel: 'Anaquel B', materiaPrima: 'Materia Prima 2', cantidad: 5, idUnicoPaquete: '1234', fechaCaducidad: '2023-06-15', edit: null, status: false },
 
-      // Agrega más elementos de muestra aquí
-    ];
   }
   // selectedEditConfirm(item:InventoryRow): void {
   //   console.log('vars',item);
