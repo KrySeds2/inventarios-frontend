@@ -1,0 +1,30 @@
+<!-- Content Header (Page header) -->
+<section class="content-header container-breadcrumb">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-left">
+          <li>
+            <a  (click)="backUrl()" class="arrow">
+              <i class="fas fa-arrow-left"></i> &nbsp;
+            </a>
+          </li>
+          <li>
+            <a (click)="nextUrl()" class="arrow">
+              <i class="fas fa-arrow-right"></i> /&nbsp;
+            </a>
+          </li>
+          <li>
+            <a routerLink="./">
+              <i class="fas fa-home"></i> /&nbsp;
+            </a>
+          </li>
+
+          <li *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb-item">
+            <a [routerLink]="'./' + breadcrumb.url"> breadcrumb.label</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
