@@ -1,0 +1,25 @@
+.cancelButton{
+  width:150px;
+  margin: 0px 10px;
+}
+.p-button-secondary{
+  width:200px;
+  margin: 0px 10px;
+}
+.p-button-success{
+  width:100%;
+}
+@media (max-width: 768px) {
+    .cancelButton{
+      width:150px;
+      margin: 5px 10px;
+    }
+    .p-button-secondary{
+      width:150px;
+      margin: 5px 10px;
+    }
+    .p-button-success{
+      width: 199px;
+    }
+  }
+
