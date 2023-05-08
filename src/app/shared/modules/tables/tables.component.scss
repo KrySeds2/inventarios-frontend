@@ -9,11 +9,12 @@
   .p-datatable-scrollable .p-datatable-tbody > tr > td,
   .p-datatable-scrollable .p-datatable-tfoot > tr > td,
   .p-datatable-scrollable .p-datatable-thead > tr > th {
-    // display: flex;
+    // display: flex !important;
+   text-align: center;
     place-content: center;
   }
   .p-datatable-scrollable-header {
-    background-color: #082B42 !important;
+    background-color: var(--CP001) !important;
   }
   .p-datatable .p-datatable-header {
     background: none;
@@ -22,7 +23,7 @@
   .p-datatable-thead tr th {
     font-weight: normal !important;
     color: #fff !important;
-    background-color:  #082B42 !important;
+    background-color: var(--CP001) !important;
     border: none;
   }
   .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
@@ -107,5 +108,12 @@
 
 .no-result {
   text-align: center !important;
-  color: #B5B5B5 !important;
+  color: var(--CB002) !important;
+}
+:host::ng-deep p-columnfilter{
+  margin: 0px !important;
+  margin-left: 3px !important;
+  span {
+    color: white;
+  }
 }

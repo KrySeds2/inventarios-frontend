@@ -10,4 +10,5 @@ export interface TableRow {
   download?: string;
   image?: string;
   catalogs?: string;
+  view?: string;
 }
