@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TableHead } from 'src/app/shared/modules/tables/models/tableHead';
+import { WarehousesRow } from '../models/warehouses-row';
 
 @Component({
   selector: 'app-warehouses',
@@ -6,27 +8,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./warehouses.component.scss']
 })
 export class WarehousesComponent implements OnInit {
-  columns  = [
-    { field: 'numero', title: 'No°' },
-    { field: 'nombre', title: 'Nombre' },
-    { field: 'anaqueles', title: 'Anaqueles' },
-    { field: 'verAnaqueles', title: 'Ver Anaqueles' },
-    { field: 'estado', title: 'Estado' },
-    { field: 'edit', title: 'edit' },
-    { field: 'eliminar', title: 'Eliminar' },
+  columnsTable: TableHead<WarehousesRow>[] = [
+    { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
+    { header: 'Nombre', field: 'name', width: '100px', align: 'center' },
+    { header: 'Anaqueles', field: 'anaqueles', width: '100px', align: 'center' },
+    { header: 'Ver anaqueles', field: 'view', width: '100px', align: 'center',custom: true },
+    { header: 'Estado', field: 'status', width: '50px', maxWidth: '90px', align: 'center', custom: true },
+    { header: 'Editar', field: 'edit', width: '50px', maxWidth: '90px', align: 'center', custom: true, permit: 'write' },
+    { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
+
   ];
-  data = [
-    { numero: 1, nombre: 'ALM-1', anaqueles: 3, verAnaqueles: { icono: 'pi pi-eye' }, estado: false, edit: { icono: 'pi pi-file-edit' }, eliminar: { icono: 'pi pi-trash' } },
-    { numero: 2, nombre: 'ALM-2', anaqueles: 4, verAnaqueles: { icono: 'pi pi-eye' }, estado: false, edit: { icono: 'pi pi-file-edit' }, eliminar: { icono: 'pi pi-trash' } },
-    { numero: 3, nombre: 'ALM-3', anaqueles: 5, verAnaqueles: { icono: 'pi pi-eye' }, estado: false, edit: { icono: 'pi pi-file-edit' }, eliminar: { icono: 'pi pi-trash' } },
-    { numero: 4, nombre: 'ALM-4', anaqueles: 2, verAnaqueles: { icono: 'pi pi-eye' }, estado: false, edit: { icono: 'pi pi-file-edit' }, eliminar: { icono: 'pi pi-trash' } },
-  ];
+  listItems: WarehousesRow[] = [{
+    index: 1,
+    name: 'ALM-1',
+    anaqueles: 3,
+    status: true,
+  },{
+    index: 2,
+    name: 'ALM-1',
+    anaqueles: 4,
+    status: true,
+  },{
+    index: 3,
+    name: 'ALM-1',
+    anaqueles: 5,
+    status: false,
+  },{
+    index: 4,
+    name: 'ALM-1',
+    anaqueles: 2,
+    status: true,
+  }];
 
   constructor() { }
 
   ngOnInit(): void {
-    // Recuperar los datos guardados del almacenamiento local y actualizar los productos correspondientes
-
+    this.listItems;
   }
 
 
