@@ -1,1 +1,45 @@
-<p>add works!</p>
+<app-main-container>
+  <!-- Header -->
+  <ng-template appHeader>
+    <app-title [data]="{
+      header:'Registrar materia prima',
+      subHeader:'Formulario de registro'
+    }"></app-title>
+  </ng-template>
+  <!-- Buttons -->
+  <ng-template appButtons></ng-template>
+  <!-- Body -->
+  <ng-template appBody>
+    <form class="grid grid-container col-12 md:col-8" [formGroup]="formData">
+      <app-raw-materials-form [formData]="formData" class="col-12"></app-raw-materials-form>
+      <app-form-buttons [update]="false"
+       [type]="'button'"
+        (active)="submit()"
+        [isDisabled]="isDisabled"
+         class="col-12">
+      </app-form-buttons>
+    </form>
+  </ng-template>
+</app-main-container>
+
+<!--DIALOG LOADING -->
+<app-loading #dialogLoading></app-loading>
+
+<!--DIALOG SUCCESS-->
+<app-dialog-confirm #dialogSuccess>
+  <ng-template appIcon>
+    <i class="far fa-check-circle" style="font-size: 5rem; color: var(--CT007);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    Registro exitoso
+  </ng-template>
+  <ng-template appBody>
+    La información se encuentra disponible para su uso en el sistema.
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-continue (click)="back()"></app-button-continue>
+  </ng-template>
+</app-dialog-confirm>
+
+<!--DIALOG ERROR-->
+<app-dialog-error #dialogError (confirm)="submit()"></app-dialog-error>

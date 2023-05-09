@@ -22,7 +22,7 @@
       <ng-template appBody let-item let-i="rowIndex" let-column="column">
         <ng-container [ngSwitch]="column.field">
           <ng-container *ngSwitchCase="'edit'">
-            <t-edit [routerLink]="['./edit/12131']"></t-edit>
+            <t-edit (active)="dialogConfirmEdit.setDisplay(true,item)"></t-edit>
           </ng-container>
           <ng-container *ngSwitchCase="'status'">
             <t-status
@@ -37,3 +37,24 @@
     </app-table>
   </ng-template>
 </app-main-container>
+
+<!--DIALOG CONFIRM EDIT-->
+<app-dialog-confirm #dialogConfirmEdit>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+      var(--CT002)"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de editar el siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+    Materia prima
+    <p>{{item?.name}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm (onBack)="dialogConfirmEdit.setDisplay(false)"
+    (onConfirm)="selectedEditConfirm(dialogConfirmEdit.getBody())">
+  </app-button-confirm>
+  </ng-template>
+
+</app-dialog-confirm>
