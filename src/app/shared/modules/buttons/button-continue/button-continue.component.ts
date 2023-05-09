@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-button-continue',
-  templateUrl: './button-continue.component.html',
-  styleUrls: ['./button-continue.component.scss']
+  template: `
+  <button pButton type="button" [label]="'close'" style="width: 150px;"
+  id="continue"></button>`
 })
 export class ButtonContinueComponent implements OnInit {
 

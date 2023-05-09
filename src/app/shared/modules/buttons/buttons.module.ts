@@ -6,6 +6,10 @@ import { ButtonRegisterComponent } from './button-register/button-register.compo
 import { ButtonConfirmComponent } from './button-confirm/button-confirm.component';
 import {ButtonModule} from 'primeng/button';
 import { PrimengImportModule } from '../primeng-import/primeng-import.module';
+import { FormButtonsComponent } from './form-buttons/form-buttons.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { DialogsModule } from '../dialogs/dialogs.module';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 @NgModule({
@@ -13,18 +17,23 @@ import { PrimengImportModule } from '../primeng-import/primeng-import.module';
     CustomButtonComponent,
     ButtonContinueComponent,
     ButtonRegisterComponent,
-    ButtonConfirmComponent
+    ButtonConfirmComponent,
+    FormButtonsComponent
   ],
   imports: [
     CommonModule,
     ButtonModule,
-    PrimengImportModule
+    PrimengImportModule,
+    TranslateModule,
+    DialogsModule,
+    DirectivesModule
   ],
   exports: [
     CustomButtonComponent,
     ButtonContinueComponent,
     ButtonRegisterComponent,
-    ButtonConfirmComponent
+    ButtonConfirmComponent,
+    FormButtonsComponent,
   ]
 })
 export class ButtonsModule { }
