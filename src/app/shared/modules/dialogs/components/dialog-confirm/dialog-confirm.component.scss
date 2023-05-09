@@ -1,0 +1,81 @@
+h2{
+  font-size: 1.5rem;
+  padding: 5px 0px;
+  border-bottom: 1px solid var(--CS004);
+}
+.body-info{
+  padding: 5px 0px;
+}
+:host::ng-deep .p-dialog-titlebar {
+  border: 1px solid var(--CP001) !important;
+  background-color: var(--CP001) !important;
+}
+
+:host::ng-deep .p-dialog-titlebar-close {
+  color: var(--CS006) !important;
+}
+
+:host::ng-deep .p-dialog-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--height, 400px);
+}
+/*Grilla principal*/
+.content {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 100%;
+}
+.icon , .content-body>.body{
+  display: flex;
+  justify-content: center;
+}
+.icon{
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.content-body>.body {
+  flex-direction: column;
+  height: 90%;
+}
+.content-body>.footer {
+  height: 10%;
+  font-size: 0.6rem;
+}
+
+/*Colores para iconos*/
+:host::ng-deep .succes{
+  color: #21BA45;
+  font-size: 4rem;
+}
+:host::ng-deep .danger{
+  color: #FF0000;
+  font-size: 4rem;
+}
+:host::ng-deep .warning{
+  color: #FFC400;
+  font-size: 4rem;
+}
+/*Colores de texto*/
+:host::ng-deep .title-primary {
+  color: #0078ff;
+  margin: 0px 0px 7px 0px;
+  font-size: 1.5rem;
+}
+:host::ng-deep .title-secondary {
+  font-size: 1.2rem;
+}
+:host::ng-deep .text {
+  font-size: 0.6rem;
+}
+
+@media (max-width: 768px) {
+  :host::ng-deep  .p-dialog{
+      width: 90vw !important;
+    }
+}

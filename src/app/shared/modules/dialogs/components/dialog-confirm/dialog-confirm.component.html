@@ -1,0 +1,40 @@
+<p-dialog [(visible)]="visible" [modal]="true" [baseZIndex]="1100" [autoZIndex]="true"
+  [draggable]="false" [resizable]="false" [style]="{width: dwidth}"
+  [closable]="closable" [header]="header" (onHide)="setonHide($event)">
+  <div>
+    <div class="content">
+      <div class="icon">
+        <ng-container
+          *ngTemplateOutlet="iconTemplate?iconTemplate:iconTemplateDefault">
+        </ng-container>
+      </div>
+      <div class="content-body">
+        <div class="body"> <h2 style="text-align: center;">
+            <ng-container *ngTemplateOutlet="headerTemplate; context:{$implicit:
+              body}">
+
+            </ng-container>
+          </h2>
+          <div class="body-info" style="text-align: center;" *ngIf="visible">
+            <ng-container *ngTemplateOutlet="bodyTemplate; context:{$implicit:
+              body}">
+
+            </ng-container>
+          </div>
+          <div style="text-align: center; margin-top: 5px;">
+            <ng-container *ngTemplateOutlet="buttonsTemplate">
+            </ng-container>
+          </div>
+        </div>
+        <div class="footer">
+          <ng-container *ngTemplateOutlet="footerTemplate">
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<ng-template #iconTemplateDefault>
+  <i class="fas fa-exclamation-triangle warning"></i>
+</ng-template>

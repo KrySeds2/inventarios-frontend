@@ -1,0 +1,40 @@
+<app-dialog-confirm #dialogConfirm>
+  <ng-template appIcon>
+    <ng-container *ngTemplateOutlet="(iconTemplate)?iconTemplate:iconTemplateDefault">
+    </ng-container>
+  </ng-template>
+  <ng-template appHeader>
+    <ng-container *ngTemplateOutlet="(headerTemplate)?headerTemplate:headerTemplateDefault">
+    </ng-container>
+  </ng-template>
+  <ng-template appBody>
+    <ng-container *ngTemplateOutlet="(bodyTemplate)?bodyTemplate:bodyTemplateDefault">
+    </ng-container>
+  </ng-template>
+  <ng-template appButtons>
+    <ng-container *ngTemplateOutlet="(buttonsTemplate)?buttonsTemplate:buttonsDefault">
+    </ng-container>
+  </ng-template>
+</app-dialog-confirm>
+
+<ng-template #iconTemplateDefault>
+  <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--CB009);"></i>
+</ng-template>
+
+<ng-template #headerTemplateDefault>
+  {{header}}
+  <div>
+    {{subHeader}}
+  </div>
+</ng-template>
+
+<ng-template #bodyTemplateDefault>
+  {{body}}
+</ng-template>
+
+<ng-template #buttonsDefault>
+    <button pButton type="button" [label]="'Cerrar'" style="width: 150px;"
+    (click)="onConfirm()"></button>
+</ng-template>
+
+

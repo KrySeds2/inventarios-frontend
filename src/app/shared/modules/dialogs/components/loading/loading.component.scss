@@ -1,0 +1,60 @@
+:host::ng-deep .p-dialog-titlebar {
+  border: 1px solid #082b42 !important;
+  background-color: #082b42 !important;
+  height: 6vh;
+}
+
+:host::ng-deep .p-dialog-content {
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+  overflow: hidden;
+  height: 180px !important;
+}
+
+:host::ng-deep .p-progress-spinner {
+  position: relative;
+  margin: 0 auto;
+  width: 100px !important;
+  height: 100px !important;
+  display: inline-block;
+}
+
+
+/*SM Extra small devices (portrait phones, less than 576px)*/
+
+@media (max-width: 640px) {
+   :host::ng-deep .p-dialog {
+      /* left: 5% !important; */
+      width: 90% !important;
+
+      /* height: 10vh; */
+  }
+}
+
+
+/*MD Small devices (landscape phones, less than 768px)*/
+
+@media (min-width: 641px) {
+   :host::ng-deep .dialog {
+      width: 80vw;
+  }
+}
+
+
+/*LG Medium devices (tablets, less than 992px)*/
+
+@media (min-width: 1025px) {
+   :host::ng-deep .dialog {
+      width: 50vw;
+  }
+}
+
+
+/*XL Large devices (desktops, less than 1200px)*/
+
+@media (min-width: 1441px) {
+   :host::ng-deep .dialog {
+      width: 40vw;
+  }
+}
