@@ -1,0 +1,42 @@
+:host{
+  width: 100%;
+}
+.container-buttons {
+  margin-top: 15px;
+}
+:host::ng-deep .p-button.p-state-default.p-button-secondary,
+body .p-buttonset.p-button-secondary > .p-button.p-state-default {
+  color: var(--CS002);
+  border: 1px solid var(--CS002);
+}
+
+:host::ng-deep .create.p-button {
+  color: #ffffff;
+  background-color: var(--CB005);
+  border: 1px solid var(--CB005);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+:host::ng-deep .create.p-button:enabled:hover {
+  background-color: #008913;
+  color: #ffffff;
+  border-color: #008913;
+}
+
+.btn {
+  min-width: 120px;
+  margin: 5px 0px 5px 10px;
+}
+.confirm{
+  min-width: 150px;
+  margin: 5px 0px 5px 10px;
+}
+@media (max-width: 425px) {
+  .container-buttons {
+    text-align: center !important;
+  }
+  .btn {
+    width: 200px;
+    margin: 7px!important;
+  }
+}

@@ -1,0 +1,38 @@
+<div class="container-buttons" [ngStyle]="{'text-align':align}">
+  <button pButton type="button" [label]="'cancelar'"
+    class="p-button-secondary btn btn-back" (click)="back()" *ngIf="showCancel"></button>
+  <button pButton type="button" [label]="'volver' " (click)="clickButtonPrevius()"
+    *ngIf="step === 'last' || step === 'continue'" class="btn"></button>
+  <!-- <ng-container *ngIf="type === 'submit'">
+    <button pButton type="submit" label="{{label}}" class="confirm btn" [ngClass]="{'create':!updateValue}"
+      (click)="clickButtonConfirm()" [id]="(type === 'submit')?'submit':'button' "></button>
+  </ng-container> -->
+  <ng-container *ngIf="type === 'submit'; else buttonBlock">
+    <button pButton type="submit" label="{{label}}" class="confirm btn" [ngClass]="{'create':!updateValue}"
+      (click)="clickButtonConfirm()" [id]="(type === 'submit')?'submit':'button' "></button>
+  </ng-container>
+  <ng-template #buttonBlock>
+    <button pButton type="button" label="{{label}}" class="confirm btn" [ngClass]="{'create':!updateValue}"
+      [disabled]="isDisabled" (click)="clickButtonConfirm()" [id]="type"></button>
+  </ng-template>
+</div>
+
+
+<!--DIALOG WARNING-->
+<app-dialog-confirm #dialogWarning>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--CT002);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de salir del formulario?
+  </ng-template>
+  <ng-template appBody>
+    Al cerrar el formulario perderás la información que has ingresado.
+  </ng-template>
+  <ng-template appButtons>
+    <button pButton type="button" class="p-button-danger btn btn-back" (click)="cancel()"
+      [label]="'Si, estoy seguro' " (click)="dialogWarning.setDisplay(false)"></button>
+    <button pButton type="button" [label]="'Seguir en formulario'" class="btn confirm"
+      (click)="dialogWarning.setDisplay(false)"></button>
+  </ng-template>
+</app-dialog-confirm>
