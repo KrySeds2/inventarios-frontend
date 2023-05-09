@@ -1,0 +1,133 @@
+{
+  "buttons": {
+    "yes": "Si",
+    "no": "No",
+    "cancel": "Cancelar",
+    "register": "Registrar",
+    "confirm": "Confirmar"
+  },
+  "formButtons": {
+    "confirmExit": " ¿Estas seguro de salir del formulario?",
+    "closeForm": " Al cerrar el formulario perderás la información que has ingresado.",
+    "confirm": "Si, estoy seguro",
+    "continueForm": "Seguir en formulario",
+    "goBack": "Anterior",
+    "cancel": "Cancelar",
+    "buttonConfirm": "Confirmar",
+    "buttonUpdate": "Actualizar",
+    "generateReport": "Generar reporte"
+  },
+  "dialogs": {
+    "loading": "Espere por favor.",
+    "error": {
+      "header": "Lo sentimos, ocurrió un error inesperado",
+      "body": "Por favor intenta nuevamente.",
+      "errorCode": "Código de error ",
+      "url": "Url ",
+      "message": "Mensaje",
+      "closeDetails": "Ver menos",
+      "showDetails": "Ver más",
+      "button-retry": "Reintentar",
+      "button-close": "Cerrar"
+    },
+    "success": {
+      "header": "Registro exitoso",
+      "body": "La información se encuentra disponible para su uso en el sistema.",
+      "close": "Continuar"
+    },
+    "successUpdate": {
+      "header": "Actualización exitosa",
+      "body": "La información se encuentra disponible para su uso en el sistema.",
+      "close": "Continuar"
+    },
+    "exit": {
+      "header": "¿Estas seguro de salir del formulario?",
+      "body": "Al cerrar el formulario perderás la información que has ingresado.",
+      "confirm": "Si, estoy seguro",
+      "cancel": "Seguir en formulario"
+    }
+  },
+  "global":{
+    "dropdown": {
+      "default": "--"
+    },
+    "requiredMessage": {
+      "fieldRequired": "Requerido"
+    }
+  },
+  "primeng": {
+    "accept": "Si",
+    "addRule": "Añadir regla",
+    "after": "Después",
+    "apply": "Aplicar",
+    "before": "Antes",
+    "cancel": "Cancelar",
+    "choose": "Elegir",
+    "clear": "Claro",
+    "contains": "Contiene",
+    "dayNames": [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado"
+    ],
+    "dayNamesMin": ["Do.", "Lu.", "Ma.", "Mi.", "Ju.", "Vi.", "Sa."],
+    "dayNamesShort": ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+    "emptyFilterMessage": "Sin resultados",
+    "emptyMessage": "Sin resultados",
+    "endsWith": "Finaliza con",
+    "equals": "Igual a",
+    "gt": "Mayor que",
+    "gte": "Mayor o igual que",
+    "is": "Es",
+    "isNot": "No es",
+    "lt": "Menor que",
+    "lte": "Menor que o igual a",
+    "matchAll": "Coincidir con todo",
+    "matchAny": "Sin coincidencias",
+    "medium": "Medio",
+    "monthNames": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Augosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ],
+    "monthNamesShort": [
+      "Ene",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dic"
+    ],
+    "noFilter": "Sin filtros",
+    "notContains": "No contiene",
+    "notEquals": "No es igual",
+    "passwordPrompt": "Ingresa una contraseña",
+    "reject": "No",
+    "removeRule": "Eliminar reja",
+    "startsWith": "Comienza con",
+    "strong": "Fuerte",
+    "today": "Hoy",
+    "upload": "Subir",
+    "weak": "Débil",
+    "weekHeader": "Wk"
+  }
+}
