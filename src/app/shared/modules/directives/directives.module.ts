@@ -4,6 +4,9 @@ import { BodyDirective } from './body.directive';
 import { CaptionDirective } from './caption.directive';
 import { ColGroupDirective } from './colGroup.directive';
 import { HeaderDirective } from './header.directive';
+import { IconDirective } from './icon.directive';
+import { FooterDirective } from './footer.directive';
+import { ButtonsDirective} from'./buttons.directive'
 
 
 
@@ -14,7 +17,9 @@ import { HeaderDirective } from './header.directive';
     CaptionDirective,
     ColGroupDirective,
     HeaderDirective,
-
+    IconDirective,
+    FooterDirective,
+    ButtonsDirective
    ],
   imports: [
     CommonModule
@@ -23,7 +28,10 @@ import { HeaderDirective } from './header.directive';
     BodyDirective,
     CaptionDirective,
     ColGroupDirective,
-    HeaderDirective
+    HeaderDirective,
+    IconDirective,
+    FooterDirective,
+    ButtonsDirective
   ]
 })
 export class DirectivesModule { }
