@@ -1,3 +1,4 @@
-<button pButton pRipple type="button" label="Cancelar" (click)="back()" class="btn p-button-outlined p-button-secondary"></button>
-<button pButton type="button" class="btn p-button-outlined" label="Si"
+<button pButton type="button" class="btn"  (click)="true" [label]="'cancelar'"
+(click)="back()"></button>
+<button pButton type="button" class="btn p-button-secondary" [label]="'si'"
 (click)="confirm()"></button>

@@ -62,7 +62,7 @@ export class FormButtonsComponent implements OnInit {
   @Input()
   set update(value){
       if(value){
-      this.label =  'buttonUpdate';
+      this.label =  'Actualizar';
     }
     this.updateValue = value;
   }
