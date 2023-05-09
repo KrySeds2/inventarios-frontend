@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ValidateFieldService } from 'src/app/services/validations/validate-field.service';
 
 @Component({
   selector: 'app-raw-materials-form',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./raw-materials-form.component.scss']
 })
 export class RawMaterialsFormComponent implements OnInit {
-
-  constructor() { }
+  @Input() formData: FormGroup;
+  constructor(
+    public validateErrors:ValidateFieldService,
+  ) { }
 
   ngOnInit(): void {
   }
