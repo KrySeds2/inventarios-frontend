@@ -11,6 +11,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { DialogsModule } from '../modules/dialogs/dialogs.module';
 @NgModule({
   declarations: [
     MainContainerComponent,
@@ -24,7 +26,9 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    TranslateModule,
+    DialogsModule
   ],
   exports:[
     MainContainerComponent,
