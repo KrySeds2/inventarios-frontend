@@ -22,15 +22,16 @@
       <ng-template appBody let-item let-i="rowIndex" let-column="column">
         <ng-container [ngSwitch]="column.field">
           <ng-container *ngSwitchCase="'edit'">
-            <t-edit [routerLink]="['./edit/12131']"></t-edit>
+            <t-edit (active)="dialogConfirmEdit.setDisplay(true,item)"></t-edit>
           </ng-container>
           <ng-container *ngSwitchCase="'status'">
             <t-status
-              [checked]="item.status">
+            [checked]="item.status"
+            (active)="dialogConfirmStatus.setDisplay(true,item)">
             </t-status>
           </ng-container>
           <ng-container *ngSwitchCase="'delete'">
-            <t-delete></t-delete>
+            <t-delete (click)="dialogConfirmDelete.setDisplay(true,item)"></t-delete>
           </ng-container>
           <ng-container *ngSwitchCase="'view'">
             <t-view [routerLink]="['./shelfs']" ></t-view>
@@ -38,5 +39,70 @@
         </ng-container>
       </ng-template>
     </app-table>
+    <app-table-resume [resume]="resume"></app-table-resume>
   </ng-template>
 </app-main-container>
+
+<!--DIALOG CONFIRM EDIT-->
+<app-dialog-confirm #dialogConfirmEdit>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+      var(--CT002)"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de editar el siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+   Almacen
+    <p>{{item?.name}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm (onBack)="dialogConfirmEdit.setDisplay(false)"
+    (onConfirm)="selectedEditConfirm(dialogConfirmEdit.getBody())">
+  </app-button-confirm>
+  </ng-template>
+
+</app-dialog-confirm>
+
+<!--DIALOG CONFIRM Delete-->
+<app-dialog-confirm #dialogConfirmDelete>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+              var(--CT002);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de eliminar el siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+    Almacen
+    <p>{{item?.name}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm (onBack)="dialogConfirmDelete.setDisplay(false)"
+      (onConfirm)="deleteItem(dialogConfirmDelete.getBody())">
+    </app-button-confirm>
+  </ng-template>
+</app-dialog-confirm>
+
+<!--DIALOG CONFIRM STATUS-->
+<app-dialog-confirm #dialogConfirmStatus>
+  <ng-template appIcon>
+      <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+          var(--CT002);"></i>
+  </ng-template>
+  <ng-template appHeader>
+      ¿Estas seguro de modificar el estado del siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+    Almacen
+    <p>{{item?.name}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm
+    (onBack)="dialogConfirmStatus.setDisplay(false)"
+    (onConfirm)="selectedStatusConfirm(dialogConfirmStatus.getBody())">
+  </app-button-confirm>
+</ng-template>
+</app-dialog-confirm>
+
+<app-loading #dialogLoading></app-loading>
