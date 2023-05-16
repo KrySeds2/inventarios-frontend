@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
+import { ValidateFieldService } from 'src/app/services/validations/validate-field.service';
+import { DropDownModel} from 'src/app/modules/inventory/models/dropdown.Model'
 @Component({
   selector: 'app-inventory-form',
   templateUrl: './inventory-form.component.html',
@@ -8,9 +9,50 @@ import { FormGroup } from '@angular/forms';
 })
 export class InventoryFormComponent implements OnInit {
   @Input() formData: FormGroup;
-  constructor() { }
+  listAlmacen:DropDownModel[] = [
+  ];
+  listAnaquel:DropDownModel[] = [
+  ];
+  listMateriaPrima:DropDownModel[] = [
+  ];
+  constructor(
+    public validateErrors:ValidateFieldService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  getAlmacen():void{
+    this.listAlmacen.map(
+      (row) => {
+        return{
+          label: row.label,
+          value: row.value
+        }
+      }
+    )
+  }
+
+  getAnaquel():void{
+    this.listAnaquel.map(
+      (row) => {
+        return{
+          label: row.label,
+          value: row.value
+        }
+      }
+    )
+  }
+
+  getMateriaPrima():void{
+    this.listMateriaPrima.map(
+      (row) => {
+        return{
+          label: row.label,
+          value: row.value
+        }
+      }
+    )
   }
 
 }

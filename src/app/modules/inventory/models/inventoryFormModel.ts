@@ -1,5 +1,4 @@
-import { TableRow } from "src/app/shared/modules/tables/models/tableRow";
-export interface InventoryRow extends TableRow {
+export interface InventoryFormModel {
   almacen: string;
   anaquel: string;
   idUnicoMateriaPrima: string;
