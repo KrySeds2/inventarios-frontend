@@ -1,1 +1,47 @@
-<p>edit works!</p>
+<app-main-container>
+  <!-- Header -->
+  <ng-template appHeader>
+    <app-title [data]="{
+      header:'Actualizar recepciones',
+      subHeader:'Formulario de actualizacion'
+    }"></app-title>
+  </ng-template>
+  <!-- Buttons -->
+  <ng-template appButtons></ng-template>
+  <!-- Body -->
+  <ng-template appBody>
+    <form class="grid grid-container col-12 md:col-8" [formGroup]="formData" (ngSubmit)="submit()">
+      <app-receptions-form [formData]="formData" class="col-12" #form></app-receptions-form>
+      <app-partidas-form [formData]="formData" class="col-12" #form></app-partidas-form>
+      <app-form-buttons [update]="true" class="col-12">
+      </app-form-buttons>
+    </form>
+  </ng-template>
+</app-main-container>
+
+<!--DIALOG LOADING -->
+<app-loading #dialogLoading></app-loading>
+
+<!--DIALOG SUCCESS-->
+<app-dialog-confirm #dialogSuccess>
+  <ng-template appIcon>
+    <i class="far fa-check-circle" style="font-size: 5rem; color: var(--CT007);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    Registro exitoso
+  </ng-template>
+  <ng-template appBody>
+    La información se encuentra disponible para su uso en el sistema.
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-continue (click)="back()"></app-button-continue>
+  </ng-template>
+</app-dialog-confirm>
+
+<!--DIALOG ERROR-->
+<app-dialog-error #dialogError (confirm)="submit()"></app-dialog-error>
+
+<!--DIALOG ERROR GET ITEM-->
+<app-dialog-error #dialogErrorFindItem (confirm)="getItem(id)"
+subHeader="'dialogs.dialogFail.subHeaderFailFoundInfo'"><app-dialog-error>
+

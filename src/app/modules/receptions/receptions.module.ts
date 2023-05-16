@@ -7,6 +7,7 @@ import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { ReceptionsFormComponent } from './receptions-form/receptions-form.component';
 import { ReceptionsRoutes } from './receptions.routing';
+import { PartidasFormComponent } from './partidas/partidas-form/partidas-form.component';
 
 
 
@@ -15,7 +16,8 @@ import { ReceptionsRoutes } from './receptions.routing';
     ReceptionsComponent,
     AddComponent,
     EditComponent,
-    ReceptionsFormComponent
+    ReceptionsFormComponent,
+    PartidasFormComponent,
   ],
   imports: [
     CommonModule,
