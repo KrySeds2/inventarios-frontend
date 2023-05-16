@@ -26,15 +26,17 @@
           </ng-container>
           <ng-container *ngSwitchCase="'status'">
             <t-status
-              [checked]="item.status">
+            [checked]="item.status"
+            (active)="dialogConfirmStatus.setDisplay(true,item)">
             </t-status>
           </ng-container>
           <ng-container *ngSwitchCase="'delete'">
-            <t-delete></t-delete>
+            <t-delete (click)="dialogConfirmDelete.setDisplay(true,item)"></t-delete>
           </ng-container>
         </ng-container>
       </ng-template>
     </app-table>
+    <app-table-resume [resume]="resume"></app-table-resume>
   </ng-template>
 </app-main-container>
 
@@ -58,3 +60,46 @@
   </ng-template>
 
 </app-dialog-confirm>
+
+<!--DIALOG CONFIRM Delete-->
+<app-dialog-confirm #dialogConfirmDelete>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+              var(--CT002);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de eliminar el siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+   Materia prima
+   <p>{{item?.name}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm (onBack)="dialogConfirmDelete.setDisplay(false)"
+      (onConfirm)="deleteItem(dialogConfirmDelete.getBody())">
+    </app-button-confirm>
+  </ng-template>
+</app-dialog-confirm>
+
+<!--DIALOG CONFIRM STATUS-->
+<app-dialog-confirm #dialogConfirmStatus>
+  <ng-template appIcon>
+      <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+          var(--CT002);"></i>
+  </ng-template>
+  <ng-template appHeader>
+      ¿Estas seguro de modificar el estado del siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+    Materia prima
+    <p>{{item?.name}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm
+    (onBack)="dialogConfirmStatus.setDisplay(false)"
+    (onConfirm)="selectedStatusConfirm(dialogConfirmStatus.getBody())">
+  </app-button-confirm>
+</ng-template>
+</app-dialog-confirm>
+
+<app-loading #dialogLoading></app-loading>

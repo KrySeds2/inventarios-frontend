@@ -14,7 +14,7 @@
         {{'campo requerido' }}
       </div>
       <div *ngIf="validateErrors.validAlreadyTaken(formData, 'name')" class="error-message">
-        {{'Este turno ya existe'}}
+        {{'Esta materia prima ya existe'}}
       </div>
     </ng-container>
   </div>
@@ -25,7 +25,7 @@
   <span class="p-fluid p-float-label">
     <input id="float-input" type="text" size="30" pInputText formControlName="idUnicoEscanear"
       [ngClass]="{'error-border':validateErrors.valid(formData,'idUnicoEscanear')}" name="idUnicoEscanear">
-      <label for="float-input"> Id unico a escanear</label>
+      <label for="float-input"> Id unico para escanear</label>
   </span>
   <div class="error-container">
     <ng-container *ngIf="validateErrors.valid(formData,'idUnicoEscanear')">
