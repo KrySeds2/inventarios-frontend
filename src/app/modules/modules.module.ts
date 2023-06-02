@@ -8,6 +8,10 @@ import { RawMaterialsModule } from './panel-almacen/raw-materials/raw-materials.
 import { InventoryModule } from './panel-almacen/inventory/inventory.module';
 import { ShelfsModule } from './panel-almacen/shelfs/shelfs.module';
 import { SharedModule } from 'primeng/api';
+import { OrdersModule } from './panel-operativo/orders/orders.module';
+import { ProductLotModule } from './panel-operativo/product-lot/product-lot.module';
+import { ProductManufacturingModule } from './panel-operativo/product-manufacturing/product-manufacturing.module';
+import { ProductsModule } from './panel-operativo/products/products.module';
 
 
 @NgModule({
@@ -22,8 +26,11 @@ import { SharedModule } from 'primeng/api';
     LoginModule,
     RawMaterialsModule,
     InventoryModule,
-    ShelfsModule
-
+    ShelfsModule,
+    OrdersModule,
+    ProductLotModule,
+    ProductManufacturingModule,
+    ProductsModule
   ]
 })
 export class ModulesModule { }

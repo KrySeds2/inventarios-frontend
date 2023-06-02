@@ -13,24 +13,40 @@ const routes: Routes = [
     component: LoginComponent // Cambia aquí el componente principal
   },
   {
-    path:'sidenav',
+    path:'panel',
     component:SidenavComponent,
     children:[
       {
-        path: 'warehouses',
+        path: 'storage-panel/warehouses',
         loadChildren: () => import('./panel-almacen/warehouses/warehouses.module').then( mod => mod.WarehousesModule)
       },
       {
-        path: 'receptions',
+        path: 'storage-panel/receptions',
         loadChildren: () => import('./panel-almacen/receptions/receptions.module').then( mod => mod.ReceptionsModule)
       },
       {
-        path: 'raw-materials',
+        path: 'storage-panel/raw-materials',
         loadChildren: () => import('./panel-almacen/raw-materials/raw-materials.module').then( mod => mod.RawMaterialsModule)
       },
       {
-        path: 'inventory',
+        path: 'storage-panel/inventory',
         loadChildren: () => import('./panel-almacen/inventory/inventory.module').then( mod => mod.InventoryModule)
+      },
+      {
+        path: 'operating-panel/orders',
+        loadChildren: () => import('./panel-operativo/orders/orders.module').then( mod => mod.OrdersModule)
+      },
+      {
+        path: 'operating-panel/product-lot',
+        loadChildren: () => import('./panel-operativo/product-lot/product-lot.module').then( mod => mod.ProductLotModule)
+      },
+      {
+        path: 'operating-panel/product-manufacturing',
+        loadChildren: () => import('./panel-operativo/product-manufacturing/product-manufacturing.module').then( mod => mod.ProductManufacturingModule)
+      },
+      {
+        path: 'operating-panel/products',
+        loadChildren: () => import('./panel-operativo/products/products.module').then( mod => mod.ProductsModule)
       },
       {
         path:'**',
