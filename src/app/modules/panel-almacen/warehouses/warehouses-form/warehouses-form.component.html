@@ -1,0 +1,36 @@
+<div class="grid grid-container fieldForm" [formGroup]="formData">
+  <div class="col-12"></div>
+
+  <!-- Nombre -->
+  <div class="col-12 md:col-6">
+    <span class="p-fluid p-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="name"
+        [ngClass]="{'error-border':validateErrors.valid(formData,'name')}" name="nameWarehouses">
+        <label for="float-input"> Nombre</label>
+    </span>
+    <div class="error-container">
+      <ng-container *ngIf="validateErrors.valid(formData,'name')">
+        <div *ngIf="validateErrors.validRequired(formData,'name')" class="error-message">
+          {{'campo requerido' }}
+        </div>
+        <div *ngIf="validateErrors.validAlreadyTaken(formData, 'name')" class="error-message">
+          {{'Este almacen ya existe'}}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Descripcion -->
+  <div class="col-12 md:col-6">
+    <span class="p-fluid p-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="descripcion"
+        [ngClass]="{'error-border':validateErrors.valid(formData,'descripcion')}" name="descripcion">
+        <label for="float-input"> Descripcion </label>
+    </span>
+    <div class="error-container">
+      <ng-container *ngIf="validateErrors.valid(formData,'descripcion')">
+      </ng-container>
+    </div>
+  </div>
+
+  </div>

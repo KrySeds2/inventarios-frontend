@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WarehousesComponent } from './warehouses/view/warehouses.component';
-import { ReceptionsComponent } from './receptions/view/receptions.component';
-import { RawMaterialsComponent } from './raw-materials/view/raw-materials.component';
-import { InventoryComponent } from './inventory/view/inventory.component';
+// import { WarehousesComponent } from './panel-almacen/warehouses/view/warehouses.component';
+// import { ReceptionsComponent } from './panel-almacen/receptions/view/receptions.component';
+// import { RawMaterialsComponent } from './panel-almacen/raw-materials/view/raw-materials.component';
+// import { InventoryComponent } from './panel-almacen/inventory/view/inventory.component';
 import { LoginComponent } from './login/view/login.component';
 import { SidenavComponent } from '../shared/components/sidenav/sidenav.component';
 
@@ -18,19 +18,19 @@ const routes: Routes = [
     children:[
       {
         path: 'warehouses',
-        loadChildren: () => import('./warehouses/warehouses.module').then( mod => mod.WarehousesModule)
+        loadChildren: () => import('./panel-almacen/warehouses/warehouses.module').then( mod => mod.WarehousesModule)
       },
       {
         path: 'receptions',
-        loadChildren: () => import('./receptions/receptions.module').then( mod => mod.ReceptionsModule)
+        loadChildren: () => import('./panel-almacen/receptions/receptions.module').then( mod => mod.ReceptionsModule)
       },
       {
         path: 'raw-materials',
-        loadChildren: () => import('./raw-materials/raw-materials.module').then( mod => mod.RawMaterialsModule)
+        loadChildren: () => import('./panel-almacen/raw-materials/raw-materials.module').then( mod => mod.RawMaterialsModule)
       },
       {
         path: 'inventory',
-        loadChildren: () => import('./inventory/inventory.module').then( mod => mod.InventoryModule)
+        loadChildren: () => import('./panel-almacen/inventory/inventory.module').then( mod => mod.InventoryModule)
       },
       {
         path:'**',
