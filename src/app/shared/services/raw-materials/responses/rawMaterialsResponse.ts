@@ -1,6 +1,7 @@
 export interface RawMaterialsResponse {
-  name:string;
-  uniqueScanID:string;
+  nombre:string;
+  idunicoesc:string;
   id:string;
+  description?:string;
   status:boolean;
 }

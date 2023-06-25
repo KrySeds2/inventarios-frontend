@@ -9,7 +9,7 @@ import { UpdateRawMaterialsDto } from './requests/updateRawMaterialsDto';
   providedIn: 'root'
 })
 export class RawMaterialsCrudService {
-  url='';
+  url='/materia-p';
   constructor(private http:HttpService) { }
 
   create(body:CreateRawMaterialsDto):Observable<RawMaterialsResponse> {

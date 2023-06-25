@@ -13,25 +13,25 @@ export class RawMaterialsTransformService {
 
   toCreateRawMaterialsDto(form:RawMaterialsFormModel):CreateRawMaterialsDto{
     return{
-      name: form.name,
-      uniqueScanID:form.idUnicoEscanear,
-      descripcion:form.descripcion,
+      nombre: form.nombre,
+      idunicoesc:form.idunicoesc,
+      description:form.description,
     }
   }
 
   updateRawMaterialsDto(form:RawMaterialsFormModel):Partial<UpdateRawMaterialsDto>{
     return{
-      name: form.name,
-      uniqueScanID:form.idUnicoEscanear,
-      descripcion:form.descripcion
+      nombre: form.nombre,
+      idunicoesc:form.idunicoesc,
+      description:form.description
     }
   }
 
-  static toRawMaterialsFormModel(response:RawMaterialsResponse):RawMaterialsFormModel{
+   toRawMaterialsFormModel(response:RawMaterialsResponse):RawMaterialsFormModel{
     return{
-      name:response.name,
-      idUnicoEscanear:response.uniqueScanID,
-      id:response.id
+      nombre:response.nombre,
+      idunicoesc:response.idunicoesc,
+      description:response.description
     }
   }
 }

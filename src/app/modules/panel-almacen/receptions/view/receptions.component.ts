@@ -93,8 +93,8 @@ export class ReceptionsComponent implements OnInit {
               id: row.id,
               status: row.status,
               folio:row.folio,
-              fechaLlegada:row.fechaLlegada,
-              estadoPedido:row.estadoPedido
+              fechaLlegada:row.date_llegada,
+              estadoPedido:row.estado_pedido
             };
           }
           );

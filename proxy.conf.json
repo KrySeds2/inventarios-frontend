@@ -1,0 +1,7 @@
+{
+  "/api/*":{
+    "target":"https://08cf-187-254-104-188.ngrok-free.app",
+    "secure":false,
+    "logLevel":"debug"
+  }
+}

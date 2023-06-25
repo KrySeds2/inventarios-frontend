@@ -37,7 +37,13 @@
     La información se encuentra disponible para su uso en el sistema.
   </ng-template>
   <ng-template appButtons>
-    <app-button-continue (click)="back()"></app-button-continue>
+    <button
+    pButton
+    type="button"
+    label="Cerrar"
+    style="width: 150px"
+    (click)="back()"
+  ></button>
   </ng-template>
 </app-dialog-confirm>
 

@@ -8,6 +8,8 @@ import { InventoryResponse } from 'src/app/shared/services/inventory/responses/i
 import { ActivatedRoute, Router } from '@angular/router';
 import { InventoryTransformService } from '../services/inventory-transform.service';
 import { InventoryCrudService } from 'src/app/shared/services/inventory/inventory-crud.service';
+import { Utils } from 'src/app/shared/services/common/utils';
+import { InventoryFormModel } from '../models/inventoryFormModel';
 
 @Component({
   selector: 'app-edit',
@@ -47,11 +49,56 @@ export class EditComponent implements OnInit {
   }
 
   submit(): void {
+    console.log(this.formData.value);
 
+    if (this.formData.invalid) {
+      this.formData.markAllAsTouched();
+      return;
+    }
+    this.dialogLoading.setDisplay(true);
+    // const form: ShiftsFormModel = this.formData.getRawValue();
+    let request:InventoryFormModel = {
+      almacen:this.formData.value.name,
+      anaquel: this.formData.value.idUnicoEscanear,
+      idUnicoMateriaPrima:this.formData.value.descripcion,
+      idUnicoPaquete:this.formData.value.idUnicoPaquete,
+      fechaCaducidad:this.formData.value.fechaCaducidad,
+      cantidad:this.formData.value.cantidad,
+    }
+
+    const form = this.formData.getRawValue();
+    // const request =this.shiftsTransformService.updateShiftsDto(form)
+    const partialRequest = Utils.updatePartial(request);
+
+    this.inventoryCrudService.update(partialRequest,this.id).subscribe(
+      (response) => {
+        this.dialogLoading.setDisplay(false);
+        this.dialogSuccess.setDisplay(true, response);
+      }, (error) => {
+        this.dialogLoading.setDisplay(false);
+        this.dialogError.setDisplay(true, error);
+      }
+    );
   }
 
   getItem(id: string): void {
-
+    this.inventoryCrudService.getOne(id).subscribe(
+      (resp) => {
+        this.response=resp;
+        this.formData.patchValue(InventoryTransformService.toInventoryFormModel(resp));
+        // this.formData.patchValue({
+        //   name:response.name,
+        //   isLastWorkShift: response.isLastWorkShift,
+        //   initTime:response.initTime,
+        //   endTime:response.endTime,
+        //   companyId:this.facilityId
+        // });
+      }, (error) => {
+        console.log(error);
+        this.dialogLoading.setDisplay(false);
+        this.dialogErrorFindItem.setDisplay(true, error);
+      }
+    );
   }
 
   back(): void {

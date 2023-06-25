@@ -9,7 +9,7 @@ import { UpdateInventoryDto } from './requests/updateInventoryDto';
   providedIn: 'root'
 })
 export class InventoryCrudService {
-  url='';
+  url='/inventario';
   constructor(private http:HttpService) { }
 
   create(body:CreateInventoryDto):Observable<InventoryResponse> {
