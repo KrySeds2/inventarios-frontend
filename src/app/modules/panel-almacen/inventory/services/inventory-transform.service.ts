@@ -42,7 +42,6 @@ export class InventoryTransformService {
       idUnicoPaquete:response.idUnicoPaquete,
       cantidad:response.cantidad,
       fechaCaducidad:response.fechaCaducidad,
-      id:response.id,
       status:response.status
     }
   }

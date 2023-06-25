@@ -22,7 +22,7 @@ export class PartidasFormComponent implements OnInit {
   rowsTable: PartidasRow[] = [];
   columnsTable: TableHead<PartidasRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
-    { header: 'Materia prima', field: 'materiaPrima', width: '100px', align: 'center' },
+    { header: 'Materia prima', field: 'materia_prima', width: '100px', align: 'center' },
     { header: 'Cantidad', field: 'cantidad', width: '50px', maxWidth: '50px', align: 'center'},
     { header: 'Editar', field: 'edit', width: '50px', maxWidth: '50px', align: 'center', custom: true, permit: 'write' },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '50px', align: 'center', custom: true },
@@ -30,23 +30,23 @@ export class PartidasFormComponent implements OnInit {
   listItems: PartidasRow[] = [{
     index: 1,
     id:'456789',
-    materiaPrima:'MTP-01',
-    cantidad:10,
+    materia_prima:'',
+    cantidad:'10',
   },{
     index: 2,
     id:'12345',
-    materiaPrima:'MTP-02',
-    cantidad:5,
+    materia_prima:'MTP-02',
+    cantidad:'5',
   },{
     index: 3,
     id:'09876',
-    materiaPrima:'MTP-03',
-    cantidad:2,
+    materia_prima:'MTP-03',
+    cantidad:'2',
   },{
     index: 4,
     id:'23459',
-    materiaPrima:'MTP-04',
-    cantidad:1,
+    materia_prima:'MTP-04',
+    cantidad:'1',
   }];
   constructor(
     public validateErrors:ValidateFieldService,

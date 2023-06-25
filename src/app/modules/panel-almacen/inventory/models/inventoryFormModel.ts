@@ -6,5 +6,5 @@ export interface InventoryFormModel {
   fechaCaducidad:string;
   cantidad:number;
   status?: boolean;
-  id:string;
+
 }
