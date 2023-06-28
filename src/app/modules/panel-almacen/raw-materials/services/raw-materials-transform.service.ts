@@ -13,24 +13,24 @@ export class RawMaterialsTransformService {
 
   toCreateRawMaterialsDto(form:RawMaterialsFormModel):CreateRawMaterialsDto{
     return{
-      nombre: form.nombre,
-      idunicoesc:form.idunicoesc,
+      name: form.name,
+      scaneId:form.scaneId,
       description:form.description,
     }
   }
 
   updateRawMaterialsDto(form:RawMaterialsFormModel):Partial<UpdateRawMaterialsDto>{
     return{
-      nombre: form.nombre,
-      idunicoesc:form.idunicoesc,
+      name: form.name,
+      scaneId:form.scaneId,
       description:form.description
     }
   }
 
    toRawMaterialsFormModel(response:RawMaterialsResponse):RawMaterialsFormModel{
     return{
-      nombre:response.nombre,
-      idunicoesc:response.idunicoesc,
+      name:response.name,
+      scaneId:response.scaneId,
       description:response.description
     }
   }

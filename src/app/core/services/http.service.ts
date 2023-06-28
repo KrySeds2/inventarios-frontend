@@ -68,8 +68,8 @@ export class HttpService {
           this.restart();
           return response;
           console.log('response', response);
-          // this.refreshToken(response);
-          // console.log('HTTPSERVICE-GET',response.body);
+          this.refreshToken(response);
+          console.log('HTTPSERVICE-GET',response.body);
           return response.body;
         }
       )

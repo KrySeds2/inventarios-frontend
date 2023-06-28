@@ -40,8 +40,8 @@ export class EditComponent implements OnInit {
 
   declareForm() :void{
     this.formData = this.fb.group({
-      nombre: [, [Validators.required]],
-      idunicoesc: [, [Validators.required]],
+      name: [, [Validators.required]],
+      scaneId: [, [Validators.required]],
       description: []
     })
   }

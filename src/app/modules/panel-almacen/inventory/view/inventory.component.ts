@@ -32,48 +32,48 @@ export class InventoryComponent implements OnInit {
   ];
   listOfInventoryResponse: InventoryResponse[];
   resume: any[];
-  // listItems: InventoryRow[] = [{
-  //   index: 1,
-  //   id:'23456',
-  //   almacen: 'ALM-01',
-  //   anaquel: 'ANQL-01',
-  //   idUnicoMateriaPrima: 'MTP-01',
-  //   cantidad: 2,
-  //   idUnicoPaquete: '45896-0324-5632',
-  //   fechaCaducidad: '12-03-2023',
-  //   status: true
-  // },
-  // {
-  //   index: 2,
-  //   id:'098765',
-  //   almacen: 'ALM-02',
-  //   anaquel: 'ANQL-02',
-  //   idUnicoMateriaPrima: 'MTP-02',
-  //   cantidad: 10,
-  //   idUnicoPaquete: '9653-55454-4512',
-  //   fechaCaducidad: '15-03-2023',
-  //   status:true
-  // },{
-  //   index: 3,
-  //   id:'123678',
-  //   almacen: 'ALM-05',
-  //   anaquel: 'ANQL-01',
-  //   idUnicoMateriaPrima: 'MTP-02',
-  //   cantidad: 100,
-  //   idUnicoPaquete: '6524-5632-56544',
-  //   fechaCaducidad: '25-03-2023',
-  //   status:false
-  // },{
-  //   index: 4,
-  //   id:'983456',
-  //   almacen: 'ALM-03',
-  //   anaquel: 'ANQL-03',
-  //   idUnicoMateriaPrima: 'MTP-04',
-  //   cantidad: 50,
-  //   idUnicoPaquete: '63963-14523-4563',
-  //   fechaCaducidad: '02-04-2023',
-  //   status:true
-  // }];
+  listItems: InventoryRow[] = [{
+    index: 1,
+    id:'23456',
+    almacen: 'ALM-01',
+    anaquel: 'ANQL-01',
+    idUnicoMateriaPrima: 'MTP-01',
+    cantidad: 2,
+    idUnicoPaquete: '45896-0324-5632',
+    fechaCaducidad: '12-03-2023',
+    status: true
+  },
+  {
+    index: 2,
+    id:'098765',
+    almacen: 'ALM-02',
+    anaquel: 'ANQL-02',
+    idUnicoMateriaPrima: 'MTP-02',
+    cantidad: 10,
+    idUnicoPaquete: '9653-55454-4512',
+    fechaCaducidad: '15-03-2023',
+    status:true
+  },{
+    index: 3,
+    id:'123678',
+    almacen: 'ALM-05',
+    anaquel: 'ANQL-01',
+    idUnicoMateriaPrima: 'MTP-02',
+    cantidad: 100,
+    idUnicoPaquete: '6524-5632-56544',
+    fechaCaducidad: '25-03-2023',
+    status:false
+  },{
+    index: 4,
+    id:'983456',
+    almacen: 'ALM-03',
+    anaquel: 'ANQL-03',
+    idUnicoMateriaPrima: 'MTP-04',
+    cantidad: 50,
+    idUnicoPaquete: '63963-14523-4563',
+    fechaCaducidad: '02-04-2023',
+    status:true
+  }];
 
   constructor(
     private router: Router,
@@ -86,7 +86,7 @@ export class InventoryComponent implements OnInit {
     this.setResume();
     this.loadingComponent.setDisplay(true);
     this.getItemsOfTable();
-    // this.listItems;
+    this.listItems;
   }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 export interface RawMaterialsFormModel{
-nombre:string;
-idunicoesc:string;
-description?:string;
+name:string;
+scaneId:string;
+description:string;
 status?:boolean;
 // id:string;
 }

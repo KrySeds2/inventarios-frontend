@@ -20,47 +20,47 @@ export class ReceptionsComponent implements OnInit {
   columnsTable: TableHead<ReceptionsRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '20px', align: 'center', custom: false },
     { header: 'Folio', field: 'folio', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Fecha de llegada', field: 'fechaLlegada', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Estado del pedido', field: 'estadoPedido', width: '90px', maxWidth: '140px', align: 'center' },
+    { header: 'Fecha de llegada', field: 'fechaDeLlegada', width: '90px', maxWidth: '100px', align: 'center' },
+    { header: 'Estado del pedido', field: 'estadoDelPedido', width: '90px', maxWidth: '140px', align: 'center' },
     { header: 'Editar', field: 'edit', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit: 'write' },
     { header: 'Estado', field: 'status', width: '60px', maxWidth: '80px', align: 'center', custom: true },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
 
   ];
-  listItems: ReceptionsRow[] = [{
-    index: 1,
-    id:'34567',
-    folio: '05324',
-    fechaLlegada: '21-03-2023',
-    estadoPedido: 'En proceso',
-    status: true,
+  // listItems: ReceptionsRow[] = [{
+  //   index: 1,
+  //   id:'34567',
+  //   folio: '05324',
+  //   fechaLlegada: '21-03-2023',
+  //   estadoPedido: 'En proceso',
+  //   status: true,
 
-  },
-  {
-    index: 2,
-    id:'12345',
-    folio: '54659',
-    fechaLlegada: '21-03-2023',
-    estadoPedido: 'En proceso',
-    status: false,
+  // },
+  // {
+  //   index: 2,
+  //   id:'12345',
+  //   folio: '54659',
+  //   fechaLlegada: '21-03-2023',
+  //   estadoPedido: 'En proceso',
+  //   status: false,
 
-  },{
-    index: 3,
-    id:'67890',
-    folio: '98231',
-    fechaLlegada: '21-03-2023',
-    estadoPedido: 'Finalizado',
-    status: true,
+  // },{
+  //   index: 3,
+  //   id:'67890',
+  //   folio: '98231',
+  //   fechaLlegada: '21-03-2023',
+  //   estadoPedido: 'Finalizado',
+  //   status: true,
 
-  },{
-    index: 4,
-    id:'098543',
-    folio: '58484',
-    fechaLlegada: '21-03-2023',
-    estadoPedido: 'Por hacer',
-    status: false,
+  // },{
+  //   index: 4,
+  //   id:'098543',
+  //   folio: '58484',
+  //   fechaLlegada: '21-03-2023',
+  //   estadoPedido: 'Por hacer',
+  //   status: false,
 
-  }];
+  // }];
   listOfReceptionsResponse: ReceptionsResponse[];
   resume: any[];
   constructor(
@@ -74,7 +74,7 @@ export class ReceptionsComponent implements OnInit {
     this.setResume();
     this.loadingComponent.setDisplay(true);
     this.getItemsOfTable();
-    this.listItems;
+    // this.listItems;
   }
 
   ngOnInit(): void {
@@ -93,8 +93,8 @@ export class ReceptionsComponent implements OnInit {
               id: row.id,
               status: row.status,
               folio:row.folio,
-              fechaLlegada:row.date_llegada,
-              estadoPedido:row.estado_pedido
+              fechaDeLlegada:row.fechaDeLlegada,
+              estadoDelPedido:row.estadoDelPedido
             };
           }
           );

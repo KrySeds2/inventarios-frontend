@@ -7,6 +7,9 @@ import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/load
 import { TableHead } from 'src/app/shared/modules/tables/models/tableHead';
 import { PartidasRow } from '../../models/partidas-row';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RawMaterialsCrudService } from '@shared/services/raw-materials/raw-materials-crud.service';
+import { PartidasResponse } from '@shared/services/receptions/partidas/responses/partidasResponse';
+import { PartidasCrudService } from '@shared/services/receptions/partidas/partidas-crud.service';
 
 @Component({
   selector: 'app-partidas-form',
@@ -15,6 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PartidasFormComponent implements OnInit {
   @Input() formData: FormGroup;
+  listOfPartidasResponse: PartidasResponse[];
   listMateriaPrima:DropDownModel[] = [];
   isEditButtonClicked: boolean = false;
   @ViewChild('dialogError') dialogError: DialogErrorComponent;
@@ -22,42 +26,46 @@ export class PartidasFormComponent implements OnInit {
   rowsTable: PartidasRow[] = [];
   columnsTable: TableHead<PartidasRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
-    { header: 'Materia prima', field: 'materia_prima', width: '100px', align: 'center' },
+    { header: 'Materia prima', field: 'materiasPrima', width: '100px', align: 'center' },
     { header: 'Cantidad', field: 'cantidad', width: '50px', maxWidth: '50px', align: 'center'},
     { header: 'Editar', field: 'edit', width: '50px', maxWidth: '50px', align: 'center', custom: true, permit: 'write' },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '50px', align: 'center', custom: true },
   ];
-  listItems: PartidasRow[] = [{
-    index: 1,
-    id:'456789',
-    materia_prima:'',
-    cantidad:'10',
-  },{
-    index: 2,
-    id:'12345',
-    materia_prima:'MTP-02',
-    cantidad:'5',
-  },{
-    index: 3,
-    id:'09876',
-    materia_prima:'MTP-03',
-    cantidad:'2',
-  },{
-    index: 4,
-    id:'23459',
-    materia_prima:'MTP-04',
-    cantidad:'1',
-  }];
+  // listItems: PartidasRow[] = [{
+  //   index: 1,
+  //   id:'456789',
+  //   materia_prima:'',
+  //   cantidad:'10',
+  // },{
+  //   index: 2,
+  //   id:'12345',
+  //   materia_prima:'MTP-02',
+  //   cantidad:'5',
+  // },{
+  //   index: 3,
+  //   id:'09876',
+  //   materia_prima:'MTP-03',
+  //   cantidad:'2',
+  // },{
+  //   index: 4,
+  //   id:'23459',
+  //   materia_prima:'MTP-04',
+  //   cantidad:'1',
+  // }];
   constructor(
     public validateErrors:ValidateFieldService,
     private router: Router,
     private route: ActivatedRoute,
+    private partidasCrudService: PartidasCrudService,
+    private rawMaterialsCrudService: RawMaterialsCrudService
     // private translate: TranslateService,
     // private partidasCrudService: PartidasCrudService
-  ) { }
+  ) {
+    this.getMateriaPrima();
+  }
 
   ngOnInit(): void {
-    this.listItems;
+
   }
 
   selectedEditConfirm(item: PartidasRow): void {
@@ -77,13 +85,47 @@ export class PartidasFormComponent implements OnInit {
   }
 
   getMateriaPrima():void{
-    this.listMateriaPrima.map(
-      (row) => {
-        return{
-          label: row.label,
-          value: row.value
-        }
+    this.rawMaterialsCrudService.getAll().subscribe(
+      (response:any) => {
+        this.listMateriaPrima = response.map(
+          (row)=>{
+            return{
+              label: row.name,
+              value: row.name
+            }
+          }
+        )
+      },(error:any) => {
+        console.log(error);
       }
     )
   }
+
+
+  getItemsOfTable():void{
+    this.partidasCrudService.getAll().subscribe(
+      (response) => {
+        this.listOfPartidasResponse = response;
+        console.log(response);
+        this.rowsTable = response.map(
+          (row, index) => {
+            return {
+              index: index + 1,
+              id: row.id,
+              materiasPrima:row.materiasPrima,
+              cantidad:row.cantidad
+            };
+          }
+          );
+          // this.setResume();
+          this.loadingComponent.setDisplay(false);
+        }, error => {
+          this.loadingComponent.setDisplay(false);
+        }
+      );
+  }
+
+
 }
+
+

@@ -1,4 +1,6 @@
+import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/rawMaterialsResponse";
+
 export interface CreatePartidasDto {
-  materiaPrima:string;
+  materiasPrima:RawMaterialsResponse;
   cantidad:number;
 }

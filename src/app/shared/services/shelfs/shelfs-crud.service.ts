@@ -9,7 +9,7 @@ import { UpdateShelfsDto } from './responses/updateShelfsDto';
   providedIn: 'root'
 })
 export class ShelfsCrudService {
-  url='';
+  url='/anaqueles';
   constructor(private http:HttpService) { }
 
   create(body:CreateShelfsDto):Observable<ShelfsResponse> {

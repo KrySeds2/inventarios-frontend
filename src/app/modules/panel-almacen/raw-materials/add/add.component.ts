@@ -33,9 +33,9 @@ export class AddComponent implements OnInit {
 
   declareForm():void{
     this.formData = this.fb.group({
-      nombre:[,[Validators.required]],
-      idunicoesc:[,[Validators.required]],
-      description:[]
+      name:[,[Validators.required,Validators.maxLength(64)]],
+      scaneId:[,[Validators.required]],
+      description:[,[Validators.required]],
     })
   }
 
@@ -55,8 +55,8 @@ export class AddComponent implements OnInit {
     const createShiftsDto: CreateRawMaterialsDto = this.rawMaterialsTransformService.toCreateRawMaterialsDto(form);
 
     let request:RawMaterialsFormModel = {
-      nombre:this.formData.value.nombre,
-      idunicoesc: this.formData.value.idunicoesc,
+      name:this.formData.value.name,
+      scaneId: this.formData.value.scaneId,
       description:this.formData.value.description,
 
     }

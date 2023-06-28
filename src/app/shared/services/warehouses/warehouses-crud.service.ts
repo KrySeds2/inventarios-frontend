@@ -9,7 +9,7 @@ import { UpdateWarehousesDto } from './requests/updateWarehousesDto';
   providedIn: 'root'
 })
 export class WarehousesCrudService {
-  url='';
+  url='/almacenes';
   constructor(private http:HttpService) { }
 
   create(body:CreateWarehousesDto):Observable<WarehousesResponse> {

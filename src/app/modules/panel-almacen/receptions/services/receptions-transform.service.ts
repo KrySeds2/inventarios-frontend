@@ -15,11 +15,11 @@ export class ReceptionsTransformService {
   toCreateReceptionsDto(form: ReceptionsFormModel): CreateReceptionsDto {
     return{
       folio:form.folio,
-      date_llegada:form.date_llegada,
-      estado_pedido:form.estado_pedido,
-      partidas:form.partidas.map((item) =>{
+      fechaDeLlegada:form.fechaDeLlegada,
+      estadoDelPedido:form.estadoDelPedido,
+      registrarPartida:form.registrarPartida.map((item) =>{
         return{
-          materiasPrimas:item.materiasPrimas,
+          materiasPrima:item.materiasPrima,
           cantidad:item.cantidad
         }
       })
@@ -29,11 +29,11 @@ export class ReceptionsTransformService {
   toUpdateReceptionsDto(form: ReceptionsFormModel): Partial<UpdateReceptionsDto> {
     return{
       folio:form.folio,
-      date_llegada:form.date_llegada,
-      estado_pedido:form.estado_pedido,
-      partidas:form.partidas.map((item) =>{
+      fechaDeLlegada:form.fechaDeLlegada,
+      estadoDelPedido:form.estadoDelPedido,
+      registrarPartida:form.registrarPartida.map((item) =>{
         return{
-          materiasPrimas:item.materiasPrimas,
+          materiasPrima:item.materiasPrima,
           cantidad:item.cantidad
         }
       })
@@ -43,11 +43,11 @@ export class ReceptionsTransformService {
    toReceptionsFormModel(response:ReceptionsResponse):ReceptionsFormModel{
     return{
       folio:response.folio,
-      date_llegada:response.date_llegada,
-      estado_pedido:response.estado_pedido,
-      partidas:response.partidas.map((item) =>{
+      fechaDeLlegada:response.fechaDeLlegada,
+      estadoDelPedido:response.estadoDelPedido,
+      registrarPartida:response.registrarPartida.map((item) =>{
         return{
-          materiasPrimas:item.materia_prima,
+          materiasPrima:item.materiasPrima,
           cantidad:item.cantidad
         }
       })

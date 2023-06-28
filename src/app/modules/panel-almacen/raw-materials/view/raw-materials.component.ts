@@ -20,8 +20,8 @@ export class RawMaterialsComponent implements OnInit {
   rowsTable: RawMaterialsRow[] = [];
   columnsTable: TableHead<RawMaterialsRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
-    { header: 'Nombre', field: 'nombre', width: '100px', align: 'center' },
-    { header: 'ID unico para escanear', field: 'idunicoesc', width: '100px', align: 'center' },
+    { header: 'Nombre', field: 'name', width: '100px', align: 'center' },
+    { header: 'ID unico para escanear', field: 'scaneId', width: '100px', align: 'center' },
     { header: 'Estado', field: 'status', width: '50px', maxWidth: '90px', align: 'center', custom: true },
     { header: 'Editar', field: 'edit', width: '50px', maxWidth: '90px', align: 'center', custom: true, permit: 'write' },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
@@ -31,25 +31,25 @@ export class RawMaterialsComponent implements OnInit {
   //   index: 1,
   //   id:'12121',
   //   name: 'MTP-01',
-  //   idUnicoEscanear: '45896-0324-5632',
+  //   scaneId: '45896-0324-5632',
   //   status: true,
   // }, {
   //   index: 2,
   //   id:'2365',
   //   name: 'MTP-02',
-  //   idUnicoEscanear: '9653-55454-4512',
+  //   scaneId: '9653-55454-4512',
   //   status: true,
   // }, {
   //   index: 3,
   //   id:'5678',
   //   name: 'MTP-03',
-  //   idUnicoEscanear: '6524-5631-56544',
+  //   scaneId: '6524-5631-56544',
   //   status: false,
   // }, {
   //   index: 4,
   //   id:'98765',
   //   name: 'MTP-04',
-  //   idUnicoEscanear: '63963-14523-4563',
+  //   scaneId: '63963-14523-4563',
   //   status: true,
   // }];
   listOfRawMaterialsResponse: RawMaterialsResponse[];
@@ -84,8 +84,9 @@ export class RawMaterialsComponent implements OnInit {
               index: index + 1,
               id: row.id,
               status: row.status,
-              nombre: row.nombre,
-              idunicoesc: row.idunicoesc,
+              name: row.name,
+              description:row.description,
+              scaneId: row.scaneId,
             };
           }
           );

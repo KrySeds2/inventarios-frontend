@@ -1,5 +1,5 @@
 export interface CreateRawMaterialsDto {
-  nombre:string;
-  idunicoesc:string;
-  description?: string;
+  name:string;
+  scaneId:string;
+  description: string;
 }

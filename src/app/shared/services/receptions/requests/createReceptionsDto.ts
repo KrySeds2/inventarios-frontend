@@ -2,12 +2,12 @@ import { RawMaterialsResponse } from "../../raw-materials/responses/rawMaterials
 
 export interface CreateReceptionsDto {
   folio:string;
-  date_llegada:string;
-  estado_pedido:string;
-  partidas:CreatePartidasDto[];
+  fechaDeLlegada:string;
+  estadoDelPedido:string;
+  registrarPartida:CreatePartidasDto[];
 }
 
 export interface CreatePartidasDto{
-  materiasPrimas:RawMaterialsResponse;
+  materiasPrima:RawMaterialsResponse;
   cantidad:string;
 }

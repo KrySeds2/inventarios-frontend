@@ -9,14 +9,14 @@ import { UpdateRawMaterialsDto } from './requests/updateRawMaterialsDto';
   providedIn: 'root'
 })
 export class RawMaterialsCrudService {
-  url='/materia-p';
+  url='/raw-material';
   constructor(private http:HttpService) { }
 
   create(body:CreateRawMaterialsDto):Observable<RawMaterialsResponse> {
     return this.http.post(this.url,body)
   }
   update(body: Partial <UpdateRawMaterialsDto>, id: string): Observable<RawMaterialsResponse>{
-    return this.http.put(`${this.url}/${id}`, body);
+    return this.http.patch(`${this.url}/${id}`, body);
   }
   delete( id: string): Observable<any>{
     return this.http.delete(`${this.url}/${id}`);

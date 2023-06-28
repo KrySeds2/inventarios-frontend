@@ -2,8 +2,8 @@ import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/r
 
 export interface PartidasResponse {
   id:string;
-  materia_prima:RawMaterialsResponse;
+  materiasPrima:RawMaterialsResponse;
   cantidad:string;
   delete:string;
-  edit:string;
+  // edit:string;
 }

@@ -1,8 +1,8 @@
 import { TableRow } from "src/app/shared/modules/tables/models/tableRow";
 
 export interface RawMaterialsRow extends TableRow {
-  nombre:string;
-  idunicoesc:string;
-  description?:string;
+  name:string;
+  scaneId:string;
+  description:string;
   status:boolean;
 }
