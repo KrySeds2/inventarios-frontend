@@ -85,7 +85,7 @@ export class InventoryComponent implements OnInit {
   ngAfterViewInit(): void {
     this.setResume();
     this.loadingComponent.setDisplay(true);
-    this.getItemsOfTable();
+    // this.getItemsOfTable();
     this.listItems;
   }
 

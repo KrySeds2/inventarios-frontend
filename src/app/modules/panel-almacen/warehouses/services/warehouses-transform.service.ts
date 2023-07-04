@@ -14,21 +14,24 @@ export class WarehousesTransformService {
     toCreateWarehousesDto(form:WarehousesFormModel):CreateWarehousesDto{
       return{
         name:form.name,
-        descripcion:form.descripcion
+        description:form.description
       }
     }
 
     toUpdateWarehousesDto(form:WarehousesFormModel):Partial<UpdateWarehousesDto>{
       return{
         name:form.name,
-        descripcion:form.descripcion
+        description:form.description
       }
     }
 
-    static toWarehousesFormModel(response:WarehousesResponse):WarehousesFormModel{
+     toWarehousesFormModel(response:WarehousesResponse):WarehousesFormModel{
       return{
         name:response.name,
-        id:response.id
+        description:response.description,
+        id:response.id,
+        shelf:response.shelf
+
       }
     }
 }

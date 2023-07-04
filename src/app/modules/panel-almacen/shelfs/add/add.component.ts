@@ -25,7 +25,7 @@ export class AddComponent implements OnInit {
   declareForm():void{
     this.formData = this.fb.group({
       name:[,[Validators.required]],
-      descripcion:[]
+      description:[,[Validators.required]],
     })
   }
 

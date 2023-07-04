@@ -1,6 +1,6 @@
 export interface ShelfsFormModel {
   name:string;
-  descripcion?:string;
+  description?:string;
   status?:boolean;
   id:string;
 }

@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WarehousesTransformService } from '../services/warehouses-transform.service';
 import { WarehousesCrudService } from 'src/app/shared/services/warehouses/warehouses-crud.service';
+import { LoadingComponent } from '@shared/modules/dialogs/components/loading/loading.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/components/dialog-error/dialog-error.component';
+import { WarehousesFormModel } from '../models/warehousesFormModel';
+import { CreateWarehousesDto } from '@shared/services/warehouses/requests/createWarehousesDto';
 
 @Component({
   selector: 'app-add',
@@ -12,6 +17,9 @@ import { WarehousesCrudService } from 'src/app/shared/services/warehouses/wareho
 export class AddComponent implements OnInit {
   formData: FormGroup;
   isDisabled: boolean=false;
+  @ViewChild('dialogLoading') dialogLoading: LoadingComponent;
+  @ViewChild('dialogSuccess') dialogSuccess: DialogConfirmComponent;
+  @ViewChild('dialogError') dialogError: DialogErrorComponent;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -25,7 +33,7 @@ export class AddComponent implements OnInit {
   declareForm():void{
     this.formData = this.fb.group({
       name:[,[Validators.required]],
-      descripcion:[]
+      description:[,[Validators.required]]
     })
   }
 
@@ -33,7 +41,37 @@ export class AddComponent implements OnInit {
   }
 
   submit(){
+    console.log(this.formData.value);
 
+    if (this.formData.invalid) {
+      this.formData.markAllAsTouched();
+      return;
+    }
+    this.dialogLoading.setDisplay(true);
+    this.isDisabled = true;
+
+    const form:WarehousesFormModel = this.formData.getRawValue();
+    const createShiftsDto: CreateWarehousesDto = this.warehousesTransformService.toWarehousesFormModel(form);
+
+    let request:WarehousesFormModel = {
+      name:this.formData.value.name,
+      description: this.formData.value.description,
+      id: this.formData.value.id,
+      shelf:this.formData.value.shelf
+
+    }
+
+    this.warehousesCrudService.create(request).subscribe(
+      (response: any) => {
+        this.dialogLoading.setDisplay(false);
+        this.dialogSuccess.setDisplay(true, response);
+        this.isDisabled = false;
+      }, (error) => {
+        this.dialogLoading.setDisplay(false);
+        this.dialogError.setDisplay(true, error);
+        this.isDisabled = false;
+      }
+    );
   }
 
   back(): void {

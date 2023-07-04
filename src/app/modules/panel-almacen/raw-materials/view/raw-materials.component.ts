@@ -27,31 +27,35 @@ export class RawMaterialsComponent implements OnInit {
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
 
   ];
-  // listItems: RawMaterialsRow[] = [{
-  //   index: 1,
-  //   id:'12121',
-  //   name: 'MTP-01',
-  //   scaneId: '45896-0324-5632',
-  //   status: true,
-  // }, {
-  //   index: 2,
-  //   id:'2365',
-  //   name: 'MTP-02',
-  //   scaneId: '9653-55454-4512',
-  //   status: true,
-  // }, {
-  //   index: 3,
-  //   id:'5678',
-  //   name: 'MTP-03',
-  //   scaneId: '6524-5631-56544',
-  //   status: false,
-  // }, {
-  //   index: 4,
-  //   id:'98765',
-  //   name: 'MTP-04',
-  //   scaneId: '63963-14523-4563',
-  //   status: true,
-  // }];
+  listItems: RawMaterialsRow[] = [{
+    index: 1,
+    id:'12121',
+    name: 'MTP-01',
+    scaneId: '45896-0324-5632',
+    description:'',
+    status: true,
+  }, {
+    index: 2,
+    id:'2365',
+    name: 'MTP-02',
+    scaneId: '9653-55454-4512',
+    description:'',
+    status: true,
+  }, {
+    index: 3,
+    id:'5678',
+    name: 'MTP-03',
+    scaneId: '6524-5631-56544',
+    description:'',
+    status: false,
+  }, {
+    index: 4,
+    id:'98765',
+    name: 'MTP-04',
+    scaneId: '63963-14523-4563',
+    description:'',
+    status: true,
+  }];
   listOfRawMaterialsResponse: RawMaterialsResponse[];
   resume: any[];
   constructor(
@@ -66,7 +70,7 @@ export class RawMaterialsComponent implements OnInit {
     this.setResume();
     this.loadingComponent.setDisplay(true);
     this.getItemsOfTable();
-    // this.listItems;
+    this.listItems;
   }
 
   ngOnInit(): void {

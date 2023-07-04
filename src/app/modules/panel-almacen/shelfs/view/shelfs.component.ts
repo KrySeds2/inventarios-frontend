@@ -25,27 +25,27 @@ export class ShelfsComponent implements OnInit {
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '50px', align: 'center', custom: true },
 
   ];
-  listItems: ShelfsRow[] = [{
-    index: 1,
-    id:'456789',
-    name: 'ANQL-1',
-    status: true,
-  },{
-    index: 2,
-    id:'12345',
-    name: 'ANQL-2',
-    status: true,
-  },{
-    index: 3,
-    id:'09876',
-    name: 'ANQL-3',
-    status: false,
-  },{
-    index: 4,
-    id:'23459',
-    name: 'ANQL-4',
-    status: true,
-  }];
+  // listItems: ShelfsRow[] = [{
+  //   index: 1,
+  //   id:'456789',
+  //   name: 'ANQL-1',
+  //   status: true,
+  // },{
+  //   index: 2,
+  //   id:'12345',
+  //   name: 'ANQL-2',
+  //   status: true,
+  // },{
+  //   index: 3,
+  //   id:'09876',
+  //   name: 'ANQL-3',
+  //   status: false,
+  // },{
+  //   index: 4,
+  //   id:'23459',
+  //   name: 'ANQL-4',
+  //   status: true,
+  // }];
   listOfShelfsResponse: ShelfsResponse[];
   resume: any[];
   constructor(
@@ -59,7 +59,7 @@ export class ShelfsComponent implements OnInit {
     this.setResume();
     this.loadingComponent.setDisplay(true);
     this.getItemsOfTable();
-    this.listItems;
+    // this.listItems;
   }
 
   ngOnInit(): void {
@@ -78,6 +78,7 @@ export class ShelfsComponent implements OnInit {
               id: row.id,
               status: row.status,
               name:row.name,
+              description: row.description
             };
           }
           );

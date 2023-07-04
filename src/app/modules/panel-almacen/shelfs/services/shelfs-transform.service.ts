@@ -14,21 +14,22 @@ export class ShelfsTransformService {
   toCreateShelfsDto(form: ShelfsFormModel): CreateShelfsDto {
     return {
       name: form.name,
-      descripcion: form.descripcion
+      description: form.description
     }
   }
 
   toUpdateShelfsDto(form: ShelfsFormModel): Partial<UpdateShelfsDto> {
     return {
       name: form.name,
-      descripcion: form.descripcion
+      description: form.description
     }
   }
 
   static toShelfsFormModel(response:ShelfsResponse):ShelfsFormModel {
     return{
       name: response.name,
-      id: response.id
+      id: response.id,
+      description: response.description
     }
   }
 

@@ -85,7 +85,8 @@ export class EditComponent implements OnInit {
     this.inventoryCrudService.getOne(id).subscribe(
       (resp) => {
         this.response=resp;
-        this.formData.patchValue(InventoryTransformService.toInventoryFormModel(resp));
+        const form = this.inventoryTransformService.toInventoryFormModel(resp);
+        this.formData.patchValue(form);
         // this.formData.patchValue({
         //   name:response.name,
         //   isLastWorkShift: response.isLastWorkShift,

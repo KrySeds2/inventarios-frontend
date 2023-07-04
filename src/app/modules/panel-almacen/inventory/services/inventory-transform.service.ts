@@ -34,7 +34,7 @@ export class InventoryTransformService {
     }
   }
 
-  static toInventoryFormModel(response:InventoryResponse):InventoryFormModel{
+ toInventoryFormModel(response:InventoryResponse):InventoryFormModel{
     return{
       almacen:response.almacen,
       anaquel:response.anaquel,
