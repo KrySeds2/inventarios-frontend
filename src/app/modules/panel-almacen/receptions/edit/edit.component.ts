@@ -26,9 +26,9 @@ export class EditComponent implements OnInit {
   declareForm(): void {
     this.formData = this.fb.group({
       folio:[,[Validators.required]],
-      fecha:[,[Validators.required]],
-      materiaPrima:[,[Validators.required]],
-      cantidad:[,[Validators.required]],
+      arrivalDate:[,[Validators.required]],
+      rawMaterial:[,[Validators.required]],
+      amount:[,[Validators.required]],
     })
   }
   ngOnInit(): void {

@@ -9,7 +9,7 @@ import { UpdatePartidasDto } from './requests/updatePartidasDto';
   providedIn: 'root'
 })
 export class PartidasCrudService {
-  url = '/registrar-partidas';
+  url = '/register-outputs';
   constructor(private http: HttpService) { }
 
   create(body: CreatePartidasDto): Observable<PartidasResponse> {

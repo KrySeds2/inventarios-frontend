@@ -26,8 +26,8 @@ export class PartidasFormComponent implements OnInit {
   rowsTable: PartidasRow[] = [];
   columnsTable: TableHead<PartidasRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
-    { header: 'Materia prima', field: 'materiasPrima', width: '100px', align: 'center' },
-    { header: 'Cantidad', field: 'cantidad', width: '50px', maxWidth: '50px', align: 'center'},
+    { header: 'Materia prima', field: 'rawMaterial', width: '100px', align: 'center' },
+    { header: 'Cantidad', field: 'amount', width: '50px', maxWidth: '50px', align: 'center'},
     { header: 'Editar', field: 'edit', width: '50px', maxWidth: '50px', align: 'center', custom: true, permit: 'write' },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '50px', align: 'center', custom: true },
   ];
@@ -64,6 +64,11 @@ export class PartidasFormComponent implements OnInit {
     this.getMateriaPrima();
   }
 
+  ngAfterViewInit(): void {
+    this.getItemsOfTable();
+    // this.listItems;
+  }
+
   ngOnInit(): void {
 
   }
@@ -74,14 +79,14 @@ export class PartidasFormComponent implements OnInit {
   }
 
   deleteItem(item) {
-    // this.receptionsCrudService.delete(item.id).subscribe(
-    //   (response: any[]) => {
-    //     this.getItemsOfTable();
-    //   }, (error: any) => {
-    //     this.dialogError.setDisplay(true, error);
+    this.partidasCrudService.delete(item.id).subscribe(
+      (response: any[]) => {
+        this.getItemsOfTable();
+      }, (error: any) => {
+        this.dialogError.setDisplay(true, error);
 
-    //   }
-    // )
+      }
+    )
   }
 
   getMateriaPrima():void{
@@ -96,7 +101,7 @@ export class PartidasFormComponent implements OnInit {
           }
         )
       },(error:any) => {
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -112,8 +117,8 @@ export class PartidasFormComponent implements OnInit {
             return {
               index: index + 1,
               id: row.id,
-              materiasPrima:row.materiasPrima,
-              cantidad:row.cantidad
+              rawMaterial:row.rawMaterial,
+              amount:row.amount
             };
           }
           );

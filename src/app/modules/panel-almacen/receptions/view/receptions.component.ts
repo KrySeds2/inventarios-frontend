@@ -20,8 +20,8 @@ export class ReceptionsComponent implements OnInit {
   columnsTable: TableHead<ReceptionsRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '20px', align: 'center', custom: false },
     { header: 'Folio', field: 'folio', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Fecha de llegada', field: 'fechaDeLlegada', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Estado del pedido', field: 'estadoDelPedido', width: '90px', maxWidth: '140px', align: 'center' },
+    { header: 'Fecha de llegada', field: 'arrivalDate', width: '90px', maxWidth: '100px', align: 'center' },
+    { header: 'Estado del pedido', field: 'orderStatus', width: '90px', maxWidth: '140px', align: 'center' },
     { header: 'Editar', field: 'edit', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit: 'write' },
     { header: 'Estado', field: 'status', width: '60px', maxWidth: '80px', align: 'center', custom: true },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
@@ -93,8 +93,8 @@ export class ReceptionsComponent implements OnInit {
               id: row.id,
               status: row.status,
               folio:row.folio,
-              fechaDeLlegada:row.fechaDeLlegada,
-              estadoDelPedido:row.estadoDelPedido
+              arrivalDate:row.arrivalDate,
+              orderStatus:row.orderStatus
             };
           }
           );

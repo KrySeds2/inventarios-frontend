@@ -9,7 +9,7 @@ import { UpdateReceptionsDto } from './requests/updateReceptionsDto';
   providedIn: 'root'
 })
 export class ReceptionsCrudService {
-  url='/recepciones';
+  url='/recepcion';
   constructor(private http:HttpService) { }
 
   create(body:CreateReceptionsDto):Observable<ReceptionsResponse> {

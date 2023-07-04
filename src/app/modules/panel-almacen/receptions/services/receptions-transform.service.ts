@@ -3,7 +3,7 @@ import { ReceptionsFormModel } from '../models/receptionsFormModel';
 import { CreateReceptionsDto } from 'src/app/shared/services/receptions/requests/createReceptionsDto';
 import { UpdateReceptionsDto } from 'src/app/shared/services/receptions/requests/updateReceptionsDto';
 import { ReceptionsResponse } from 'src/app/shared/services/receptions/responses/receptionsResponse';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,12 @@ export class ReceptionsTransformService {
   toCreateReceptionsDto(form: ReceptionsFormModel): CreateReceptionsDto {
     return{
       folio:form.folio,
-      fechaDeLlegada:form.fechaDeLlegada,
-      estadoDelPedido:form.estadoDelPedido,
-      registrarPartida:form.registrarPartida.map((item) =>{
+      arrivalDate:form.arrivalDate,
+      orderStatus:form.orderStatus,
+      registerOut:form.registerOut.map((item) =>{
         return{
-          materiasPrima:item.materiasPrima,
-          cantidad:item.cantidad
+          rawMaterial:item.rawMaterial,
+          amount:item.amount
         }
       })
     }
@@ -29,12 +29,12 @@ export class ReceptionsTransformService {
   toUpdateReceptionsDto(form: ReceptionsFormModel): Partial<UpdateReceptionsDto> {
     return{
       folio:form.folio,
-      fechaDeLlegada:form.fechaDeLlegada,
-      estadoDelPedido:form.estadoDelPedido,
-      registrarPartida:form.registrarPartida.map((item) =>{
+      arrivalDate:form.arrivalDate,
+      orderStatus:form.orderStatus,
+      registerOut:form.registerOut.map((item) =>{
         return{
-          materiasPrima:item.materiasPrima,
-          cantidad:item.cantidad
+          rawMaterial:item.rawMaterial,
+          amount:item.amount
         }
       })
     }
@@ -43,12 +43,12 @@ export class ReceptionsTransformService {
    toReceptionsFormModel(response:ReceptionsResponse):ReceptionsFormModel{
     return{
       folio:response.folio,
-      fechaDeLlegada:response.fechaDeLlegada,
-      estadoDelPedido:response.estadoDelPedido,
-      registrarPartida:response.registrarPartida.map((item) =>{
+      arrivalDate:response.arrivalDate,
+      orderStatus:response.orderStatus,
+      registerOut:response.registerOut.map((item) =>{
         return{
-          materiasPrima:item.materiasPrima,
-          cantidad:item.cantidad
+          rawMaterial:item.rawMaterial,
+          amount:item.amount
         }
       })
     }
@@ -56,8 +56,8 @@ export class ReceptionsTransformService {
 
   // toFormPartidas(){
   //   return this.fb.group({
-  //     materiasPrimas:[,[]],
-  //     cantidad:[,[]]
+  //     rawMaterial:[,[Validators.required]],
+  //     amount:[,[Validators.required]]
   //   })
   // }
 }

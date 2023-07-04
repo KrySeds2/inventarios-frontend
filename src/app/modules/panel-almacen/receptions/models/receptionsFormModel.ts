@@ -2,12 +2,12 @@ import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/r
 
 export interface ReceptionsFormModel {
   folio:string;
-  estadoDelPedido:string;
-  fechaDeLlegada:string;
-  registrarPartida:Partidas[]
+  orderStatus:string;
+  arrivalDate:string;
+  registerOut:PartidasModel[]
 }
 
-export interface Partidas{
-  materiasPrima:RawMaterialsResponse;
-  cantidad:string;
+export interface PartidasModel{
+  rawMaterial:RawMaterialsResponse;
+  amount:string;
 }
