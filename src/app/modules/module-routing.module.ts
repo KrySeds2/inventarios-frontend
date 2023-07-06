@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 // import { InventoryComponent } from './panel-almacen/inventory/view/inventory.component';
 import { LoginComponent } from './login/view/login.component';
 import { SidenavComponent } from '../shared/components/sidenav/sidenav.component';
+import { MainLayoutComponent } from '@shared/components/main-layout/main-layout.component';
 
 const routes: Routes = [
   {
@@ -18,35 +19,51 @@ const routes: Routes = [
     children:[
       {
         path: 'storage-panel/warehouses',
-        loadChildren: () => import('./panel-almacen/warehouses/warehouses.module').then( mod => mod.WarehousesModule)
+        data:{module:'warehouses', breadcrumb:'almacenes'},
+        loadChildren: () =>
+        import('./panel-almacen/warehouses/warehouses.module').then( mod => mod.WarehousesModule)
       },
       {
         path: 'storage-panel/receptions',
-        loadChildren: () => import('./panel-almacen/receptions/receptions.module').then( mod => mod.ReceptionsModule)
+        data:{module:'receptions', breadcrumb:'recepciones'},
+        loadChildren: () =>
+        import('./panel-almacen/receptions/receptions.module').then( mod => mod.ReceptionsModule)
       },
       {
         path: 'storage-panel/raw-materials',
-        loadChildren: () => import('./panel-almacen/raw-materials/raw-materials.module').then( mod => mod.RawMaterialsModule)
+        data:{module:'raw-materials', breadcrumb:'materias primas'},
+        loadChildren: () =>
+        import('./panel-almacen/raw-materials/raw-materials.module').then( mod => mod.RawMaterialsModule)
       },
       {
         path: 'storage-panel/inventory',
-        loadChildren: () => import('./panel-almacen/inventory/inventory.module').then( mod => mod.InventoryModule)
+        data:{module:'inventory', breadcrumb:'inventario'},
+        loadChildren: () =>
+        import('./panel-almacen/inventory/inventory.module').then( mod => mod.InventoryModule)
       },
       {
         path: 'operating-panel/orders',
-        loadChildren: () => import('./panel-operativo/orders/orders.module').then( mod => mod.OrdersModule)
+        data:{module:'orders', breadcrumb:'pedidos'},
+        loadChildren: () =>
+        import('./panel-operativo/orders/orders.module').then( mod => mod.OrdersModule)
       },
       {
         path: 'operating-panel/product-lot',
-        loadChildren: () => import('./panel-operativo/product-lot/product-lot.module').then( mod => mod.ProductLotModule)
+        data:{module:'product-lot', breadcrumb:'lotes de productos'},
+        loadChildren: () =>
+        import('./panel-operativo/product-lot/product-lot.module').then( mod => mod.ProductLotModule)
       },
       {
         path: 'operating-panel/product-manufacturing',
-        loadChildren: () => import('./panel-operativo/product-manufacturing/product-manufacturing.module').then( mod => mod.ProductManufacturingModule)
+        data:{module:'product-manufacturing', breadcrumb:'fabricacion de producto'},
+        loadChildren: () =>
+        import('./panel-operativo/product-manufacturing/product-manufacturing.module').then( mod => mod.ProductManufacturingModule)
       },
       {
         path: 'operating-panel/products',
-        loadChildren: () => import('./panel-operativo/products/products.module').then( mod => mod.ProductsModule)
+        data:{module:'products', breadcrumb:'productos'},
+        loadChildren: () =>
+        import('./panel-operativo/products/products.module').then( mod => mod.ProductsModule)
       },
       {
         path:'**',

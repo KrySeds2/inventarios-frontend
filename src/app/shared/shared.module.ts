@@ -8,8 +8,10 @@ import { PrimengImportModule } from './modules/primeng-import/primeng-import.mod
 import { ButtonsModule } from './modules/buttons/buttons.module';
 import { ComponentsModule } from './components/components.module';
 import { DialogsModule } from './modules/dialogs/dialogs.module';
+
 @NgModule({
   declarations: [
+
 
   ],
   imports: [
