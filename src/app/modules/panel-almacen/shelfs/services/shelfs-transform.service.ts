@@ -25,10 +25,10 @@ export class ShelfsTransformService {
     }
   }
 
-  static toShelfsFormModel(response:ShelfsResponse):ShelfsFormModel {
+  toShelfsFormModel(response:ShelfsResponse):ShelfsFormModel {
     return{
       name: response.name,
-      id: response.id,
+      // id: response.id,
       description: response.description
     }
   }

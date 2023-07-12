@@ -16,7 +16,10 @@ export class ShelfsCrudService {
     return this.http.post(this.url,body)
   }
   update(body: Partial <UpdateShelfsDto>, id: string): Observable<ShelfsResponse>{
-    return this.http.put(`${this.url}/${id}`, body);
+    return this.http.patch(`${this.url}/${id}`, body);
+  }
+  updateStatus(body: Partial <UpdateShelfsDto>, id: string): Observable<ShelfsResponse>{
+    return this.http.patch(`${this.url}/status/${id}`, body);
   }
   delete( id: string): Observable<any>{
     return this.http.delete(`${this.url}/${id}`);

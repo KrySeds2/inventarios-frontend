@@ -112,7 +112,7 @@ export class ShelfsComponent implements OnInit {
     const position = item.index - 1;
     this.rowsTable[index].status = !this.rowsTable[index].status;
     this.listOfShelfsResponse[position].status = !this.listOfShelfsResponse[position].status;
-    this.shelfsCrudService.update({ status: this.listOfShelfsResponse[position].status }, item.id).subscribe(
+    this.shelfsCrudService.updateStatus({ status: this.listOfShelfsResponse[position].status }, item.id).subscribe(
       (response: any) => {
         this.setResume();
       }
