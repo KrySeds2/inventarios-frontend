@@ -17,10 +17,10 @@ export class ReceptionsTransformService {
       folio:form.folio,
       arrivalDate:form.arrivalDate,
       orderStatus:form.orderStatus,
-      registerOut:form.registerOut.map((item) =>{
+      registerOut:form.registerOut?.map((row) =>{
         return{
-          rawMaterial:item.rawMaterial,
-          amount:item.amount
+          rawMaterial:row.rawMaterial,
+          amount:row.amount
         }
       })
     }
@@ -31,10 +31,10 @@ export class ReceptionsTransformService {
       folio:form.folio,
       arrivalDate:form.arrivalDate,
       orderStatus:form.orderStatus,
-      registerOut:form.registerOut.map((item) =>{
+      registerOut:form.registerOut?.map((row) =>{
         return{
-          rawMaterial:item.rawMaterial,
-          amount:item.amount
+          rawMaterial:row.rawMaterial,
+          amount:row.amount
         }
       })
     }
@@ -45,10 +45,10 @@ export class ReceptionsTransformService {
       folio:response.folio,
       arrivalDate:response.arrivalDate,
       orderStatus:response.orderStatus,
-      registerOut:response.registerOut.map((item) =>{
+      registerOut:response.registerOut?.map((row) =>{
         return{
-          rawMaterial:item.rawMaterial,
-          amount:item.amount
+          rawMaterial:row.rawMaterial,
+          amount:row.amount
         }
       })
     }

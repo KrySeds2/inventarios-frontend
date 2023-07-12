@@ -9,5 +9,5 @@ export interface CreateReceptionsDto {
 
 export interface CreatePartidasDto{
   rawMaterial:RawMaterialsResponse;
-  amount:string;
+  amount:number;
 }

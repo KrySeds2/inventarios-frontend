@@ -9,5 +9,5 @@ export interface ReceptionsFormModel {
 
 export interface PartidasModel{
   rawMaterial:RawMaterialsResponse;
-  amount:string;
+  amount:number;
 }

@@ -11,6 +11,6 @@ export interface ReceptionsResponse {
 
 export interface PartidasResponse {
   id: string,
-  amount: string;
+  amount: number;
   rawMaterial: RawMaterialsResponse;
 }

@@ -138,7 +138,7 @@ export class ReceptionsComponent implements OnInit {
     const position = item.index - 1;
     this.rowsTable[index].status = !this.rowsTable[index].status;
     this.listOfReceptionsResponse[position].status = !this.listOfReceptionsResponse[position].status;
-    this.receptionsCrudService.update({ status: this.listOfReceptionsResponse[position].status }, item.id).subscribe(
+    this.receptionsCrudService.updateStatus({ status: this.listOfReceptionsResponse[position].status }, item.id).subscribe(
       (response: any) => {
         this.setResume();
       }
