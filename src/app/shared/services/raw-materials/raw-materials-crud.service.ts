@@ -18,9 +18,13 @@ export class RawMaterialsCrudService {
   update(body: Partial <UpdateRawMaterialsDto>, id: string): Observable<RawMaterialsResponse>{
     return this.http.patch(`${this.url}/${id}`, body);
   }
+  updateStatus(body: Partial <UpdateRawMaterialsDto>, id: string): Observable<RawMaterialsResponse>{
+    return this.http.patch(`${this.url}/status/${id}`, body);
+  }
   delete( id: string): Observable<any>{
     return this.http.delete(`${this.url}/${id}`);
   }
+
   getAll(params=''): Observable<RawMaterialsResponse[]>{
     return this.http.get<RawMaterialsResponse[]>(this.url+params);
   }
