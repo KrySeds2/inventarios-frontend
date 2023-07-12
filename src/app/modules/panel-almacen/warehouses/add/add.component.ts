@@ -57,14 +57,13 @@ export class AddComponent implements OnInit {
       name:this.formData.value.name,
       description: this.formData.value.description,
       id: this.formData.value.id,
-      shelf:this.formData.value.shelf
+      shelves:this.formData.value.shelves
 
     }
 
     this.warehousesCrudService.create(request).subscribe(
       (response: any) => {
         this.dialogLoading.setDisplay(false);
-        this.dialogSuccess.setDisplay(true, response);
         this.isDisabled = false;
       }, (error) => {
         this.dialogLoading.setDisplay(false);

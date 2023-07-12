@@ -5,5 +5,5 @@ export interface WarehousesResponse {
   id:string;
   description?:string;
   status?:boolean;
-  shelf:ShelfsResponse;
+  shelves:ShelfsResponse;
 }

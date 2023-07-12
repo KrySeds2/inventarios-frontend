@@ -5,5 +5,5 @@ export interface WarehousesFormModel {
   description?:string;
   status?:boolean;
   id:string;
-  shelf:ShelfsResponse
+  shelves:ShelfsResponse
 }

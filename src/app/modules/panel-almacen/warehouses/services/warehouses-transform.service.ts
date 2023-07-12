@@ -30,7 +30,7 @@ export class WarehousesTransformService {
         name:response.name,
         description:response.description,
         id:response.id,
-        shelf:response.shelf
+        shelves:response.shelves
 
       }
     }
