@@ -1,11 +1,5 @@
 <div class="grid grid-container col-12" [formGroup]="formData">
 
-  <div class="grid-container col-12">
-    <app-title [data]="{
-      header:'Registrar partidas'
-    }"></app-title>
-  </div>
-
 
   <!-- Materia prima -->
   <div class="col-12 md:col-5">
@@ -40,14 +34,14 @@
   </div>
 
   <div class="col-12 md:col-2" style="padding-top: 22px;">
-    <app-button-register></app-button-register>
+    <button pButton pRipple type="button" [label]="buttonLabel" [style.background-color]="buttonColor" (click)="assignPartida() " ></button>
   </div>
   <div class="col-12 md:col-12">
     <app-table [paginator]="false"  [columns]="columnsTable" [values]="rowsTable">
       <ng-template appBody let-item let-i="rowIndex" let-column="column">
         <ng-container [ngSwitch]="column.field">
           <ng-container *ngSwitchCase="'edit'">
-            <t-edit (active)="dialogConfirmEdit.setDisplay(true,item)"></t-edit>
+            <t-edit (active)="dialogConfirmEdit.setDisplay(true,{item:item,index:i})"></t-edit>
           </ng-container>
           <ng-container *ngSwitchCase="'delete'">
             <t-delete (click)="dialogConfirmDelete.setDisplay(true,item)"></t-delete>
@@ -99,3 +93,5 @@
     </app-button-confirm>
   </ng-template>
 </app-dialog-confirm>
+
+

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DropDownModel } from 'src/app/modules/panel-almacen/inventory/models/dropdown.Model';
 import { ValidateFieldService } from 'src/app/services/validations/validate-field.service';
 import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
@@ -10,7 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RawMaterialsCrudService } from '@shared/services/raw-materials/raw-materials-crud.service';
 import { PartidasResponse } from '@shared/services/receptions/partidas/responses/partidasResponse';
 import { PartidasCrudService } from '@shared/services/receptions/partidas/partidas-crud.service';
-
+import { DialogConfirmComponent } from '@shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
+import { PartidasModel, ReceptionsFormModel } from '../../models/receptionsFormModel';
+import { CreatePartidasDto } from '@shared/services/receptions/partidas/requests/createPartidasDto';
+import { PartidasTransformService } from '../../services/partidas-transform.service';
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-partidas-form',
   templateUrl: './partidas-form.component.html',
@@ -21,8 +25,14 @@ export class PartidasFormComponent implements OnInit {
   listOfPartidasResponse: PartidasResponse[];
   listMateriaPrima:DropDownModel[] = [];
   isEditButtonClicked: boolean = false;
+  isDisabled: boolean = false;
+  globalindex: any = null;
+  buttonLabel: string = 'Agregar'
+  buttonColor:string='#22c55e'
   @ViewChild('dialogError') dialogError: DialogErrorComponent;
+  @ViewChild('dialogSuccess') dialogSuccess: DialogConfirmComponent;
   @ViewChild('dialogLoading') loadingComponent: LoadingComponent;
+  @ViewChild('submitError') submitError: DialogErrorComponent;
   rowsTable: PartidasRow[] = [];
   columnsTable: TableHead<PartidasRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
@@ -57,15 +67,27 @@ export class PartidasFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private partidasCrudService: PartidasCrudService,
-    private rawMaterialsCrudService: RawMaterialsCrudService
+    private rawMaterialsCrudService: RawMaterialsCrudService,
     // private translate: TranslateService,
-    // private partidasCrudService: PartidasCrudService
+    private partidasTransformService: PartidasTransformService,
+    private cd:ChangeDetectorRef,
+    private fb:FormBuilder
   ) {
     this.getMateriaPrima();
+    // this.declareForm();
   }
+  declareForm(): void {
+    this.formData = this.fb.group({
+      // folio: [, [Validators.required]],
+      // arrivalDate: [, [Validators.required]],
+      // rawMaterial: [, [Validators.required]],
+      // amount: [, [Validators.required]],
 
+    })
+  }
   ngAfterViewInit(): void {
     this.getItemsOfTable();
+
     // this.listItems;
   }
 
@@ -73,10 +95,10 @@ export class PartidasFormComponent implements OnInit {
 
   }
 
-  selectedEditConfirm(item: PartidasRow): void {
-    this.router.navigate(['./edit/id', item?.id], { relativeTo: this.route });
-    this.isEditButtonClicked = true;
-  }
+  // selectedEditConfirm(item: PartidasRow): void {
+  //   this.router.navigate(['./edit/id', item?.id], { relativeTo: this.route });
+  //   this.isEditButtonClicked = true;
+  // }
 
   deleteItem(item) {
     this.partidasCrudService.delete(item.id).subscribe(
@@ -96,12 +118,13 @@ export class PartidasFormComponent implements OnInit {
           (row)=>{
             return{
               label: row.name,
-              value: row.name
+              value: row.id
             }
           }
         )
+        this.cd.detectChanges();
       },(error:any) => {
-        // console.log(error);
+        console.log(error);
       }
     )
   }
@@ -114,13 +137,17 @@ export class PartidasFormComponent implements OnInit {
         console.log(response);
         this.rowsTable = response.map(
           (row, index) => {
+
             return {
+
               index: index + 1,
               id: row.id,
-              rawMaterial:row.rawMaterial,
+              rawMaterial:row.rawMaterial.name,
               amount:row.amount
             };
+
           }
+
           );
           // this.setResume();
           this.loadingComponent.setDisplay(false);
@@ -129,6 +156,53 @@ export class PartidasFormComponent implements OnInit {
         }
       );
   }
+
+  assignPartida(){
+    if(this.formData.valid){
+      this.formData.markAllAsTouched();
+      return;
+    }
+    this.loadingComponent.setDisplay(true);
+
+    const request=this.partidasTransformService.toCreatePartidasDto(this.formData.value);
+
+    this.partidasCrudService.create(request).subscribe((response: any) => {
+      setTimeout(() => {
+        this.loadingComponent.setDisplay(false);
+        this.dialogSuccess.setDisplay(true);
+      },1000);
+    },(error:any)=>{
+      this.loadingComponent.setDisplay(false);
+      // this.submitError.setDisplay(true,error);
+    })
+  }
+
+  selectedEditConfirm(item){
+    console.log(item);
+    let index = item.index;
+    let value: PartidasRow = item.item
+    this.globalindex = index;
+    let partidas : PartidasModel
+
+    this.listOfPartidasResponse.forEach(element => {
+      if(element.id.toUpperCase() === value.id.toUpperCase()){
+        partidas= element
+      }
+    });
+
+    setTimeout(() => {
+      this.formData.patchValue({
+        amount:value.amount,
+        rawMaterial:value.rawMaterial,
+        index:index
+      })
+      this.getMateriaPrima();
+      this.buttonLabel = 'Actualizar';
+      this.buttonColor = '#2867ec';
+    })
+
+  }
+
 
 
 }

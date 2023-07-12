@@ -2,8 +2,8 @@ import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/r
 import { TableRow } from "src/app/shared/modules/tables/models/tableRow";
 
 export interface PartidasRow extends TableRow {
-  rawMaterial:RawMaterialsResponse;
-  amount:string;
+  rawMaterial:string;
+  amount:number;
   index:number;
   id:string;
 }

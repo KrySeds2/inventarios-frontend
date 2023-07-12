@@ -3,7 +3,7 @@ import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/r
 export interface PartidasResponse {
   id:string;
   rawMaterial:RawMaterialsResponse;
-  amount:string;
+  amount:number;
   delete:string;
   // edit:string;
 }
