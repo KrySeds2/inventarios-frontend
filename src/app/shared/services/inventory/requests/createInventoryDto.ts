@@ -1,8 +1,12 @@
+import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/rawMaterialsResponse";
+import { ShelfsResponse } from "@shared/services/shelfs/resquests/shelfsResponse";
+import { WarehousesResponse } from "@shared/services/warehouses/responses/warehousesResponse";
+
 export interface CreateInventoryDto {
-  almacen:string;
-  anaquel:string;
-  idUnicoMateriaPrima:string;
-  cantidad:number;
+  warehId:string;
+  shelfId:string;
+  rawMaterialId:string;
+  amount:number;
   idUnicoPaquete:string;
-  fechaCaducidad:string;
+  dateOfExpiry:string;
 }

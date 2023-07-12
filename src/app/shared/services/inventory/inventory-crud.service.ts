@@ -9,14 +9,17 @@ import { UpdateInventoryDto } from './requests/updateInventoryDto';
   providedIn: 'root'
 })
 export class InventoryCrudService {
-  url='';
+  url='/inventory';
   constructor(private http:HttpService) { }
 
   create(body:CreateInventoryDto):Observable<InventoryResponse> {
     return this.http.post(this.url,body)
   }
   update(body: Partial <UpdateInventoryDto>, id: string): Observable<InventoryResponse>{
-    return this.http.put(`${this.url}/${id}`, body);
+    return this.http.patch(`${this.url}/${id}`, body);
+  }
+   updateStatus(body: Partial <UpdateInventoryDto>, id: string): Observable<InventoryResponse>{
+    return this.http.patch(`${this.url}/status/${id}`, body);
   }
   delete( id: string): Observable<any>{
     return this.http.delete(`${this.url}/${id}`);

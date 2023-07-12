@@ -19,61 +19,61 @@ export class InventoryComponent implements OnInit {
   rowsTable: InventoryRow[] = [];
   columnsTable: TableHead<InventoryRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '20px', align: 'center', custom: false },
-    { header: 'Almacen', field: 'almacen', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Anaquel', field: 'anaquel', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Materia Prima', field: 'idUnicoMateriaPrima', width: '90px', maxWidth: '140px', align: 'center' },
-    { header: 'Cantidad', field: 'cantidad', width: '90px', maxWidth: '100px', align: 'center' },
+    { header: 'Almacen', field: 'wareh', width: '90px', maxWidth: '100px', align: 'center' },
+    { header: 'Anaquel', field: 'shelf', width: '90px', maxWidth: '100px', align: 'center' },
+    { header: 'Materia Prima', field: 'rawMaterial_', width: '90px', maxWidth: '140px', align: 'center' },
+    { header: 'Cantidad', field: 'amount', width: '90px', maxWidth: '100px', align: 'center' },
     { header: 'Id unico de paquete', field: 'idUnicoPaquete', width: '90px', maxWidth: '120px', align: 'center' },
     { header: 'Editar', field: 'edit', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit: 'write' },
-    { header: 'Fecha de caducidad', field: 'fechaCaducidad', width: '90px', maxWidth: '110px', align: 'center' },
+    { header: 'Fecha de caducidad', field: 'dateOfExpiry', width: '90px', maxWidth: '110px', align: 'center' },
     { header: 'Estado', field: 'status', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit:'write', order:false },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
 
   ];
   listOfInventoryResponse: InventoryResponse[];
   resume: any[];
-  listItems: InventoryRow[] = [{
-    index: 1,
-    id:'23456',
-    almacen: 'ALM-01',
-    anaquel: 'ANQL-01',
-    idUnicoMateriaPrima: 'MTP-01',
-    cantidad: 2,
-    idUnicoPaquete: '45896-0324-5632',
-    fechaCaducidad: '12-03-2023',
-    status: true
-  },
-  {
-    index: 2,
-    id:'098765',
-    almacen: 'ALM-02',
-    anaquel: 'ANQL-02',
-    idUnicoMateriaPrima: 'MTP-02',
-    cantidad: 10,
-    idUnicoPaquete: '9653-55454-4512',
-    fechaCaducidad: '15-03-2023',
-    status:true
-  },{
-    index: 3,
-    id:'123678',
-    almacen: 'ALM-05',
-    anaquel: 'ANQL-01',
-    idUnicoMateriaPrima: 'MTP-02',
-    cantidad: 100,
-    idUnicoPaquete: '6524-5632-56544',
-    fechaCaducidad: '25-03-2023',
-    status:false
-  },{
-    index: 4,
-    id:'983456',
-    almacen: 'ALM-03',
-    anaquel: 'ANQL-03',
-    idUnicoMateriaPrima: 'MTP-04',
-    cantidad: 50,
-    idUnicoPaquete: '63963-14523-4563',
-    fechaCaducidad: '02-04-2023',
-    status:true
-  }];
+  // listItems: InventoryRow[] = [{
+  //   index: 1,
+  //   id:'23456',
+  //   almacen: 'ALM-01',
+  //   anaquel: 'ANQL-01',
+  //   idUnicoMateriaPrima: 'MTP-01',
+  //   cantidad: 2,
+  //   idUnicoPaquete: '45896-0324-5632',
+  //   fechaCaducidad: '12-03-2023',
+  //   status: true
+  // },
+  // {
+  //   index: 2,
+  //   id:'098765',
+  //   almacen: 'ALM-02',
+  //   anaquel: 'ANQL-02',
+  //   idUnicoMateriaPrima: 'MTP-02',
+  //   cantidad: 10,
+  //   idUnicoPaquete: '9653-55454-4512',
+  //   fechaCaducidad: '15-03-2023',
+  //   status:true
+  // },{
+  //   index: 3,
+  //   id:'123678',
+  //   almacen: 'ALM-05',
+  //   anaquel: 'ANQL-01',
+  //   idUnicoMateriaPrima: 'MTP-02',
+  //   cantidad: 100,
+  //   idUnicoPaquete: '6524-5632-56544',
+  //   fechaCaducidad: '25-03-2023',
+  //   status:false
+  // },{
+  //   index: 4,
+  //   id:'983456',
+  //   almacen: 'ALM-03',
+  //   anaquel: 'ANQL-03',
+  //   idUnicoMateriaPrima: 'MTP-04',
+  //   cantidad: 50,
+  //   idUnicoPaquete: '63963-14523-4563',
+  //   fechaCaducidad: '02-04-2023',
+  //   status:true
+  // }];
 
   constructor(
     private router: Router,
@@ -85,8 +85,8 @@ export class InventoryComponent implements OnInit {
   ngAfterViewInit(): void {
     this.setResume();
     this.loadingComponent.setDisplay(true);
-    // this.getItemsOfTable();
-    this.listItems;
+    this.getItemsOfTable();
+    // this.listItems;
   }
 
   ngOnInit(): void {
@@ -104,12 +104,12 @@ export class InventoryComponent implements OnInit {
               index: index + 1,
               id: row.id,
               status: row.status,
-              anaquel: row.anaquel,
-              idUnicoMateriaPrima: row.idUnicoMateriaPrima,
+              shelf: row.shelf.name,
+              rawMaterial_: row.rawMaterial_.name,
               idUnicoPaquete: row.idUnicoPaquete,
-              cantidad:row.cantidad,
-              fechaCaducidad:row.fechaCaducidad,
-              almacen:row.almacen
+              amount:row.amount,
+              dateOfExpiry:row.dateOfExpiry,
+              wareh:row.wareh.name
             };
           }
           );
@@ -142,7 +142,7 @@ export class InventoryComponent implements OnInit {
     const position = item.index - 1;
     this.rowsTable[index].status = !this.rowsTable[index].status;
     this.listOfInventoryResponse[position].status = !this.listOfInventoryResponse[position].status;
-    this.inventoryCrudService.update({ status: this.listOfInventoryResponse[position].status }, item.id).subscribe(
+    this.inventoryCrudService.updateStatus({ status: this.listOfInventoryResponse[position].status }, item.id).subscribe(
       (response: any) => {
         this.setResume();
       }

@@ -13,36 +13,36 @@ export class InventoryTransformService {
 
   toCreateInventoryDto(form: InventoryFormModel): CreateInventoryDto {
     return {
-      almacen: form.almacen,
-      anaquel: form.anaquel,
-      idUnicoMateriaPrima: form.idUnicoMateriaPrima,
+      warehId: form.warehId,
+      shelfId: form.shelfId,
+      rawMaterialId: form.rawMaterialId,
       idUnicoPaquete: form.idUnicoPaquete,
-      cantidad: form.cantidad,
-      fechaCaducidad: form.fechaCaducidad
+      amount: form.amount,
+      dateOfExpiry: form.dateOfExpiry
     }
   }
 
   toUpdateInventoryDto(form: InventoryFormModel): Partial<UpdateInventoryDto> {
     return {
-      almacen: form.almacen,
-      anaquel: form.anaquel,
-      idUnicoMateriaPrima: form.idUnicoMateriaPrima,
+      warehId:form.warehId,
+      shelfId:form.shelfId,
+      rawMaterialId:form.rawMaterialId,
       idUnicoPaquete: form.idUnicoPaquete,
-      cantidad: form.cantidad,
-      fechaCaducidad: form.fechaCaducidad,
+      amount: form.amount,
+      dateOfExpiry: form.dateOfExpiry,
       status:form.status
     }
   }
 
- toInventoryFormModel(response:InventoryResponse):InventoryFormModel{
-    return{
-      almacen:response.almacen,
-      anaquel:response.anaquel,
-      idUnicoMateriaPrima:response.idUnicoMateriaPrima,
-      idUnicoPaquete:response.idUnicoPaquete,
-      cantidad:response.cantidad,
-      fechaCaducidad:response.fechaCaducidad,
-      status:response.status
-    }
-  }
+//  toInventoryFormModel(response:InventoryResponse):InventoryFormModel{
+//     return{
+//       wareh:response.wareh,
+//       shelf:response.shelf,
+//       rawMaterial_:response.rawMaterial_,
+//       idUnicoPaquete:response.idUnicoPaquete,
+//       amount:response.amount,
+//       dateOfExpiry:response.dateOfExpiry,
+//       status:response.status
+//     }
+//   }
 }

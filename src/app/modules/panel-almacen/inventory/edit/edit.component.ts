@@ -37,12 +37,12 @@ export class EditComponent implements OnInit {
 
   declareForm(): void {
     this.formData = this.fb.group({
-      almacen:[,[Validators.required]],
-      anaquel:[,[Validators.required]],
-      materiaPrima:[,[Validators.required]],
+      wareh:[,[Validators.required]],
+      shelf:[,[Validators.required]],
+      rawMaterial_:[,[Validators.required]],
       idPaquete:[,[Validators.required]],
-      fecha:[,[Validators.required]],
-      cantidad:[,[Validators.required]],
+      dateOfExpiry:[,[Validators.required]],
+      amount:[,[Validators.required]],
     })
   }
   ngOnInit(): void {
@@ -58,12 +58,12 @@ export class EditComponent implements OnInit {
     this.dialogLoading.setDisplay(true);
     // const form: ShiftsFormModel = this.formData.getRawValue();
     let request:InventoryFormModel = {
-      almacen:this.formData.value.name,
-      anaquel: this.formData.value.idUnicoEscanear,
-      idUnicoMateriaPrima:this.formData.value.descripcion,
+      warehId:this.formData.value.wareh,
+      shelfId: this.formData.value.idUnicoEscanear,
+      rawMaterialId:this.formData.value.descripcion,
       idUnicoPaquete:this.formData.value.idUnicoPaquete,
-      fechaCaducidad:this.formData.value.fechaCaducidad,
-      cantidad:this.formData.value.cantidad,
+      dateOfExpiry:this.formData.value.fechaCaducidad,
+      amount:this.formData.value.cantidad,
     }
 
     const form = this.formData.getRawValue();
@@ -85,15 +85,17 @@ export class EditComponent implements OnInit {
     this.inventoryCrudService.getOne(id).subscribe(
       (resp) => {
         this.response=resp;
-        const form = this.inventoryTransformService.toInventoryFormModel(resp);
-        this.formData.patchValue(form);
-        // this.formData.patchValue({
-        //   name:response.name,
-        //   isLastWorkShift: response.isLastWorkShift,
-        //   initTime:response.initTime,
-        //   endTime:response.endTime,
-        //   companyId:this.facilityId
-        // });
+        // const form = this.inventoryTransformService.toInventoryFormModel(resp);
+        // this.formData.patchValue(form);
+        this.formData.patchValue({
+          rawMaterial_:this.response.rawMaterial_,
+          amount:this.response.amount,
+          dateOfExpiry:this.response.dateOfExpiry,
+          idUnicoPaquete:this.response.idUnicoPaquete,
+          shelf:this.response.shelf,
+          status:this.response.status,
+          wareh:this.response.wareh,
+        });
       }, (error) => {
         console.log(error);
         this.dialogLoading.setDisplay(false);

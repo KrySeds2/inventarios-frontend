@@ -1,10 +1,14 @@
+import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/rawMaterialsResponse";
+import { ShelfsResponse } from "@shared/services/shelfs/resquests/shelfsResponse";
+import { WarehousesResponse } from "@shared/services/warehouses/responses/warehousesResponse";
+
 export interface InventoryResponse {
-  almacen: string;
-  anaquel: string;
-  idUnicoMateriaPrima: string;
+  wareh: WarehousesResponse;
+  shelf: ShelfsResponse;
+  rawMaterial_: RawMaterialsResponse;
   idUnicoPaquete:string;
-  fechaCaducidad:string;
-  cantidad:number;
+  dateOfExpiry:string;
+  amount:number;
   id:string;
   status:boolean;
 }

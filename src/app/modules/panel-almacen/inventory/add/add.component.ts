@@ -32,12 +32,12 @@ export class AddComponent implements OnInit {
 
   declareForm():void{
     this.formData = this.fb.group({
-      almacen:[,[Validators.required]],
-      anaquel:[,[Validators.required]],
-      materiaPrima:[,[Validators.required]],
+      wareh:[,[Validators.required]],
+      shelf:[,[Validators.required]],
+      rawMaterial_:[,[Validators.required]],
       idPaquete:[,[Validators.required]],
-      fecha:[,[Validators.required]],
-      cantidad:[,[Validators.required]],
+      dateOfExpiry:[,[Validators.required]],
+      amount:[,[Validators.required]],
     })
   }
 
@@ -58,12 +58,12 @@ export class AddComponent implements OnInit {
     const createInventoryDto: CreateInventoryDto = this.inventoryTransformService.toCreateInventoryDto(form);
 
     let request:InventoryFormModel = {
-      almacen:this.formData.value.name,
-      anaquel: this.formData.value.idUnicoEscanear,
-      idUnicoMateriaPrima:this.formData.value.descripcion,
+      warehId:this.formData.value.warehId,
+      shelfId: this.formData.value.shelfId,
+      rawMaterialId:this.formData.value.rawMaterialId,
       idUnicoPaquete:this.formData.value.idUnicoPaquete,
-      fechaCaducidad:this.formData.value.fechaCaducidad,
-      cantidad:this.formData.value.cantidad,
+      dateOfExpiry:this.formData.value.fechaCaducidad,
+      amount:this.formData.value.cantidad,
       // id:this.formData.value.id
     }
 

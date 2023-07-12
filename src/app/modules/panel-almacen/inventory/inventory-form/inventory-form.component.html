@@ -4,13 +4,13 @@
   <!-- Almacen -->
   <div class="col-12 md:col-6">
     <span class="p-fluid p-float-label">
-      <p-dropdown [options]="listAlmacen" id="almacen" formControlName="almacen" [filter]="false"
-        [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'almacen')}">> </p-dropdown>
+      <p-dropdown [options]="listAlmacen" id="wareh" formControlName="wareh" [filter]="false"
+        [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'wareh')}">> </p-dropdown>
       <label for="almacen"> Almacen </label>
     </span>
     <div class="error-container">
-      <ng-container *ngIf="validateErrors.valid(formData,'almacen')">
-        <div *ngIf="validateErrors.validRequired(formData,'almacen')" class="error-message">
+      <ng-container *ngIf="validateErrors.valid(formData,'wareh')">
+        <div *ngIf="validateErrors.validRequired(formData,'wareh')" class="error-message">
           {{'campo requerido' }}
         </div>
 
@@ -21,13 +21,13 @@
   <!-- Anaquel -->
   <div class="col-12 md:col-6">
     <span class="p-fluid p-float-label">
-      <p-dropdown [options]="listAnaquel" id="anquel" formControlName="anaquel" [filter]="false"
-        [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'anaquel')}">> </p-dropdown>
+      <p-dropdown [options]="listAnaquel" id="shelf" formControlName="shelf" [filter]="false"
+        [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'shelf')}">> </p-dropdown>
       <label for="anaquel"> Anaquel </label>
     </span>
     <div class="error-container">
-      <ng-container *ngIf="validateErrors.valid(formData,'anaquel')">
-        <div *ngIf="validateErrors.validRequired(formData,'anaquel')" class="error-message">
+      <ng-container *ngIf="validateErrors.valid(formData,'shelf')">
+        <div *ngIf="validateErrors.validRequired(formData,'shelf')" class="error-message">
           {{'campo requerido' }}
         </div>
 
@@ -38,13 +38,13 @@
   <!-- ID unico materia prima -->
   <div class="col-12 md:col-5">
     <span class="p-fluid p-float-label">
-      <p-dropdown [options]="listMateriaPrima" id="materiaPrima" formControlName="materiaPrima" [filter]="false"
-        [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'materiaPrima')}">> </p-dropdown>
+      <p-dropdown [options]="listMateriaPrima" id="rawMaterial_" formControlName="rawMaterial_" [filter]="false"
+        [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'rawMaterial_')}">> </p-dropdown>
       <label for="materiaPrima"> Identificador unico de la materia prima </label>
     </span>
     <div class="error-container">
-      <ng-container *ngIf="validateErrors.valid(formData,'materiaPrima')">
-        <div *ngIf="validateErrors.validRequired(formData,'materiaPrima')" class="error-message">
+      <ng-container *ngIf="validateErrors.valid(formData,'rawMaterial_')">
+        <div *ngIf="validateErrors.validRequired(formData,'rawMaterial_')" class="error-message">
           {{'campo requerido' }}
         </div>
 
@@ -97,18 +97,18 @@
   <!-- Fecha de caducidad -->
   <div class="col-12 md:col-6">
     <span class="p-fluid p-float-label">
-      <p-calendar formControlName="fecha" [showIcon]="true" dateFormat="yy-mm-dd" [yearNavigator]="true"
+      <p-calendar formControlName="dateOfExpiry" [showIcon]="true" dateFormat="yy-mm-dd" [yearNavigator]="true"
         [showTime]="false" [monthNavigator]="true" yearRange="1800:2100" [readonlyInput]="false"
-        [ngClass]="{'error-border-calendar':validateErrors.valid(formData,'fecha')}">
+        [ngClass]="{'error-border-calendar':validateErrors.valid(formData,'dateOfExpiry')}">
       </p-calendar>
       <label for="float-input">Fecha de caducidad</label>
     </span>
     <div class="error-container">
-      <ng-container *ngIf="validateErrors.valid(formData,'fecha')">
-        <div *ngIf="validateErrors.validRequired(formData,'fecha')" class="error-message">
+      <ng-container *ngIf="validateErrors.valid(formData,'dateOfExpiry')">
+        <div *ngIf="validateErrors.validRequired(formData,'dateOfExpiry')" class="error-message">
           {{'campo requerido' }}
         </div>
-        <div *ngIf="validateErrors.validError(formData,'expirationdate','fecha')" class="error-message">
+        <div *ngIf="validateErrors.validError(formData,'expirationdate','dateOfExpiry')" class="error-message">
           {{'La fecha no debe ser mayor a la actual'}}
         </div>
       </ng-container>
@@ -118,13 +118,13 @@
   <!-- Cantidad -->
   <div class="col-12 md:col-6">
     <span class="p-fluid p-float-label">
-      <input id="float-input" type="text" size="30" pInputText formControlName="cantidad"
-        [ngClass]="{'error-border':validateErrors.valid(formData,'cantidad')}" name="cantidad">
+      <input id="float-input" type="text" size="30" pInputText formControlName="amount"
+        [ngClass]="{'error-border':validateErrors.valid(formData,'amount')}" name="amount">
       <label for="float-input"> Cantidad</label>
     </span>
     <div class="error-container">
-      <ng-container *ngIf="validateErrors.valid(formData,'cantidad')">
-        <div *ngIf="validateErrors.validRequired(formData,'cantidad')" class="error-message">
+      <ng-container *ngIf="validateErrors.valid(formData,'amount')">
+        <div *ngIf="validateErrors.validRequired(formData,'amount')" class="error-message">
           {{'campo requerido' }}
         </div>
       </ng-container>
