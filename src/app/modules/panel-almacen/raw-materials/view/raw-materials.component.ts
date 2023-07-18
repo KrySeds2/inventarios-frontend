@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableHead } from 'src/app/shared/modules/tables/models/tableHead';
 import { RawMaterialsRow } from '../models/raw-materials-row';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { RawMaterialsCrudService } from 'src/app/shared/services/raw-materials/raw-materials-crud.service';

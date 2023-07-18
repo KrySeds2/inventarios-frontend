@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RawMaterialsTransformService } from '../services/raw-materials-transform.service';
 import { RawMaterialsCrudService } from 'src/app/shared/services/raw-materials/raw-materials-crud.service';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { RawMaterialsFormModel } from '../models/rawMaterialsFormModel';
 import { CreateRawMaterialsDto } from 'src/app/shared/services/raw-materials/requests/createRawMaterialsDto';
-import { DialogConfirmComponent } from 'src/app/shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
 
 @Component({
   selector: 'app-add',
