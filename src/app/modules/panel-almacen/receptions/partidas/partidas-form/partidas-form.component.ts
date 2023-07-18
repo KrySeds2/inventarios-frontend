@@ -2,16 +2,16 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DropDownModel } from 'src/app/modules/panel-almacen/inventory/models/dropdown.Model';
 import { ValidateFieldService } from 'src/app/services/validations/validate-field.service';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { TableHead } from 'src/app/shared/modules/tables/models/tableHead';
 import { PartidasRow } from '../../models/partidas-row';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RawMaterialsCrudService } from '@shared/services/raw-materials/raw-materials-crud.service';
 import { PartidasResponse } from '@shared/services/receptions/partidas/responses/partidasResponse';
 import { PartidasCrudService } from '@shared/services/receptions/partidas/partidas-crud.service';
-import { DialogConfirmComponent } from '@shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
-import { PartidasModel, ReceptionsFormModel } from '../../models/receptionsFormModel';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
+import { Partidas, ReceptionsFormModel } from '../../models/receptionsFormModel';
 import { CreatePartidasDto } from '@shared/services/receptions/partidas/requests/createPartidasDto';
 import { PartidasTransformService } from '../../services/partidas-transform.service';
 import { ChangeDetectorRef } from '@angular/core';
@@ -74,15 +74,12 @@ export class PartidasFormComponent implements OnInit {
     private fb:FormBuilder
   ) {
     this.getMateriaPrima();
-    // this.declareForm();
+    this.declareForm();
   }
   declareForm(): void {
     this.formData = this.fb.group({
-      // folio: [, [Validators.required]],
-      // arrivalDate: [, [Validators.required]],
-      // rawMaterial: [, [Validators.required]],
-      // amount: [, [Validators.required]],
-
+      rawMaterial: [, [Validators.required]],
+      amount: [, [Validators.required]],
     })
   }
   ngAfterViewInit(): void {
@@ -182,7 +179,7 @@ export class PartidasFormComponent implements OnInit {
     let index = item.index;
     let value: PartidasRow = item.item
     this.globalindex = index;
-    let partidas : PartidasModel
+    let partidas : Partidas
 
     this.listOfPartidasResponse.forEach(element => {
       if(element.id.toUpperCase() === value.id.toUpperCase()){

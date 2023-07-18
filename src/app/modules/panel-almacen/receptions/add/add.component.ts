@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReceptionsTransformService } from '../services/receptions-transform.service';
 import { ReceptionsCrudService } from 'src/app/shared/services/receptions/receptions-crud.service';
-import { LoadingComponent } from '@shared/modules/dialogs/components/loading/loading.component';
-import { DialogErrorComponent } from '@shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { DialogConfirmComponent } from '@shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
 import { ReceptionsFormModel } from '../models/receptionsFormModel';
 import { CreateReceptionsDto } from '@shared/services/receptions/requests/createReceptionsDto';
+import { FieldValidatorsService } from '@core/services/field-validators.service';
 
 @Component({
   selector: 'app-add',
@@ -18,6 +19,7 @@ export class AddComponent implements OnInit {
   @ViewChild('dialogLoading') dialogLoading: LoadingComponent;
   @ViewChild('dialogSuccess') dialogSuccess: DialogConfirmComponent;
   @ViewChild('dialogError') dialogError: DialogErrorComponent;
+
   formData: FormGroup;
   isDisabled: boolean = false;
   constructor(
@@ -25,7 +27,8 @@ export class AddComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private receptionsTransformService: ReceptionsTransformService,
-    private receptionsCrudService: ReceptionsCrudService
+    private receptionsCrudService: ReceptionsCrudService,
+    private FVservice: FieldValidatorsService,
   ) {
     this.declareForm();
   }
@@ -33,8 +36,8 @@ export class AddComponent implements OnInit {
     this.formData = this.fb.group({
       folio: [, [Validators.required]],
       arrivalDate: [, [Validators.required]],
-      rawMaterial: [, [Validators.required]],
-      amount: [, [Validators.required]],
+      // rawMaterial: [, [Validators.required]],
+      // amount: [, [Validators.required]],
 
     })
   }
@@ -44,34 +47,35 @@ export class AddComponent implements OnInit {
   submit() {
     console.log(this.formData.value);
 
-    if (this.formData.invalid) {
-      this.formData.markAllAsTouched();
+    if (this.FVservice.invalidSubmit(this.formData)) {
       return;
     }
     this.dialogLoading.setDisplay(true);
-    this.isDisabled = true;
+    console.log(this.formData.value);
+    let request = this.receptionsTransformService.toCreateReceptionsDto(this.formData.getRawValue());
+    // const form: ReceptionsFormModel = this.formData.getRawValue();
+    // const createReceptionsDto: CreateReceptionsDto = this.receptionsTransformService.toCreateReceptionsDto(form);
 
-    const form: ReceptionsFormModel = this.formData.getRawValue();
-    const createShiftsDto: CreateReceptionsDto = this.receptionsTransformService.toCreateReceptionsDto(form);
+    // let request: ReceptionsFormModel = {
+    //   folio: this.formData.value.folio,
+    //   orderStatus: this.formData.value.orderStatus,
+    //   arrivalDate: this.formData.value.arrivalDate,
+    //   registerOut: this.formData.value.registerOutId,
 
-    let request: ReceptionsFormModel = {
-      folio: this.formData.value.folio,
-      orderStatus: this.formData.value.orderStatus,
-      arrivalDate: this.formData.value.arrivalDate,
-      registerOut: this.formData.value.registerOut
+    // }
 
-    }
-
-    this.receptionsCrudService.create(request).subscribe(
-      (response: any) => {
+    this.receptionsCrudService.create(request).subscribe({
+      next: (response) => {
+        this.dialogSuccess.setDisplay(true);
         this.dialogLoading.setDisplay(false);
-        this.dialogSuccess.setDisplay(true, response);
-        this.isDisabled = false;
-      }, (error) => {
-        this.dialogLoading.setDisplay(false);
+        this.FVservice.completeSubmit(this.formData);
+      },
+      error: (error) => {
         this.dialogError.setDisplay(true, error);
-        this.isDisabled = false;
+        this.dialogLoading.setDisplay(false);
+        this.FVservice.completeSubmit(this.formData);
       }
+    }
     );
   }
 

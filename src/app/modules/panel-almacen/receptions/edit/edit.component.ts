@@ -4,9 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ReceptionsResponse } from 'src/app/shared/services/receptions/responses/receptionsResponse';
 import { ReceptionsTransformService } from '../services/receptions-transform.service';
 import { ReceptionsCrudService } from 'src/app/shared/services/receptions/receptions-crud.service';
-import { DialogConfirmComponent } from '@shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
-import { DialogErrorComponent } from '@shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from '@shared/modules/dialogs/components/loading/loading.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { ReceptionsFormModel } from '../models/receptionsFormModel';
 import { Utils } from '@shared/services/common/utils';
 
