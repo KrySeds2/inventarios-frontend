@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { OrdersRow } from '../models/orders-row';
 import { TableHead } from 'src/app/shared/modules/tables/models/tableHead';
 import { OrdersResponse } from 'src/app/shared/services/orders/responses/ordersResponse';
@@ -20,42 +20,42 @@ export class ViewComponent implements OnInit {
   columnsTable: TableHead<OrdersRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
     { header: 'Folio', field: 'folio', width: '100px', align: 'center' },
-    { header: 'Producto', field: 'producto', width: '100px', align: 'center' },
-    { header: 'Cantidad', field: 'cantidad', width: '100px', align: 'center' },
+    { header: 'Producto', field: 'productId', width: '100px', align: 'center' },
+    { header: 'Cantidad', field: 'amount', width: '100px', align: 'center' },
     { header: 'Estado', field: 'status', width: '50px', maxWidth: '90px', align: 'center', custom: true },
     { header: 'Editar', field: 'edit', width: '50px', maxWidth: '90px', align: 'center', custom: true, permit: 'write' },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
 
   ];
-  listItems: OrdersRow[] = [{
-    index: 1,
-    id:'1214',
-    folio: 96531,
-    producto: 'PR-01',
-    cantidad:10,
-    status: true,
-  },{
-    index: 2,
-    id:'5678',
-    folio: 63244,
-    producto: 'PR-02',
-    cantidad:5,
-    status: true,
-  },{
-    index: 3,
-    id:'4567',
-    folio: 85632,
-    producto: 'PR-03',
-    cantidad:2,
-    status: false,
-  },{
-    index: 4,
-    id:'0987',
-    folio: 56325,
-    producto: 'PR-04',
-    cantidad:3,
-    status: true,
-  }];
+  // listItems: OrdersRow[] = [{
+  //   index: 1,
+  //   id:'1214',
+  //   folio: 96531,
+  //   producto: 'PR-01',
+  //   cantidad:10,
+  //   status: true,
+  // },{
+  //   index: 2,
+  //   id:'5678',
+  //   folio: 63244,
+  //   producto: 'PR-02',
+  //   cantidad:5,
+  //   status: true,
+  // },{
+  //   index: 3,
+  //   id:'4567',
+  //   folio: 85632,
+  //   producto: 'PR-03',
+  //   cantidad:2,
+  //   status: false,
+  // },{
+  //   index: 4,
+  //   id:'0987',
+  //   folio: 56325,
+  //   producto: 'PR-04',
+  //   cantidad:3,
+  //   status: true,
+  // }];
   listOfOrdersResponse: OrdersResponse[];
   resume: any[];
   constructor(
@@ -69,7 +69,7 @@ export class ViewComponent implements OnInit {
     this.setResume();
     this.loadingComponent.setDisplay(true);
     this.getItemsOfTable();
-    this.listItems;
+    // this.listItems;
   }
 
   ngOnInit(): void {
@@ -88,8 +88,8 @@ export class ViewComponent implements OnInit {
               id: row.id,
               status: row.status,
               folio:row.folio,
-              cantidad: row.cantidad,
-              producto: row.producto
+              amount: row.amount,
+              productId: row.product.name
             };
           }
           );

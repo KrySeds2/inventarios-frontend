@@ -14,25 +14,31 @@ export class OrdersTransformService {
   toCreateInventoryDto(form: OrdersFormModel): CreateOrdersDto {
     return {
       folio: form.folio,
-      producto: form.producto,
-      cantidad: form.cantidad,
+      productId: [form.product],
+      amount: form.amount,
     }
   }
 
   toUpdateInventoryDto(form: OrdersFormModel): Partial<UpdateOrdersDto> {
     return {
       folio: form.folio,
-      producto: form.producto,
-      cantidad: form.cantidad,
+      productId:[ form.product],
+      amount: form.amount,
       status:form.status
     }
   }
 
-  static toInventoryFormModel(response:OrdersResponse):OrdersFormModel{
+   toInventoryFormModel(response:OrdersResponse):OrdersFormModel{
     return{
       folio:response.folio,
-      producto:response.producto,
-      cantidad:response.cantidad,
+      product:{
+        name:response.product.name,
+        id:response.product.id,
+        status:response.product.status,
+        orderStatus:response.product.orderStatus,
+        recipes:response.product.recipes
+      },
+      amount:response.amount,
       id:response.id,
       status:response.status
     }

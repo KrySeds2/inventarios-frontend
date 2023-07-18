@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ProductsCrudService } from '@shared/services/products/products-crud.service';
 import { DropDownModel } from 'src/app/modules/panel-almacen/inventory/models/dropdown.Model';
 import { ValidateFieldService } from 'src/app/services/validations/validate-field.service';
 
@@ -14,18 +15,30 @@ export class OrdersFormComponent implements OnInit {
   ];
   constructor(
     public validateErrors:ValidateFieldService,
-  ) { }
+    public productsCrudService:ProductsCrudService,
+    private cd:ChangeDetectorRef,
+  ) {
+    this.getProducto();
+  }
 
   ngOnInit(): void {
   }
 
+
   getProducto():void{
-    this.listProducto.map(
-      (row) => {
-        return{
-          label: row.label,
-          value: row.value
-        }
+    this.productsCrudService.getAll().subscribe(
+      (response:any) => {
+        this.listProducto = response.map(
+          (row)=>{
+            return{
+              label: row.name,
+              value: row.id
+            }
+          }
+        )
+        this.cd.detectChanges();
+      },(error:any) => {
+        console.log(error);
       }
     )
   }

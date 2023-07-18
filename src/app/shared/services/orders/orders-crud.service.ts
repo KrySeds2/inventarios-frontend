@@ -9,14 +9,14 @@ import { UpdateOrdersDto } from './requests/updateOrdersDto';
   providedIn: 'root'
 })
 export class OrdersCrudService {
-  url='';
+  url='/order';
   constructor(private http:HttpService) { }
 
   create(body:CreateOrdersDto):Observable<OrdersResponse> {
     return this.http.post(this.url,body)
   }
   update(body: Partial <UpdateOrdersDto>, id: string): Observable<OrdersResponse>{
-    return this.http.put(`${this.url}/${id}`, body);
+    return this.http.patch(`${this.url}/${id}`, body);
   }
   delete( id: string): Observable<any>{
     return this.http.delete(`${this.url}/${id}`);

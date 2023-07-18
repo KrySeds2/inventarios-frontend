@@ -1,7 +1,9 @@
+import { ProductsResponse } from "@shared/services/products/responses/productsResponse";
+
 export interface OrdersFormModel {
-  folio:number;
-  producto:string;
-  cantidad:number;
+  folio:string;
+  product:ProductsResponse;
+  amount:number;
   status?:boolean;
   id:string;
 }
