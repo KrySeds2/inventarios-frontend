@@ -4,8 +4,8 @@ import { ShelfsRow } from '../models/shelfs-row';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ShelfsCrudService } from 'src/app/shared/services/shelfs/shelfs-crud.service';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { ShelfsResponse } from 'src/app/shared/services/shelfs/resquests/shelfsResponse';
 
 @Component({
