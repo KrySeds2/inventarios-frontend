@@ -6,7 +6,7 @@ export interface InventoryResponse {
   wareh: WarehousesResponse;
   shelf: ShelfsResponse;
   rawMaterial_: RawMaterialsResponse;
-  idUnicoPaquete:string;
+  idpackage:string;
   dateOfExpiry:string;
   amount:number;
   id:string;

@@ -13,10 +13,10 @@ export class InventoryTransformService {
 
   toCreateInventoryDto(form: InventoryFormModel): CreateInventoryDto {
     return {
-      warehId: form.warehId,
-      shelfId: form.shelfId,
-      rawMaterialId: form.rawMaterialId,
-      idUnicoPaquete: form.idUnicoPaquete,
+      warehId: [form.wareh],
+      shelfId: [form.shelf],
+      rawMaterialId: [form.rawMaterial_],
+      idpackage: form.idpackage,
       amount: form.amount,
       dateOfExpiry: form.dateOfExpiry
     }
@@ -24,25 +24,39 @@ export class InventoryTransformService {
 
   toUpdateInventoryDto(form: InventoryFormModel): Partial<UpdateInventoryDto> {
     return {
-      warehId:form.warehId,
-      shelfId:form.shelfId,
-      rawMaterialId:form.rawMaterialId,
-      idUnicoPaquete: form.idUnicoPaquete,
+      warehId:[form.wareh],
+      shelfId:[form.shelf],
+      rawMaterialId:[form.rawMaterial_],
+      idpackage: form.idpackage,
       amount: form.amount,
       dateOfExpiry: form.dateOfExpiry,
       status:form.status
     }
   }
 
-//  toInventoryFormModel(response:InventoryResponse):InventoryFormModel{
-//     return{
-//       wareh:response.wareh,
-//       shelf:response.shelf,
-//       rawMaterial_:response.rawMaterial_,
-//       idUnicoPaquete:response.idUnicoPaquete,
-//       amount:response.amount,
-//       dateOfExpiry:response.dateOfExpiry,
-//       status:response.status
-//     }
-//   }
+ toInventoryFormModel(response:InventoryResponse):InventoryFormModel{
+    return{
+      wareh:{
+        id:response.wareh.id,
+        name:response.wareh.name,
+        shelves:response.wareh.shelves
+      },
+      shelf:{
+       id:response.shelf.id,
+       name:response.shelf.name,
+       status:response.shelf.status
+      },
+      rawMaterial_:{
+        name:response.rawMaterial_.name,
+        scaneId:response.rawMaterial_.scaneId,
+        status:response.rawMaterial_.status,
+        id:response.rawMaterial_.id,
+        description:response.rawMaterial_.description
+      },
+      idpackage:response.idpackage,
+      amount:response.amount,
+      dateOfExpiry:response.dateOfExpiry,
+      status:response.status
+    }
+  }
 }

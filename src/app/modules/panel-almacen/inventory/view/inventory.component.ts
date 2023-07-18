@@ -4,9 +4,9 @@ import { TableHead } from 'src/app/shared/modules/tables/models/tableHead';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { InventoryCrudService } from 'src/app/shared/services/inventory/inventory-crud.service';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
 import { InventoryResponse } from 'src/app/shared/services/inventory/responses/inventoryResponse';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 
 @Component({
   selector: 'app-inventory',
@@ -23,7 +23,7 @@ export class InventoryComponent implements OnInit {
     { header: 'Anaquel', field: 'shelf', width: '90px', maxWidth: '100px', align: 'center' },
     { header: 'Materia Prima', field: 'rawMaterial_', width: '90px', maxWidth: '140px', align: 'center' },
     { header: 'Cantidad', field: 'amount', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Id unico de paquete', field: 'idUnicoPaquete', width: '90px', maxWidth: '120px', align: 'center' },
+    { header: 'Id unico de paquete', field: 'idpackage', width: '90px', maxWidth: '120px', align: 'center' },
     { header: 'Editar', field: 'edit', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit: 'write' },
     { header: 'Fecha de caducidad', field: 'dateOfExpiry', width: '90px', maxWidth: '110px', align: 'center' },
     { header: 'Estado', field: 'status', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit:'write', order:false },
@@ -104,12 +104,12 @@ export class InventoryComponent implements OnInit {
               index: index + 1,
               id: row.id,
               status: row.status,
-              shelf: row.shelf.name,
-              rawMaterial_: row.rawMaterial_.name,
-              idUnicoPaquete: row.idUnicoPaquete,
+              shelf: row?.shelf.name,
+              rawMaterial_:row?.rawMaterial_.name,
+              idpackage: row.idpackage,
               amount:row.amount,
               dateOfExpiry:row.dateOfExpiry,
-              wareh:row.wareh.name
+              wareh:row?.wareh.name
             };
           }
           );

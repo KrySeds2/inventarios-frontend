@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InventoryTransformService } from '../services/inventory-transform.service';
 import { InventoryCrudService } from 'src/app/shared/services/inventory/inventory-crud.service';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
-import { DialogConfirmComponent } from 'src/app/shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
 import { InventoryFormModel } from '../models/inventoryFormModel';
 import { CreateInventoryDto } from 'src/app/shared/services/inventory/requests/createInventoryDto';
 
@@ -35,7 +35,7 @@ export class AddComponent implements OnInit {
       wareh:[,[Validators.required]],
       shelf:[,[Validators.required]],
       rawMaterial_:[,[Validators.required]],
-      idPaquete:[,[Validators.required]],
+      // idpackage:[,[Validators.required]],
       dateOfExpiry:[,[Validators.required]],
       amount:[,[Validators.required]],
     })
@@ -57,17 +57,9 @@ export class AddComponent implements OnInit {
     const form: InventoryFormModel = this.formData.getRawValue();
     const createInventoryDto: CreateInventoryDto = this.inventoryTransformService.toCreateInventoryDto(form);
 
-    let request:InventoryFormModel = {
-      warehId:this.formData.value.warehId,
-      shelfId: this.formData.value.shelfId,
-      rawMaterialId:this.formData.value.rawMaterialId,
-      idUnicoPaquete:this.formData.value.idUnicoPaquete,
-      dateOfExpiry:this.formData.value.fechaCaducidad,
-      amount:this.formData.value.cantidad,
-      // id:this.formData.value.id
-    }
 
-    this.inventoryCrudService.create(request).subscribe(
+
+    this.inventoryCrudService.create(createInventoryDto).subscribe(
       (response: any) => {
         this.dialogLoading.setDisplay(false);
         this.dialogSuccess.setDisplay(true, response);

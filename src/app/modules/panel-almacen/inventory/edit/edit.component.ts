@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DialogConfirmComponent } from 'src/app/shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { InventoryFormComponent } from '../inventory-form/inventory-form.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InventoryResponse } from 'src/app/shared/services/inventory/responses/inventoryResponse';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { InventoryTransformService } from '../services/inventory-transform.service';
 import { InventoryCrudService } from 'src/app/shared/services/inventory/inventory-crud.service';
 import { Utils } from 'src/app/shared/services/common/utils';
@@ -23,6 +23,7 @@ export class EditComponent implements OnInit {
   @ViewChild('dialogLoading') dialogLoading: LoadingComponent;
   @ViewChild('form') form: InventoryFormComponent;
   formData: FormGroup;
+  isDisabled:boolean = false
   id: string;
   response: InventoryResponse
   constructor(
@@ -40,10 +41,19 @@ export class EditComponent implements OnInit {
       wareh:[,[Validators.required]],
       shelf:[,[Validators.required]],
       rawMaterial_:[,[Validators.required]],
-      idPaquete:[,[Validators.required]],
+      // idpackage:[,[Validators.required]],
       dateOfExpiry:[,[Validators.required]],
       amount:[,[Validators.required]],
     })
+  }
+  ngAfterViewInit():void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = params["id"];
+        console.log(params["id"])
+        this.getItem(this.id);
+      }
+    );
   }
   ngOnInit(): void {
   }
@@ -56,18 +66,19 @@ export class EditComponent implements OnInit {
       return;
     }
     this.dialogLoading.setDisplay(true);
-    // const form: ShiftsFormModel = this.formData.getRawValue();
-    let request:InventoryFormModel = {
-      warehId:this.formData.value.wareh,
-      shelfId: this.formData.value.idUnicoEscanear,
-      rawMaterialId:this.formData.value.descripcion,
-      idUnicoPaquete:this.formData.value.idUnicoPaquete,
-      dateOfExpiry:this.formData.value.fechaCaducidad,
-      amount:this.formData.value.cantidad,
-    }
+    this.isDisabled = true;
+
+    // let request:InventoryFormModel = {
+    //   warehId:this.formData.value.wareh,
+    //   shelfId: this.formData.value.idUnicoEscanear,
+    //   rawMaterialId:this.formData.value.descripcion,
+    //   idpackage:this.formData.value.idpackage,
+    //   dateOfExpiry:this.formData.value.fechaCaducidad,
+    //   amount:this.formData.value.cantidad,
+    // }
 
     const form = this.formData.getRawValue();
-    // const request =this.shiftsTransformService.updateShiftsDto(form)
+    const request =this.inventoryTransformService.toUpdateInventoryDto(form)
     const partialRequest = Utils.updatePartial(request);
 
     this.inventoryCrudService.update(partialRequest,this.id).subscribe(
@@ -84,18 +95,20 @@ export class EditComponent implements OnInit {
   getItem(id: string): void {
     this.inventoryCrudService.getOne(id).subscribe(
       (resp) => {
+        console.log(resp);
         this.response=resp;
-        // const form = this.inventoryTransformService.toInventoryFormModel(resp);
-        // this.formData.patchValue(form);
-        this.formData.patchValue({
-          rawMaterial_:this.response.rawMaterial_,
-          amount:this.response.amount,
-          dateOfExpiry:this.response.dateOfExpiry,
-          idUnicoPaquete:this.response.idUnicoPaquete,
-          shelf:this.response.shelf,
-          status:this.response.status,
-          wareh:this.response.wareh,
-        });
+        const form = this.inventoryTransformService.toInventoryFormModel(resp);
+        console.log('form',form);
+        this.formData.patchValue(form);
+        // this.formData.patchValue({
+        //   rawMaterial_:this.response.rawMaterial_,
+        //   amount:this.response.amount,
+        //   dateOfExpiry:this.response.dateOfExpiry,
+        //   idpackage:this.response.idpackage,
+        //   shelf:this.response.shelf,
+        //   status:this.response.status,
+        //   wareh:this.response.wareh,
+        // });
       }, (error) => {
         console.log(error);
         this.dialogLoading.setDisplay(false);

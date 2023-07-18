@@ -3,10 +3,10 @@ import { ShelfsResponse } from "@shared/services/shelfs/resquests/shelfsResponse
 import { WarehousesResponse } from "@shared/services/warehouses/responses/warehousesResponse";
 
 export interface CreateInventoryDto {
-  warehId:string;
-  shelfId:string;
-  rawMaterialId:string;
+  warehId:WarehousesResponse[];
+  shelfId:ShelfsResponse[];
+  rawMaterialId:RawMaterialsResponse[];
   amount:number;
-  idUnicoPaquete:string;
+  idpackage:string;
   dateOfExpiry:string;
 }

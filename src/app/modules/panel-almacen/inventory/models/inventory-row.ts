@@ -6,7 +6,7 @@ export interface InventoryRow extends TableRow {
   wareh: string;
   shelf: string;
   rawMaterial_: string;
-  idUnicoPaquete:string;
+  idpackage:string;
   dateOfExpiry:string;
   amount:number;
   status?: boolean;
