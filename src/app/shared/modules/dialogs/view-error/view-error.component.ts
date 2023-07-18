@@ -26,6 +26,7 @@ import { trigger, style, state, transition, animate } from '@angular/animations'
 ]
 })
 export class ViewErrorComponent implements OnInit, OnDestroy {
+  libraryTranslate = 'dialogs.';
   @Input() custom = false;
 
   displayMessage = false;

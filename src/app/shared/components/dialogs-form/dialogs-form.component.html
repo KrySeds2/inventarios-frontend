@@ -1,0 +1,18 @@
+<app-loading #loading></app-loading>
+<!--DIALOG SUCCESS-->
+<app-dialog-confirm #success>
+  <ng-template appIcon>
+    <i class="far fa-check-circle" style="font-size: 5rem; color: var(--CT007);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    {{( (update)? 'Actualización exitosa' : 'Registro exitoso' ) }}
+  </ng-template>
+  <ng-template appBody>
+    {{'La información se encuentra disponible para su uso en el sistema.'}}
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-continue (click)="back()"></app-button-continue>
+  </ng-template>
+</app-dialog-confirm>
+
+<app-dialog-error #error (retry)="errorRetry()"></app-dialog-error>

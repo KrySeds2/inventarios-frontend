@@ -10,7 +10,10 @@
   <ng-template appBody>
     <ng-container *ngTemplateOutlet="(bodyTemplate)?bodyTemplate:bodyTemplateDefault; context: {$implicit: error}">
     </ng-container>
-      <app-view-error [configError]="error" [custom]="custom" *ngIf="viewError"></app-view-error>
+      <!-- <app-view-error [configError]="error" [custom]="custom" *ngIf="viewError"></app-view-error> -->
+      <div style="max-height: 200px; overflow: auto; padding: 10px; color: var(--TXTCB006);">
+        {{ ( (error?.error)?error?.error: error ) | json}}
+      </div>
   </ng-template>
   <ng-template appButtons>
     <ng-container *ngTemplateOutlet="(buttonsTemplate)?buttonsTemplate:buttonsDefault">
@@ -19,7 +22,7 @@
 </app-dialog-confirm>
 
 <ng-template #iconTemplateDefault>
-  <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--CT001);"></i>
+  <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--TXTCB006);"></i>
 </ng-template>
 
 <ng-template #headerTemplateDefault>
@@ -34,8 +37,8 @@
 </ng-template>
 
 <ng-template #buttonsDefault>
-  <button pButton type="button" class="btn-cancel p-button-secondary" (click)="onHide()" label="Cancelar"></button>
+  <button pButton pRipple  type="button" class="btn-cancel p-button-outlined p-button-secondary" (click)="onHide()" label="{{'Cerrar' }}"></button>
   <button pButton type="button"
-  [label]=" 'Reintentar'" class="btn-confirm"
+  [label]=" 'Reintentar' " class="btn-confirm"
     (click)="onConfirm()" *ngIf="!submit"></button>
 </ng-template>

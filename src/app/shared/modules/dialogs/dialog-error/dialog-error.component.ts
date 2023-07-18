@@ -1,10 +1,9 @@
 import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { BodyDirective } from '../../directives/body.directive';
+import { ButtonsDirective } from '../../directives/buttons.directive';
+import { HeaderDirective } from '../../directives/header.directive';
+import { IconDirective } from '../../directives/icon.directive';
 import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
-import { HeaderDirective } from '../../../directives/header.directive';
-import { IconDirective } from '../../../directives/icon.directive';
-import { BodyDirective } from '../../../directives/body.directive';
-import { ButtonsDirective } from '../../../directives/buttons.directive';
 
 @Component({
   selector: 'app-dialog-error',
@@ -12,10 +11,10 @@ import { ButtonsDirective } from '../../../directives/buttons.directive';
   styleUrls: ['./dialog-error.component.scss']
 })
 export class DialogErrorComponent implements OnInit {
-  @ViewChild('dialogConfirm') dialogConfirm: DialogConfirmComponent;
-  @Input() error;
-  @Output() cancel: EventEmitter<any> = new EventEmitter<any>();
-  @Output() confirm: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild('dialogConfirm') dialogConfirm!: DialogConfirmComponent;
+  @Input() error!: any;
+  @Output() close: EventEmitter<any> = new EventEmitter<any>();
+  @Output() retry: EventEmitter<any> = new EventEmitter<any>();
   @Input() custom = false;
   @Input() viewError = true;
   @Input() display = false;
@@ -23,32 +22,28 @@ export class DialogErrorComponent implements OnInit {
   @Input() subHeader = '';
   @Input() body = 'Por favor intenta nuevamente.';
   @Input() submit = false;
+  @ContentChild(HeaderDirective, { read: TemplateRef }) headerTemplate: any;
+  @ContentChild(IconDirective, { read: TemplateRef }) iconTemplate: any;
+  @ContentChild(BodyDirective, { read: TemplateRef }) bodyTemplate: any;
+  @ContentChild(ButtonsDirective, { read: TemplateRef }) buttonsTemplate: any;
   libraryTranslate = 'dialogs.error.';
-  @ContentChild(HeaderDirective, { read: TemplateRef }) headerTemplate;
-  @ContentChild(IconDirective, { read: TemplateRef }) iconTemplate;
-  @ContentChild(BodyDirective, { read: TemplateRef }) bodyTemplate;
-  @ContentChild(ButtonsDirective, { read: TemplateRef }) buttonsTemplate;
-  constructor(private translate: TranslateService) {
+  constructor() {
     this.header;
     this.body ;
-   }
+  }
 
   ngOnInit(): void {
   }
-
   setDisplay(value: boolean, error: any = null): void {
     this.error = (error) ? error : error;
     this.dialogConfirm.setDisplay(value);
   }
   onConfirm(): void {
     this.setDisplay(false);
-    setTimeout(() => {
-      this.confirm.emit(true);
-    }, 1000);
+    this.retry.emit(true);
   }
   onHide(): void {
     this.setDisplay(false);
-    this.cancel.emit(true);
+    this.close.emit(true);
   }
-
 }

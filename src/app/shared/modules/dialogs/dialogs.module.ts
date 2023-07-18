@@ -1,37 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
-import { DialogErrorComponent } from './components/dialog-error/dialog-error.component';
-import { DialogLimitComponent } from './components/dialog-limit/dialog-limit.component';
-import { LoadingComponent } from './components/loading/loading.component';
 import { PrimengImportModule } from '../primeng-import/primeng-import.module';
-import { TranslateModule } from '@ngx-translate/core';
-import { ViewErrorComponent } from './utils/view-error/view-error.component';
-import { ConfirmComponent } from './utils/confirm/confirm.component';
+import { LoadingComponent } from './loading/loading.component';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from './dialog-error/dialog-error.component';
+import { DirectivesModule } from '../directives/directives.module';
+import { ViewErrorComponent } from './view-error/view-error.component';
+// import { FieldsFormModule } from '../fields-form/fields-form.module';
 
 
 
 @NgModule({
   declarations: [
+    LoadingComponent,
     DialogConfirmComponent,
     DialogErrorComponent,
-    DialogLimitComponent,
-    LoadingComponent,
-    ViewErrorComponent,
-    ConfirmComponent
+    ViewErrorComponent
   ],
   imports: [
-    CommonModule,
     PrimengImportModule,
-    TranslateModule,
+    CommonModule,
+    DirectivesModule
   ],
-  exports:[
+  exports: [
+    LoadingComponent,
     DialogConfirmComponent,
     DialogErrorComponent,
-    DialogLimitComponent,
-    LoadingComponent,
-    ViewErrorComponent,
-    ConfirmComponent
+    ViewErrorComponent
   ]
 })
 export class DialogsModule { }
