@@ -4,7 +4,7 @@ export interface CreateReceptionsDto {
   folio:string;
   arrivalDate:string;
   orderStatus:string;
-  registerOut:CreatePartidasDto[];
+  registerOutId:string;
 }
 
 export interface CreatePartidasDto{

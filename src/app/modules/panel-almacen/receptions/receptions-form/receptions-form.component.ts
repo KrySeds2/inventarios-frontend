@@ -5,7 +5,7 @@ import { ValidateFieldService } from 'src/app/services/validations/validate-fiel
 import { PartidasRow } from '../models/partidas-row';
 import { DropDownModel } from '../../inventory/models/dropdown.Model';
 import { ReceptionsTransformService } from '../services/receptions-transform.service';
-import { PartidasModel, ReceptionsFormModel } from '../models/receptionsFormModel';
+import { Partidas, ReceptionsFormModel } from '../models/receptionsFormModel';
 
 @Component({
   selector: 'app-receptions-form',

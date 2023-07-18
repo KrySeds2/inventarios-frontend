@@ -4,8 +4,8 @@ import { ReceptionsRow } from '../models/receptions-row';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ReceptionsCrudService } from 'src/app/shared/services/receptions/receptions-crud.service';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { ReceptionsResponse } from 'src/app/shared/services/receptions/responses/receptionsResponse';
 
 @Component({
@@ -21,7 +21,7 @@ export class ReceptionsComponent implements OnInit {
     { header: 'N°', field: 'index', width: '20px', maxWidth: '20px', align: 'center', custom: false },
     { header: 'Folio', field: 'folio', width: '90px', maxWidth: '100px', align: 'center' },
     { header: 'Fecha de llegada', field: 'arrivalDate', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Estado del pedido', field: 'orderStatus', width: '90px', maxWidth: '140px', align: 'center' },
+    { header: 'Estado del pedido', field: 'orderStatus', width: '90px', maxWidth: '140px', align: 'center'},
     { header: 'Editar', field: 'edit', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit: 'write' },
     { header: 'Estado', field: 'status', width: '60px', maxWidth: '80px', align: 'center', custom: true },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
@@ -79,6 +79,19 @@ export class ReceptionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.setResume();
+  }
+
+  getColorClass(orderStatus: string): string {
+    switch (orderStatus) {
+      case 'iniciado':
+        return 'status-finalizado';
+      case 'en proceso':
+        return 'status-enproceso';
+      case 'finalizado':
+        return 'status-terminado';
+      default:
+        return '';
+    }
   }
 
   getItemsOfTable():void{

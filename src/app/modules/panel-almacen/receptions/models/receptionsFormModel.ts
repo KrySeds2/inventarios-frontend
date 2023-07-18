@@ -4,10 +4,11 @@ export interface ReceptionsFormModel {
   folio:string;
   orderStatus:string;
   arrivalDate:string;
-  registerOut:PartidasModel[]
+  registerOut:string;
 }
 
-export interface PartidasModel{
+export interface Partidas{
+  id:string;
   rawMaterial:RawMaterialsResponse;
   amount:number;
 }

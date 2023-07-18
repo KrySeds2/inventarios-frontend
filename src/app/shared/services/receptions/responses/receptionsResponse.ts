@@ -6,11 +6,11 @@ export interface ReceptionsResponse {
   folio:string;
   arrivalDate:string;
   orderStatus:string;
-  registerOut:PartidasResponse[];
+  registerOut:Partidas;
 }
 
-export interface PartidasResponse {
-  id: string,
+export interface Partidas {
+  id: string
   amount: number;
   rawMaterial: RawMaterialsResponse;
 }
