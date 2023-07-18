@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WarehousesTransformService } from '../services/warehouses-transform.service';
 import { WarehousesCrudService } from 'src/app/shared/services/warehouses/warehouses-crud.service';
-import { LoadingComponent } from '@shared/modules/dialogs/components/loading/loading.component';
-import { DialogConfirmComponent } from '@shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
-import { DialogErrorComponent } from '@shared/modules/dialogs/components/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
 import { WarehousesFormModel } from '../models/warehousesFormModel';
 import { CreateWarehousesDto } from '@shared/services/warehouses/requests/createWarehousesDto';
 

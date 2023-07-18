@@ -4,8 +4,8 @@ import { WarehousesRow } from '../models/warehouses-row';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { WarehousesCrudService } from 'src/app/shared/services/warehouses/warehouses-crud.service';
-import { DialogErrorComponent } from 'src/app/shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from 'src/app/shared/modules/dialogs/components/loading/loading.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { WarehousesResponse } from 'src/app/shared/services/warehouses/responses/warehousesResponse';
 
 @Component({
@@ -84,7 +84,7 @@ export class WarehousesComponent implements OnInit {
               id: row.id,
               status: row.status,
               name:row.name,
-              shelves: row.shelves,
+              shelves: row.shelves.name,
               description:row.description
             };
           }

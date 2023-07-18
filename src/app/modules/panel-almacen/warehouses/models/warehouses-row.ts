@@ -3,7 +3,7 @@ import { TableRow } from "src/app/shared/modules/tables/models/tableRow";
 
 export interface WarehousesRow extends TableRow {
   name:string;
-  shelves:ShelfsResponse;
+  shelves:string;
   status:boolean;
   description:string;
 }
