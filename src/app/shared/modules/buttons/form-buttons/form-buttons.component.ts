@@ -3,7 +3,7 @@ import {Location} from '@angular/common';
 import { Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DialogConfirmComponent } from '../../dialogs/components/dialog-confirm/dialog-confirm.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-form-buttons',

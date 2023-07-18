@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { DialogConfirmComponent } from '@shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
-import { DialogErrorComponent } from '@shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from '@shared/modules/dialogs/components/loading/loading.component';
-import { ConfigViewError } from '@shared/modules/dialogs/utils/view-error/view-error.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
+import { ConfigViewError } from '@shared/modules/dialogs/view-error/view-error.component';
 import { UserResponse } from '@shared/services/users/responses/userResponse';
 import { UsersService } from '@shared/services/users/users.service';
 import { EqualsPassword } from '@shared/validations/equals-password.directive';

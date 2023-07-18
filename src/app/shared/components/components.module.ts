@@ -15,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DialogsModule } from '../modules/dialogs/dialogs.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { DialogsFormComponent } from './dialogs-form/dialogs-form.component';
 @NgModule({
   declarations: [
     MainContainerComponent,
@@ -23,6 +24,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     BreadcrumbsComponent,
     MainLayoutComponent,
     ChangePasswordComponent,
+    DialogsFormComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     SidenavComponent,
     BreadcrumbsComponent,
     MainLayoutComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    DialogsFormComponent
   ]
 })
 export class ComponentsModule { }

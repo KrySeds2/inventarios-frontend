@@ -17,4 +17,5 @@ export interface TableHead<T> {
   custom?: boolean;
   position?: number;
   frozen?: boolean;
+  cellClass?: any;
 }
