@@ -1,0 +1,96 @@
+<div class="grid grid-container " [formGroup]="formData">
+
+
+  <!-- Materia prima -->
+  <div class="col-12 md:col-5">
+    <span class="p-fluid p-float-label">
+      <p-dropdown [options]="listMateriaPrima" id="rawMaterial" formControlName="rawMaterial" [filter]="false"
+        [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'rawMaterial')}"> </p-dropdown>
+      <label for="rawMaterial"> Seleccionar materia prima </label>
+    </span>
+    <div class="error-container">
+      <ng-container *ngIf="validateErrors.valid(formData,'rawMaterial')">
+        <div *ngIf="validateErrors.validRequired(formData,'rawMaterial')" class="error-message">
+          {{'campo requerido' }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Cantidad -->
+  <div class="col-12 md:col-5">
+    <span class="p-fluid p-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="amount"
+        [ngClass]="{'error-border':validateErrors.valid(formData,'amount')}" name="amount">
+      <label for="float-input"> Cantidad</label>
+    </span>
+    <div class="error-container">
+      <ng-container *ngIf="validateErrors.valid(formData,'amount')">
+        <div *ngIf="validateErrors.validRequired(formData,'amount')" class="error-message">
+          {{'campo requerido' }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="col-12 md:col-2" style="padding-top: 22px;">
+    <button pButton pRipple type="button" [label]="buttonLabel" [style.background-color]="buttonColor" (click)="assignPartida() " ></button>
+  </div>
+  <div class="col-12 md:col-12">
+    <app-table [paginator]="false"  [columns]="columnsTable" [values]="rowsTable">
+      <ng-template appBody let-item let-i="rowIndex" let-column="column">
+        <ng-container [ngSwitch]="column.field">
+          <ng-container *ngSwitchCase="'edit'">
+            <t-edit (active)="dialogConfirmEdit.setDisplay(true,{item:item,index:i})"></t-edit>
+          </ng-container>
+          <ng-container *ngSwitchCase="'delete'">
+            <t-delete (click)="dialogConfirmDelete.setDisplay(true,item)"></t-delete>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </app-table>
+  </div>
+</div>
+
+<app-loading #dialogLoading></app-loading>
+<!--DIALOG CONFIRM EDIT-->
+<app-dialog-confirm #dialogConfirmEdit>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+      var(--CT002)"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de editar el siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+    Receta
+    <p>{{'Receta-'+item?.index}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm (onBack)="dialogConfirmEdit.setDisplay(false)"
+    (onConfirm)="selectedEditConfirm(dialogConfirmEdit.getBody())">
+  </app-button-confirm>
+  </ng-template>
+
+</app-dialog-confirm>
+
+<!--DIALOG CONFIRM Delete-->
+<app-dialog-confirm #dialogConfirmDelete>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+              var(--CT002);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de eliminar el siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+   Receta
+   <p>{{'Receta-'+item?.index}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm (onBack)="dialogConfirmDelete.setDisplay(false)"
+      (onConfirm)="deleteItem(dialogConfirmDelete.getBody())">
+    </app-button-confirm>
+  </ng-template>
+</app-dialog-confirm>
+

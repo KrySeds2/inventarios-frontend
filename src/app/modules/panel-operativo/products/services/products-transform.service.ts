@@ -11,23 +11,24 @@ export class ProductsTransformService {
 
   constructor() { }
 
-  toCreateInventoryDto(form: ProductsFormModel): CreateProductsDto {
+  toCreateProductsDto(form: ProductsFormModel): CreateProductsDto {
     return {
       name: form.name,
 
     }
   }
 
-  toUpdateInventoryDto(form: ProductsFormModel): Partial<UpdateProductsDto> {
+  toUpdateProductsDto(form: ProductsFormModel): Partial<UpdateProductsDto> {
     return {
       name: form.name,
 
     }
   }
 
- toInventoryFormModel(response:ProductsResponse):ProductsFormModel{
+ toProductsFormModel(response:ProductsResponse):ProductsFormModel{
     return{
       name:response.name,
+      recipes:response.recipes
 
     }
   }

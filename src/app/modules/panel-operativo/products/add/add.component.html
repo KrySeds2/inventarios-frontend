@@ -12,6 +12,13 @@
   <ng-template appBody>
     <form class="grid grid-container col-12 md:col-8" [formGroup]="formData">
       <app-products-form [formData]="formData" class="col-12"></app-products-form>
+      <div class="grid-container col-12">
+        <app-title [data]="{
+          header:'Registrar receta'
+        }"></app-title>
+      </div>
+
+      <app-recipes [formData]="formData" class="col-12"></app-recipes>
       <app-form-buttons [update]="false"
        [type]="'button'"
         (active)="submit()"

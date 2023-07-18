@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DialogConfirmComponent } from '@shared/modules/dialogs/components/dialog-confirm/dialog-confirm.component';
-import { DialogErrorComponent } from '@shared/modules/dialogs/components/dialog-error/dialog-error.component';
-import { LoadingComponent } from '@shared/modules/dialogs/components/loading/loading.component';
+import { DialogConfirmComponent } from '@shared/modules/dialogs/dialog-confirm/dialog-confirm.component';
+import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
+import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { ProductsTransformService } from '../services/products-transform.service';
 import { ProductsCrudService } from '@shared/services/products/products-crud.service';
 import { ProductsFormModel } from '../models/productsFormModel';
@@ -33,8 +33,8 @@ export class AddComponent implements OnInit {
   declareForm():void{
     this.formData = this.fb.group({
       name:[,[Validators.required]],
-      // rawMaterial:[,[Validators.required]],
-      // amount:[,[Validators.required]],
+      rawMaterial:[,[Validators.required]],
+      amount:[,[Validators.required]],
     })
   }
 
@@ -52,10 +52,11 @@ export class AddComponent implements OnInit {
     this.isDisabled = true;
 
     const form: ProductsFormModel = this.formData.getRawValue();
-    const createInventoryDto: CreateProductsDto = this.productsTransformService.toUpdateInventoryDto(form);
+    const createInventoryDto: CreateProductsDto = this.productsTransformService.toCreateProductsDto(form);
 
     let request:ProductsFormModel = {
       name:this.formData.value.name,
+      recipes:this.formData.value.recipes
       // id:this.formData.value.id
     }
 

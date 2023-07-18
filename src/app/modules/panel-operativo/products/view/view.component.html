@@ -11,7 +11,7 @@
   <!-- <app-toolbar></app-toolbar> -->
   <!-- Tabla -->
   <ng-template appBody>
-    <app-table [columns]="columnsTable" [values]="listItems">
+    <app-table [columns]="columnsTable" [values]="rowsTable">
       <ng-template appCaption let-table>
         <div class="grid grid-nogutter">
           <app-button-register class="col-3" [routerLink]="['./add']">

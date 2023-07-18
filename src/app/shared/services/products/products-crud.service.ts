@@ -10,14 +10,14 @@ import { HttpService } from '@core/services/http.service';
 })
 export class ProductsCrudService {
 
-  url='';
+  url='/products';
   constructor(private http:HttpService) { }
 
   create(body:CreateProductsDto):Observable<ProductsResponse> {
     return this.http.post(this.url,body)
   }
   update(body: Partial <UpdateProductsDto>, id: string): Observable<ProductsResponse>{
-    return this.http.put(`${this.url}/${id}`, body);
+    return this.http.patch(`${this.url}/${id}`, body);
   }
   updateStatus(body: Partial <UpdateProductsDto>, id: string): Observable<ProductsResponse>{
     return this.http.patch(`${this.url}/status/${id}`, body);

@@ -6,6 +6,7 @@ import { ProductsFormComponent } from './products-form/products-form.component';
 import { ViewComponent } from './view/view.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductsRoutes } from './products.routing';
+import { RecipesComponent } from './products-form/recipes/recipes.component';
 
 
 
@@ -14,7 +15,8 @@ import { ProductsRoutes } from './products.routing';
     AddComponent,
     EditComponent,
     ProductsFormComponent,
-    ViewComponent
+    ViewComponent,
+    RecipesComponent
   ],
   imports: [
     CommonModule,

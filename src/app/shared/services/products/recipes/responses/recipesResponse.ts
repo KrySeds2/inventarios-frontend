@@ -1,13 +1,8 @@
 import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/rawMaterialsResponse";
 
-export interface ProductsResponse {
-  name:string;
+export interface RecipesResponse {
   id:string;
-  status:boolean;
-  orderStatus:string;
-  recipes:RecipesModel;
-}
-export interface RecipesModel{
   material:RawMaterialsResponse;
   amount_to_use:number;
+  delete:string;
 }
