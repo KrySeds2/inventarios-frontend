@@ -1,0 +1,6 @@
+
+<span class="p-float-label">
+    <textarea pInputTextarea [(ngModel)]="value"  
+    (blur)="_onTouched()" (change)="onChange($event)" [autoResize]="true" style="width: 100%;"></textarea>
+    <label for="textarea">{{label}}</label>
+</span>

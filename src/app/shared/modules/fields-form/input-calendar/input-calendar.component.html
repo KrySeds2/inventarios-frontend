@@ -1,0 +1,22 @@
+<span class="p-fluid p-float-label">
+    <p-calendar [showIcon]="true" [yearNavigator]="true" [readonlyInput]="false"
+        [(ngModel)]="value"
+        (onSelect)="onChange($event)"
+        (blur)="_onTouched()"
+        hourFormat="24"
+        [showTime]="showTime"
+        [timeOnly]="timeOnly"
+        [disabled]="disabled"
+
+        [dateFormat]="dateFormat"
+        [ngClass]="{'error-border-calendar':ValidSv.validCT(control)}">
+    </p-calendar>
+    <label for="float-input">{{label}}</label>
+</span>
+<div class="error-container">
+    <ng-container *ngIf="ValidSv.validCT(control)">
+        <div *ngIf="ValidSv.validRequiredCT(control)" class="error-message">
+            {{'Requerido'}}
+        </div>
+    </ng-container>
+</div>

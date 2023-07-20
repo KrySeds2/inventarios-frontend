@@ -14,14 +14,14 @@ import { EncrDecrServiceService } from './encr-decr-service.service';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = `${environment.apiUrl}/auth/login`;
+  private url = `${environment.apiLogin}/auth/login`;
   userToken: string;
   public userProfile;
 
   constructor(
     private http: HttpClient,
-    private crypto: EncrDecrServiceService,
-  ) {
+    private crypto:EncrDecrServiceService,
+    ) {
     this.getUserToken();
   }
 
@@ -30,19 +30,13 @@ export class AuthService {
    * @returns {void}
    */
   public logout() {
-    this.http.patch(environment.apiUrl+'/users/user-logged-out/', {}, this.getOptions()).subscribe(
-      () => {
-
-      }
-    );
     localStorage.removeItem('token');
-    localStorage.removeItem('access');
   }
 
-  public login(request: Login): Observable<any> {
+  public login(request: Login):Observable<any> {
     return this.http.post(this.url, request, { observe: 'response' }).pipe(
       map(
-        (resp) => {
+          (resp) => {
           this.saveUserToken(resp.body['access_token']);
           // this.saveUserInfo(resp.body['user']);
           //  await this.saveAccessInfo(resp.body['user']);
@@ -73,8 +67,8 @@ export class AuthService {
    * @param idToken: token del usuario
    */
   saveUserInfo(userModel: UserResponseModel) {
-    let crypData = this.crypto.set(environment.cryptoLocal, JSON.stringify(userModel));
-    localStorage.setItem('userInfo', crypData)
+    let crypData = this.crypto.set(environment.cryptoLocal,JSON.stringify(userModel));
+    localStorage.setItem('userInfo',crypData)
     // this.setupFunctionService.setLocalStorageItem('userInfo',JSON.stringify(userModel))
   }
 
@@ -88,8 +82,6 @@ export class AuthService {
     } else {
       this.userToken = '';
     }
-
-    //console.log(this.userToken);
     return this.userToken;
   }
   /**
@@ -107,39 +99,11 @@ export class AuthService {
     return httpOptions;
   }
 
-  recover(username: string) {
-    return this.http.post(`${environment.apiUrl}/auth/recover`, { username: username })
+  recover(username:string){
+    return this.http.post(`${environment.apiUrl}/auth/recover`,{username:username})
   }
-  recoverValidator(username: string, code: string) {
-    return this.http.post(`${environment.apiUrl}/auth/recover/validator`, { username: username, code: code })
-  }
-
-  public isAuthenticated(): boolean {
-    if (this.getUserToken().length < 2) {
-      return false;
-    }
-    if (this.getTokenExpirationDate(this.getUserToken()) <= new Date()) {
-      return false;
-    } else {
-      return true;
-    }
-
-  }
-
-  private getTokenExpirationDate(token: string): Date {
-
-    const DECODED = jwt_decode(token);
-    //console.log('DECODED', DECODED);
-
-    if (DECODED.exp === undefined) {
-      return null;
-    }
-
-    const DATE = new Date(0);
-
-    DATE.setUTCSeconds(DECODED.exp);
-
-    return DATE;
+  recoverValidator(username:string,code:string){
+    return this.http.post(`${environment.apiUrl}/auth/recover/validator`,{username:username,code:code})
   }
 
 }

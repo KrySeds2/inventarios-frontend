@@ -1,55 +1,82 @@
 <mat-sidenav-container  fullscreen>
   <mat-sidenav  #sidenav mode="side" opened >
-    <mat-toolbar color="primary">
-      <img src="../assets/img/inventories.png" class="imageLogo" />
+    <mat-toolbar color="primary" style="justify-content: center;">
+      <img src="../assets/img/inventories.png" style="width: 16rem; height: 4rem;" />
 
     </mat-toolbar>
 
     <mat-nav-list>
-      <a routerLink="./storage-panel/warehouses" mat-list-item (click)="sidenav.open()">
+      <a routerLink="./warehouses" mat-list-item (click)="sidenav.open()">
         <span>Almacenes</span>
       </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a routerLink="./storage-panel/receptions" mat-list-item (click)="sidenav.open()">
+      <a routerLink="./receptions" mat-list-item (click)="sidenav.open()">
         <span>Recepciones</span>
       </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a routerLink="./storage-panel/raw-materials" mat-list-item (click)="sidenav.open()">
+      <a routerLink="./raw-materials" mat-list-item (click)="sidenav.open()">
         <span>Materias Primas</span>
       </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a routerLink="./storage-panel/inventory" mat-list-item (click)="sidenav.open()">
+      <a routerLink="./inventory" mat-list-item (click)="sidenav.open()">
         <span>Inventario</span>
       </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a routerLink="./operating-panel//orders" mat-list-item (click)="sidenav.open()">
+      <a routerLink="./orders" mat-list-item (click)="sidenav.open()">
         <span>Pedidos</span>
       </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a routerLink="./operating-panel/products" mat-list-item (click)="sidenav.open()">
+      <a routerLink="./products" mat-list-item (click)="sidenav.open()">
         <span>Productos</span>
       </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a routerLink="./operating-panel//product-lot" mat-list-item (click)="sidenav.open()">
+      <a routerLink="./product-lot" mat-list-item (click)="sidenav.open()">
         <span>Lote de productos</span>
       </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a routerLink="./operating-panel/product-manufacturing" mat-list-item (click)="sidenav.open()">
+      <a routerLink="./product-manufacturing" mat-list-item (click)="sidenav.open()">
         <span>Fabricacion de pedido</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-toolbar color="primary">
-    <div clas></div>
-    <i class="pi pi-bars" (click)="sidenav.toggle()" style="font-size: 2rem"></i>
-    <img src="../assets/img/salir.png" class="imageSalir" />
+  <mat-toolbar >
+    <i class="pi pi-bars" (click)="sidenav.toggle()" style="font-size: 2rem; cursor: pointer; color: white;"></i>
+    <ul class="navbar-nav ml-auto">
+      <!-- <li class="nav-item"> -->
+        <div class="nav-link profile" #actualTarget (click)="op.toggle($event,actualTarget)">
+          <div class="userInfo">
+            <div class="userName">
+              <span>{{userName}}</span>
+            </div>
+            <div class="userRole">
+              <span>{{profile[1]}}</span>
+            </div>
+          </div>
+          <!-- <div class="arrowbtn">
+            <i class="fas fa-chevron-down"></i>
+          </div> -->
+          <div class="userImage">
+            <img src="{{userImage}}" style="margin: auto;">
+            <div class="icon">
+              <i class="fas fa-user user-icon"></i>
+            </div>
+          </div>
+
+        </div>
+      <!-- </li> -->
+    </ul>
+    <div class="icon">
+      <i class="fas fa-door-open "  (click)="logout()"  style="font-size: 2.5rem; color: white; cursor: pointer;" ></i>
+    </div>
+    <!-- <i class="pi pi-bars" (click)="sidenav.toggle()" style="font-size: 2rem"></i> -->
+    <!-- <img src="../assets/img/salir.png" class="imageSalir" /> -->
 
   </mat-toolbar>
   <!-- <app-breadcrumbs class="grid"></app-breadcrumbs> -->

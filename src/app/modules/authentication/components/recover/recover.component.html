@@ -1,1 +1,121 @@
-<p>recover works!</p>
+<div class="card-container">
+    <p-card header="{{cardHeader}}" [style]="{'width': '30rem', 'margin-bottom': '2em'}">
+        <ng-template pTemplate="header">
+            <div  class="image-container">
+                <img alt="Card" src="../../../../../assets/image/loginbackground.jpg">
+            </div>
+        </ng-template>
+
+        <div *ngIf="currentStep == 1 && !loading">
+          <p>Ingrese su nombre de usaurio y si existe le enviaremos un codigo de confirmación.</p>
+          <form [formGroup]="formDataUser" (ngSubmit)="generateCode()">
+              <span class="p-fluid p-float-label" >
+                  <input id="float-input" type="text" size="30" pInputText formControlName="username"
+                  [ngClass]="{'error-border':validateErrors.valid(formDataUser,'username')}"
+                  >
+                  <label for="float-input">Nombre de usuario.</label>
+                </span>
+          <div class="error-container">
+              <ng-container *ngIf="validateErrors.valid(formDataUser,'username')">
+                <div *ngIf="validateErrors.validRequired(formDataUser,'username')"
+                  class="error-message">
+                  Es requerido.
+                </div>
+              </ng-container>
+            </div>
+          <div class="button-container">
+              <button pButton pRipple type="button" label="Cancelar" class="p-button-secondary" (click)="cancel()"></button>
+              <button pButton pRipple type="submit" label="Siguiente"></button>
+          </div>
+      </form>
+        </div>
+
+        <div *ngIf="currentStep == 2 && !loading">
+          <p>Ingrese su codigo de recuperación para desbloquear su cuenta.</p>
+          <form [formGroup]="formDataCode" (ngSubmit)="validateCode()">
+              <span class="p-fluid p-float-label" >
+                  <input id="float-input" type="text" size="30" pInputText formControlName="code"
+                  [ngClass]="{'error-border':validateErrors.valid(formDataCode,'code')}"
+                  >
+                  <label for="float-input">codigo de verificación.</label>
+                </span>
+          <div class="error-container">
+              <ng-container *ngIf="validateErrors.valid(formDataCode,'code')">
+                <div *ngIf="validateErrors.validRequired(formDataCode,'code')"
+                  class="error-message">
+                  Es requerido.
+                </div>
+              </ng-container>
+            </div>
+          <div class="button-container">
+              <button pButton pRipple type="button" label="Cancelar" class="p-button-secondary" (click)="cancel()"></button>
+              <button pButton pRipple type="submit" label="Siguiente"></button>
+          </div>
+      </form>
+        </div>
+
+        <div *ngIf="currentStep == 3 && !loading">
+          <p>Ingrese su nueva contraseña.</p>
+          <form [formGroup]="formDataPassword" (ngSubmit)="updatePassword()" class="grid">
+            <div class="grid col-12 fieldForm" style="display: flex; justify-content: center;">
+
+
+                    <!--password-->
+        <div class="col-12">
+          <span class="p-float-label p-fluid">
+            <p-password inputId="password" formControlName="password" autocomplete="new-password"
+            [ngClass]="{'error-border':validateErrors.valid(formDataPassword,'user','password')}" [toggleMask]="true">
+            </p-password>
+            <label for="password" style="top: -.75rem;
+            font-size: 12px;">Contraseña</label>
+          </span>
+
+          <div class="error-container">
+            <ng-container *ngIf="validateErrors.valid(formDataPassword,'password')">
+              <div *ngIf="validateErrors.validRequired(formDataPassword,'password')" class="error-message">
+                Es requerido
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <!--confirm password-->
+        <div class="col-12">
+          <span class="p-float-label p-fluid">
+            <p-password inputId="password" formControlName="passwordConfirm" autocomplete="new-password"
+            [ngClass]="{'error-border':validateErrors.valid(formDataPassword,'passwordConfirm')}" [toggleMask]="true">
+            </p-password>
+            <label for="password" style="top: -.75rem;
+            font-size: 12px;">Confirmar contraseña</label>
+          </span>
+          <div class="error-container">
+            <ng-container *ngIf="validateErrors.valid(formDataPassword,'passwordConfirm')">
+              <div *ngIf="validateErrors.validRequired(formDataPassword,'passwordConfirm')" class="error-message">
+                Es requerido
+              </div>
+              <div *ngIf="validateErrors.validError(formDataPassword,'noEqual','passwordConfirm')" class="error-message">
+                Las contraseñas con coinciden
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+
+
+          <div class="button-container">
+              <button pButton pRipple type="button" label="Cancelar" class="p-button-secondary" (click)="cancel()"></button>
+              <button pButton pRipple type="submit" label="Siguiente"></button>
+          </div>
+          </div>
+      </form>
+        </div>
+
+        <div class="text-center">
+          <p-progressSpinner *ngIf="loading"></p-progressSpinner>
+        </div>
+
+
+
+
+    </p-card>
+</div>
+

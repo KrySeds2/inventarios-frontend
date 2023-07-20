@@ -1,0 +1,21 @@
+<span style="position: relative;">
+    <label for="float-input">{{label}}</label>
+    <div style="display: flex;" id="float-input">
+        <input type="number" min="0" max="255" pInputText id="rgb1" [(ngModel)]="rgb1" (keyup)="setHex()" class="rgb"
+            [ngModelOptions]="{standalone: true}" [ngClass]="{'error-border':ValidSv.validControl(control)}" [disabled]="disabled"  (blur)="_onTouched()">
+        <input type="number" min="0"  max="255"  pInputText id="rgb2" [(ngModel)]="rgb2" (keyup)="setHex()" class="rgb"
+            [ngModelOptions]="{standalone: true}" [ngClass]="{'error-border':ValidSv.validControl(control)}" [disabled]="disabled"  (blur)="_onTouched()">
+        <input type="number" min="0" max="255" pInputText id="rgb3" [(ngModel)]="rgb3" (keyup)="setHex()" class="rgb"
+            [ngModelOptions]="{standalone: true}" [ngClass]="{'error-border':ValidSv.validControl(control)}" [disabled]="disabled"  (blur)="_onTouched()">
+    </div>
+    <input [ngClass]="{'error-border':ValidSv.validControl(control)}" type="text" size="30" pInputText
+        [(ngModel)]="hexValue" [ngModelOptions]="{standalone: true}" (keyup)="setRgb()" class="hexadecimal" [disabled]="disabled"  (blur)="_onTouched()" >
+    <p-colorPicker class="color" (onChange)="setColor($event)"  [(ngModel)]="hexValue" [ngClass]="{'error-border-color':ValidSv.validControl(control)}" [disabled]="disabled"   (blur)="_onTouched()" ></p-colorPicker>
+</span>
+<div class="error-container">
+    <ng-container *ngIf="ValidSv.validControl(control)">
+        <span *ngIf="ValidSv.validRequiredCT(control)" class="error-message">
+            Requerido.
+        </span>
+    </ng-container>
+</div>

@@ -1,0 +1,23 @@
+.erro404{
+  background-image: url('/assets/source/image/TAS360_404.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+.errorTitle{
+   position: absolute; bottom: 30px; right: 15%;
+   text-align: right;
+  .status{
+    font-size: 9rem;
+    font-weight: 600;
+    line-height: 9rem;
+  }
+  p{
+    color: white;
+    font-size: 3rem;
+    line-height: 3rem;
+    margin: 0px;
+  }
+}

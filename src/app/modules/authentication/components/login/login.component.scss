@@ -1,0 +1,263 @@
+// .backgroundguide {
+//     background-image: url("../../../../../assets/image/0001.jpg");
+//     min-height: 100vh;
+//     background-size: contain;
+//     background-repeat: repeat-x;
+//     background-position: center;
+// }
+
+.background {
+  background-image: url('/assets/source/image/loginbackground.jpg');
+
+  background-size: cover;
+}
+
+
+:host::ng-deep .p-card-header{
+  background-color: var(--CP001);
+  height: 57px;
+}
+:host::ng-deep .p-card{
+  margin-top: 111px;
+  background-color:rgba(42, 59, 87, 0.9)
+
+}
+.logo{
+  margin-top: 56px;
+  text-align: center;
+}
+.logo img{
+  width: 100%;
+}
+.logo span{
+  font-size: 12px;
+}
+.form{
+  margin-top: 80px;
+}
+:host::ng-deep .p-inputtext{
+  height: 42px;
+  border-radius: 6px;
+}
+:host::ng-deep .p-float-label>label{
+  left: 1em;
+}
+
+.password{
+  margin-top: 50px;
+}
+
+:host::ng-deep .p-button{
+  width: 80%;
+  height: 42px;
+  margin-left: 10%;
+}
+.submit{
+  margin-top: 36px;
+}
+.error{
+  padding-top: 5px;
+  text-align: center;
+}
+.error p{
+  color: var(--CT001);
+}
+
+.error a{
+    color: var(--CT001);
+    cursor: pointer;
+  }
+
+.licence{
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+  color:var(--CP002)
+}
+
+@media (max-width: 640px) {
+  .background{
+      min-height: calc(100vh - 55px);
+  }
+  :host::ng-deep .p-card-header{
+      height: 38px;
+  }
+  :host::ng-deep .p-card{
+      min-height: calc(100vh - 70px);
+      margin-top: 0px;
+  }
+  .logo{
+      margin-top: 20px;
+  }
+  .logo span{
+      font-size: 8px;
+  }
+  .form{
+      margin-top: 50px;
+  }
+  :host::ng-deep .p-inputtext{
+      height: 35px;
+      border-radius: 5px;
+  }
+  :host::ng-deep .p-float-label>label{
+      font-size: 12px;
+  }
+  .password{
+      margin-top: 33px;
+  }
+  :host::ng-deep .p-button{
+      width: 80%;
+      height: 35px;
+      margin-left: 10%;
+  }
+  .submit{
+      margin-top: 23px;
+  }
+  :host::ng-deep .p-button.p-button-text-only .p-button-text {
+      font-size: 12px;
+  }
+
+  .error p, .error p a{
+      font-size: 10px;
+  }
+}
+
+@media (min-width: 641px) {
+  .background{
+      min-height: calc(100vh - 55px);
+  }
+  :host::ng-deep .p-card{
+      min-height: calc(100vh - 70px);
+      margin-top: 0px;
+  }
+  //123
+  .logo{
+      margin-top: 10px;
+  }
+  .logo span{
+      font-size: 8px;
+  }
+  .form{
+      margin-top: 50px;
+  }
+  :host::ng-deep .p-inputtext{
+      height: 35px;
+      border-radius: 5px;
+  }
+  :host::ng-deep .p-float-label>label{
+      font-size: 12px;
+  }
+  .password{
+      margin-top: 33px;
+  }
+  :host::ng-deep .p-button{
+      width: 80%;
+      height: 35px;
+      margin-left: 10%;
+  }
+  .submit{
+      margin-top: 23px;
+  }
+  :host::ng-deep .p-button.p-button-text-only .p-button-text {
+      font-size: 12px;
+  }
+
+  .error p, .error p a{
+      font-size: 10px;
+  }
+  //123
+
+}
+@media (min-width: 1025px) {
+  .background{
+      min-height: calc(100vh - 30px);
+  }
+  :host::ng-deep .p-card-header{
+      height: 38px;
+  }
+  :host::ng-deep .p-card{
+      min-height: 415px;
+      margin-top: 74px;
+  }
+  .logo{
+      margin-top: 32px;
+  }
+  .logo span{
+      font-size: 8px;
+  }
+  .form{
+      margin-top: 50px;
+  }
+  :host::ng-deep .p-inputtext{
+      height: 30px;
+      border-radius: 5px;
+  }
+  :host::ng-deep .p-float-label>label{
+      font-size: 12px;
+  }
+  .password{
+      margin-top: 33px;
+  }
+  :host::ng-deep .p-button{
+      width: 80%;
+      height: 27px;
+      margin-left: 10%;
+  }
+  .submit{
+      margin-top: 23px;
+  }
+  :host::ng-deep .p-button.p-button-text-only .p-button-text {
+      font-size: 12px;
+  }
+
+  .error p, .error p a{
+      font-size: 10px;
+  }
+
+}
+
+@media (min-width: 1441px) {
+  .background{
+      min-height: calc(100vh - 55px);
+  }
+  :host::ng-deep .p-card-header{
+      height: 57px;
+  }
+  :host::ng-deep .p-card{
+      min-height: 610px;
+      margin-top: 111px;
+  }
+  .logo{
+      margin-top: 56px;
+  }
+  .logo span{
+      font-size: 12px;
+  }
+
+  :host::ng-deep .p-inputtext{
+      height: 42px;
+      border-radius: 6px;
+  }
+  :host::ng-deep .p-float-label>label{
+      font-size: 14px;
+  }
+  .password{
+      margin-top: 50px;
+  }
+  :host::ng-deep .p-button{
+      width: 80%;
+      height: 42px;
+      margin-left: 10%;
+  }
+  .submit{
+      margin-top: 36px;
+  }
+  :host::ng-deep .p-button.p-button-text-only .p-button-text {
+      font-size: 14px;
+  }
+  .error p, .error p a{
+      font-size: 12px;
+  }
+
+
+}

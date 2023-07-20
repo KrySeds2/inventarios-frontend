@@ -8,6 +8,7 @@ import { PrimengImportModule } from './modules/primeng-import/primeng-import.mod
 import { ButtonsModule } from './modules/buttons/buttons.module';
 import { ComponentsModule } from './components/components.module';
 import { DialogsModule } from './modules/dialogs/dialogs.module';
+import { FieldsFormModule } from './modules/fields-form/fields-form.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DialogsModule } from './modules/dialogs/dialogs.module';
     ButtonsModule,
     ComponentsModule,
     ReactiveFormsModule,
-    DialogsModule
+    DialogsModule,
+    FieldsFormModule
   ], exports: [
     FormsModule,
     TableCustomModule,
@@ -32,6 +34,7 @@ import { DialogsModule } from './modules/dialogs/dialogs.module';
     ComponentsModule,
     ReactiveFormsModule,
     DialogsModule,
+    FieldsFormModule
 
   ]
 })

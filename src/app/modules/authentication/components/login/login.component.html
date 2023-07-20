@@ -1,1 +1,57 @@
-<p>login works!</p>
+<div class="backgroundguide"></div>
+
+<div class="background">
+
+  <div class="grid grid-nogutter">
+    <div class="sm:col-12 md:col-6 lg:col-4 md:col-offset-3 lg:col-offset-4 grid-nogutter">
+      <p-card class="card">
+        <p-header></p-header>
+        <div class="card-container">
+          <div class="grid">
+            <div class="col-6 col-offset-3 logo">
+              <img class="logo_img" src="../../../../../assets/img/inventories.png" alt="">
+            </div>
+          </div>
+
+          <div class="grid grid-nogutter">
+            <form (ngSubmit)="login()" [formGroup]="formLogin" class="col-10
+              col-offset-1 form grid-nogutter">
+
+              <div class="grid grid-nogutter">
+                <span class="p-fluid p-float-label p-fluid col-8 col-offset-2 grid-nogutter">
+                  <app-input formControlName="username" label="Usuario"></app-input>
+                </span>
+              </div>
+              <span class="p-fluid p-float-label p-fluid password col-8 col-offset-2
+                grid-nogutter">
+                <app-input id="password" type="password" maxlength="250" formControlName="password" label="Contraseña"
+                  autocomplete="new-password"></app-input>
+              </span>
+
+              <div class="error" *ngIf="errorLogin">
+                <p>{{'Usuario o contraseña incorrecta' }}</p>
+                <!-- <p>{{libraryTranslate+'dialogs.loginErrors.check' | translate}}
+                  <a>{{libraryTranslate+'dialogs.loginErrors.recover' | translate}}</a></p> -->
+              </div>
+              <div class="error" *ngIf="customError">
+                <a [routerLink]="customErrorData.url">{{customErrorData.message}}</a>
+              </div>
+
+              <div class="button submit col-8 col-offset-2 grid-nogutter">
+                <button pButton id="submit" type="submit" label="Entrar" [disabled]="!formLogin.valid"></button>
+
+                <!-- <app-button-login ></app-button-login> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </p-card>
+
+    </div>
+  </div>
+</div>
+
+
+<tas-footer></tas-footer>
+
+<app-loading #displayLoading></app-loading>

@@ -1,0 +1,11 @@
+<div class="container">
+    <label for="upload_image" class="container-image">
+        <img [attr.src]="source">
+        <input (change)="previewImg($event)" #file id="upload_image" type="file" style="display:none"
+            accept="image/gif, image/jpeg, image/png" />
+            <i class="fa-solid fa-camera" style="font-size: 3rem;" ></i>
+    </label>
+    <div>
+        {{errors_}}
+    </div>
+</div>

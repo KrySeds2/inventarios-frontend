@@ -1,0 +1,21 @@
+<div style="width: 100%;">
+    <span class="p-float-label">
+        <p-dropdown [placeholder]=" '--' " [options]="options" id="{{formControlName}}"
+            [disabled]="disabled"
+            [ngClass]="{'error-border_dropdown':validService.validCT(control)}" (onChange)="onChange($event)"
+            [appendTo]="appendTo"
+            [(ngModel)]="value">
+        </p-dropdown>
+        <label for="{{formControlName}}">{{ label }}</label>
+    </span>
+    <div class="error-container" style="text-align: left;">
+        <ng-container *ngIf="validService.validCT(control)">
+            <span *ngIf="validService.validRequiredCT(control)" class="error-message">
+                {{'Requerido' }}
+            </span>
+            <ng-content>
+
+            </ng-content>
+        </ng-container>
+    </div>
+</div>

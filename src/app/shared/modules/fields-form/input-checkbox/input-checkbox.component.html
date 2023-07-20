@@ -1,0 +1,19 @@
+<div>
+    <span class="p-float-label switch">
+      <!-- <input id="{{formControlName}}" type="{{type}}" size="30" pInputText  autocomplete="new-{{formControlName}}" (input)="onChange($event)" (blur)="onTouched()"
+        [ngClass]="{'error-border':ValidSv.validCT(control)}" [value]="value" [disabled]="disabled"> -->
+        <p-inputSwitch id="{{formControlName}}" (onChange)="onChange($event)" [disabled]="disabled" (blur)="onTouched()"  [ngClass]="{'error-border':ValidSv.validCT(control)}"  [(ngModel)]="value" ></p-inputSwitch>
+        <label for="{{formControlName}}" >{{ label }}</label>
+    </span>
+    <div class="error-container">
+      <ng-container *ngIf="ValidSv.validCT(control)">
+        <span *ngIf="ValidSv.validRequiredCT(control)" class="error-message">
+          Requerido.
+        </span>
+        <span *ngIf="ValidSv.validErrorCT(control, 'minlength')" class="error-message">Mínimo {{control.getError('minlength').requiredLength}} Caracteres.</span>
+        <span *ngIf="ValidSv.validErrorCT(control, 'maxlength')" class="error-message">Máximo {{control.getError('maxlength').requiredLength}} Caracteres.</span>
+        <span *ngIf="ValidSv.validErrorCT(control, 'email')" class="error-message">No es un correo.</span>
+        <ng-content></ng-content>
+      </ng-container>
+    </div>
+  </div>

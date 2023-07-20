@@ -1,0 +1,24 @@
+:host::ng-deep p-colorpicker {
+  width: 100%;
+}
+
+:host::ng-deep p-colorpicker .p-colorpicker {
+  width: 100%;
+}
+
+:host::ng-deep p-colorpicker .p-colorpicker-preview.p-inputtext {
+  width: 100% !important;
+}
+.rgb{
+  width: 33.33%;
+}
+.hexadecimal{
+  width: 100%;
+}
+label{
+  position: absolute;
+  top: -1.3rem;
+  font-size: 12px;
+  left: 0.05rem;
+  color: #6c757d;
+}
