@@ -1,9 +1,9 @@
 export const environment={
   apiUrl: 'http://192.168.0.40:5002/api',
   cryptoLocal: '-KaPdSgVkYp3s5v8y/B?E(H+MbQeThWm',
-  noImage:'/assets/img/inventories.jpg',
+  noImage:'/assets/img/usuario.jpg',
   image: `http://localhost:3000/files/images/url/`,
-  apiLogin:'',
+  apiLogin:'http://192.168.0.40:5002/api',
   defaultImage: 'assets/image/default-image.jpg',
   production: false,
 }
