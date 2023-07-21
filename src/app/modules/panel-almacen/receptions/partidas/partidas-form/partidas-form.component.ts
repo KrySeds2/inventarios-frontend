@@ -74,14 +74,14 @@ export class PartidasFormComponent implements OnInit {
     private fb:FormBuilder
   ) {
     this.getMateriaPrima();
-    this.declareForm();
+    // this.declareForm();
   }
-  declareForm(): void {
-    this.formData = this.fb.group({
-      rawMaterial: [, [Validators.required]],
-      amount: [, [Validators.required]],
-    })
-  }
+  // declareForm(): void {
+  //   this.formData = this.fb.group({
+  //     rawMaterial: [, [Validators.required]],
+  //     amount: [, [Validators.required]],
+  //   })
+  // }
   ngAfterViewInit(): void {
     this.getItemsOfTable();
 

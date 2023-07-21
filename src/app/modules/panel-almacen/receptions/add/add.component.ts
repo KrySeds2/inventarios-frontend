@@ -36,8 +36,8 @@ export class AddComponent implements OnInit {
     this.formData = this.fb.group({
       folio: [, [Validators.required]],
       arrivalDate: [, [Validators.required]],
-      // rawMaterial: [, [Validators.required]],
-      // amount: [, [Validators.required]],
+      rawMaterial: [, [Validators.required]],
+      amount: [, [Validators.required]],
 
     })
   }
