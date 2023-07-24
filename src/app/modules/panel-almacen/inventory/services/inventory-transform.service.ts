@@ -13,9 +13,9 @@ export class InventoryTransformService {
 
   toCreateInventoryDto(form: InventoryFormModel): CreateInventoryDto {
     return {
-      warehId: [form.wareh],
-      shelfId: [form.shelf],
-      rawMaterialId: [form.rawMaterial_],
+      warehId: [form.warehId],
+      shelfId: [form.shelfId],
+      rawMaterialId: [form.rawMaterialId],
       idpackage: form.idpackage,
       amount: form.amount,
       dateOfExpiry: form.dateOfExpiry
@@ -24,9 +24,9 @@ export class InventoryTransformService {
 
   toUpdateInventoryDto(form: InventoryFormModel): Partial<UpdateInventoryDto> {
     return {
-      warehId:[form.wareh],
-      shelfId:[form.shelf],
-      rawMaterialId:[form.rawMaterial_],
+      warehId:[form.warehId],
+      shelfId:[form.shelfId],
+      rawMaterialId:[form.rawMaterialId],
       idpackage: form.idpackage,
       amount: form.amount,
       dateOfExpiry: form.dateOfExpiry,
@@ -36,17 +36,17 @@ export class InventoryTransformService {
 
  toInventoryFormModel(response:InventoryResponse):InventoryFormModel{
     return{
-      wareh:{
+      warehId:{
         id:response.wareh.id,
         name:response.wareh.name,
         shelves:response.wareh.shelves
       },
-      shelf:{
+      shelfId:{
        id:response.shelf.id,
        name:response.shelf.name,
        status:response.shelf.status
       },
-      rawMaterial_:{
+      rawMaterialId:{
         name:response.rawMaterial_.name,
         scaneId:response.rawMaterial_.scaneId,
         status:response.rawMaterial_.status,

@@ -93,32 +93,37 @@ export class InventoryComponent implements OnInit {
     this.setResume();
   }
 
-  getItemsOfTable():void{
+  getItemsOfTable(): void {
     this.inventoryCrudService.getAll().subscribe(
       (response) => {
         this.listOfInventoryResponse = response;
         console.log(response);
         this.rowsTable = response.map(
           (row, index) => {
+            console.log(row?.shelf?.name);
+            console.log(row?.rawMaterial_?.name);
+            console.log(row?.wareh?.name);
+            console.log(row?.amount);
             return {
               index: index + 1,
               id: row.id,
               status: row.status,
               shelf: row?.shelf.name,
-              rawMaterial_:row?.rawMaterial_.name,
+              rawMaterial_: row?.rawMaterial_.name,
               idpackage: row.idpackage,
-              amount:row.amount,
-              dateOfExpiry:row.dateOfExpiry,
-              wareh:row?.wareh.name
+              amount: row.amount,
+              dateOfExpiry: row.dateOfExpiry,
+              wareh: row?.wareh.name
             };
           }
-          );
-          this.setResume();
-          this.loadingComponent.setDisplay(false);
-        }, error => {
-          this.loadingComponent.setDisplay(false);
-        }
-      );
+        );
+        this.setResume();
+        this.loadingComponent.setDisplay(false);
+      },
+      error => {
+        this.loadingComponent.setDisplay(false);
+      }
+    );
   }
 
   selectedEditConfirm(item: InventoryRow): void {
