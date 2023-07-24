@@ -10,7 +10,7 @@ import { UpdateUserProfile } from './requests/updateUserProfile';
   providedIn: 'root'
 })
 export class UsersService {
-  url: string = '/users';
+  url: string = '/user';
   constructor(private http: HttpService) { }
 
   create(body: CreateUserRequests){

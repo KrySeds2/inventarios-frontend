@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     this.loadingComponent.setDisplay(true);
     let { username, password } = this.formLogin.value;
     this.user = {
-      email: username,
+      username: username,
       password
     }
 

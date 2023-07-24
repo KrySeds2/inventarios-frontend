@@ -14,7 +14,7 @@ import { EncrDecrServiceService } from './encr-decr-service.service';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = `${environment.apiLogin}/auth/login`;
+  private url = `${environment.apiLogin}/user/login`;
   userToken: string;
   public userProfile;
 
