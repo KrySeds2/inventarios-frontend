@@ -1,0 +1,74 @@
+<app-main-container>
+
+  <div class="grid grid-container " [formGroup]="formData">
+    <ng-template appHeader>
+      <app-title [data]="{
+        header:'Materia prima utilizada',
+        subHeader:''
+      }"></app-title>
+    </ng-template>
+    <ng-template appBody>
+      <div class="col-12"></div>
+      <div class="col-12 md:col-3">
+        <span class="p-fluid p-float-label">
+          <input id="float-input" type="text" size="30" pInputText formControlName="loteCode"
+            [ngClass]="{'error-border':validateErrors.valid(formData,'loteCode')}" name="loteCode">
+          <label for="float-input">Codigo de lote</label>
+        </span>
+        <div class="error-container">
+          <ng-container *ngIf="validateErrors.valid(formData,'loteCode')">
+            <div *ngIf="validateErrors.validRequired(formData,'loteCode')" class="error-message">
+              {{'campo requerido' }}
+            </div>
+            <!-- <div *ngIf="validateErrors.validAlreadyTaken(formData, 'loteCode')" class="error-message">
+              {{'Este nombre ya esta registrado'}}
+            </div> -->
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-12 grid-container ">
+        <app-title [data]="{
+          header:'',
+          subHeader:'Materia prima utilizada'
+        }"></app-title>
+        <div class="col-12"></div>
+
+      </div>
+      <app-table [columns]="columnsTable" [values]="rowsTable">
+        <!-- <ng-template appCaption let-table> -->
+          <!-- <div class="grid grid-nogutter">
+            <app-button-register class="col-3" [routerLink]="['./add']">
+            </app-button-register>
+          </div> -->
+        <!-- </ng-template> -->
+        <ng-template appColGroup>
+        </ng-template>
+        <ng-template appBody let-item let-i="rowIndex" let-column="column">
+          <ng-container [ngSwitch]="column.field">
+            <!-- <ng-container *ngSwitchCase="'edit'">
+              <t-edit (active)="dialogConfirmEdit.setDisplay(true,item)"></t-edit>
+            </ng-container>
+            <ng-container *ngSwitchCase="'status'">
+              <t-status
+              [checked]="item.status"
+              (active)="dialogConfirmStatus.setDisplay(true,item)">
+              </t-status>
+            </ng-container>
+            <ng-container *ngSwitchCase="'delete'">
+              <t-delete (click)="dialogConfirmDelete.setDisplay(true,item)"></t-delete>
+            </ng-container>
+            <ng-container *ngSwitchCase="'view'">
+              <t-view [routerLink]="['./raw-materials-used']" ></t-view>
+            </ng-container> -->
+          </ng-container>
+        </ng-template>
+      </app-table>
+      <div class="col-12" style="text-align: end;">
+        <button pButton type="button"  label="Regresar" class="p-button-secondary"
+        style="margin-top:10px" [routerLink]="['../']"  [disabled]="disabled"></button>
+      </div>
+
+    </ng-template>
+  </div>
+
+</app-main-container>
