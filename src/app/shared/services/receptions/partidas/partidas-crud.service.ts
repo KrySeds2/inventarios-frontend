@@ -17,7 +17,7 @@ export class PartidasCrudService {
   }
 
   update(body: Partial<UpdatePartidasDto>, id: string): Observable<PartidasResponse> {
-    return this.http.put(`${this.url}/${id}`, body);
+    return this.http.patch(`${this.url}/${id}`, body);
   }
 
   delete(id: string): Observable<any> {

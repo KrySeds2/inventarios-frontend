@@ -7,7 +7,6 @@ import { ProductLotFormComponent } from './product-lot-form/product-lot-form.com
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductLotRoutes } from './product-lot.routing';
 import { RecipesComponent } from './product-lot-form/recipes/recipes.component';
-import { RawMaterialsUsedComponent } from './raw-materials-used/raw-materials-used.component';
 
 
 
@@ -18,7 +17,7 @@ import { RawMaterialsUsedComponent } from './raw-materials-used/raw-materials-us
     ViewComponent,
     ProductLotFormComponent,
     RecipesComponent,
-    RawMaterialsUsedComponent
+
   ],
   imports: [
     CommonModule,

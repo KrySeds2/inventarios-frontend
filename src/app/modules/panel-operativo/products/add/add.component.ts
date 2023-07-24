@@ -56,7 +56,7 @@ export class AddComponent implements OnInit {
 
     let request:ProductsFormModel = {
       name:this.formData.value.name,
-      recipes:this.formData.value.recipes
+      recipeId:this.formData.value.recipeId
       // id:this.formData.value.id
     }
 

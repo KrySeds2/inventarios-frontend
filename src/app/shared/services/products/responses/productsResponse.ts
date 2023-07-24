@@ -5,7 +5,7 @@ export interface ProductsResponse {
   id:string;
   status:boolean;
   orderStatus:string;
-  recipes:RecipesModel;
+  recipeId:RecipesModel;
 }
 export interface RecipesModel{
   material:RawMaterialsResponse;

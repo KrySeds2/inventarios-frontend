@@ -34,7 +34,7 @@
   </div>
 
   <div class="col-12 md:col-2" style="padding-top: 22px;">
-    <button pButton pRipple type="button" [label]="buttonLabel" [style.background-color]="buttonColor" (click)="assignPartida() " ></button>
+    <button pButton pRipple type="button" [label]="isEditConfirmSelected ? 'Actualizar' : 'Asignar'" [style.background-color]="buttonColor" (click)="isEditConfirmSelected ? editPartida() : assignPartida()"></button>
   </div>
   <div class="col-12 md:col-12">
     <app-table [paginator]="false"  [columns]="columnsTable" [values]="rowsTable">

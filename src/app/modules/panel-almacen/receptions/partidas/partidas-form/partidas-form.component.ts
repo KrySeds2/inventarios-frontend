@@ -15,6 +15,8 @@ import { Partidas, ReceptionsFormModel } from '../../models/receptionsFormModel'
 import { CreatePartidasDto } from '@shared/services/receptions/partidas/requests/createPartidasDto';
 import { PartidasTransformService } from '../../services/partidas-transform.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Utils } from '@shared/services/common/utils';
+import { PartidasFormModel } from '../../models/partidasFormModel';
 @Component({
   selector: 'app-partidas-form',
   templateUrl: './partidas-form.component.html',
@@ -27,12 +29,16 @@ export class PartidasFormComponent implements OnInit {
   isEditButtonClicked: boolean = false;
   isDisabled: boolean = false;
   globalindex: any = null;
+  id: string;
   buttonLabel: string = 'Agregar'
+  selectedId: string;
+  isEditConfirmSelected: boolean = false;
   buttonColor:string='#22c55e'
   @ViewChild('dialogError') dialogError: DialogErrorComponent;
   @ViewChild('dialogSuccess') dialogSuccess: DialogConfirmComponent;
   @ViewChild('dialogLoading') loadingComponent: LoadingComponent;
   @ViewChild('submitError') submitError: DialogErrorComponent;
+  @ViewChild('dialogLoading') dialogLoading: LoadingComponent;
   rowsTable: PartidasRow[] = [];
   columnsTable: TableHead<PartidasRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
@@ -174,32 +180,62 @@ export class PartidasFormComponent implements OnInit {
     })
   }
 
-  selectedEditConfirm(item){
-    console.log(item);
-    let index = item.index;
-    let value: PartidasRow = item.item
-    this.globalindex = index;
-    let partidas : Partidas
+  editPartida(): void {
+    console.log(this.formData.value);
 
-    this.listOfPartidasResponse.forEach(element => {
-      if(element.id.toUpperCase() === value.id.toUpperCase()){
-        partidas= element
+    // if (this.formData.invalid) {
+    //   this.formData.markAllAsTouched();
+    //   return;
+    // }
+    this.dialogLoading.setDisplay(true);
+    // const form: ShiftsFormModel = this.formData.getRawValue();
+    const request=this.partidasTransformService.toUpdatePartidasDto(this.formData.value);
+
+    const form = this.formData.getRawValue();
+    // const request =this.shiftsTransformService.updateShiftsDto(form)
+    const partialRequest = Utils.updatePartial(request);
+
+    this.partidasCrudService.update(partialRequest,this.selectedId).subscribe(
+      (response) => {
+        this.dialogLoading.setDisplay(false);
+        this.dialogSuccess.setDisplay(true, response);
+      }, (error) => {
+        this.dialogLoading.setDisplay(false);
+        this.dialogError.setDisplay(true, error);
+      }
+    );
+  }
+
+  selectedEditConfirm(item) {
+
+    console.log('hola'+item);
+    let index = item.index;
+    let value: PartidasRow = item.item;
+    this.globalindex = index;
+    let partidas: Partidas;
+
+    this.listOfPartidasResponse.forEach((element) => {
+      if (element.id.toUpperCase() === value.id.toUpperCase()) {
+        partidas = element;
       }
     });
 
+    // Obtener el ID del elemento seleccionado
+    const selectedId = item.id; // Asumiendo que item tiene la propiedad 'id'
+    this.selectedId = selectedId;
+    console.log(selectedId);
     setTimeout(() => {
       this.formData.patchValue({
-        amount:value.amount,
-        rawMaterial:value.rawMaterial,
-        index:index
-      })
+        amount: value.amount,
+        rawMaterial: value.rawMaterial,
+        index: index
+      });
       this.getMateriaPrima();
       this.buttonLabel = 'Actualizar';
       this.buttonColor = '#2867ec';
-    })
-
+      this.isEditConfirmSelected = true;
+    });
   }
-
 
 
 }

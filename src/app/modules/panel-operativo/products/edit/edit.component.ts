@@ -53,7 +53,7 @@ export class EditComponent implements OnInit {
     // const form: ShiftsFormModel = this.formData.getRawValue();
     let request:ProductsFormModel = {
     name:this.formData.value.folio,
-    recipes:this.formData.value.recipes
+    recipeId:this.formData.value.recipeId
     }
 
     const form = this.formData.getRawValue();

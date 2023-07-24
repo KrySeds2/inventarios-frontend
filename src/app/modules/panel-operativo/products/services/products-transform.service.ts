@@ -14,21 +14,21 @@ export class ProductsTransformService {
   toCreateProductsDto(form: ProductsFormModel): CreateProductsDto {
     return {
       name: form.name,
-
+      recipeId:form.recipeId
     }
   }
 
   toUpdateProductsDto(form: ProductsFormModel): Partial<UpdateProductsDto> {
     return {
       name: form.name,
-
+      recipeId: form.recipeId
     }
   }
 
  toProductsFormModel(response:ProductsResponse):ProductsFormModel{
     return{
       name:response.name,
-      recipes:response.recipes
+      recipeId:response.recipeId
 
     }
   }

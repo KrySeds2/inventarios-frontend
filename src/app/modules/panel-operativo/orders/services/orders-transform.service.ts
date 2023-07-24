@@ -36,7 +36,7 @@ export class OrdersTransformService {
         id:response.product.id,
         status:response.product.status,
         orderStatus:response.product.orderStatus,
-        recipes:response.product.recipes
+        recipeId:response.product.recipeId
       },
       amount:response.amount,
       id:response.id,

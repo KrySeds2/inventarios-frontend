@@ -1,8 +1,45 @@
-<app-main-container grid-container >
+<app-main-container class="grid-container" >
   <ng-template appHeader>
     <app-title [data]="{
       header:'Fabricacion de pedido',
       subHeader:''
     }"></app-title>
+    <div class="col-12 md:col-5" style="padding-right: 0;">
+      <app-title class="grid-container"[data]="{
+        header:'',
+        subHeader:'Buscar folio del pedido'
+      }"></app-title>
+    </div>
+  </ng-template>
+
+  <ng-template appBody>
+    <div class="col-12 md:col-5" [formGroup]="formData" >
+      <span class="p-fluid p-float-label">
+        <input id="float-input" type="text" size="30" pInputText formControlName="folio"
+          [ngClass]="{'error-border':validateErrors.valid(formData,'folio')}" name="folio">
+          <label for="float-input"> Folio</label>
+      </span>
+      <div class="error-container">
+        <ng-container *ngIf="validateErrors.valid(formData,'folio')">
+          <div *ngIf="validateErrors.validRequired(formData,'folio')" class="error-message">
+            {{'campo requerido' }}
+          </div>
+          <div *ngIf="validateErrors.validAlreadyTaken(formData, 'folio')" class="error-message">
+            {{'Este folio ya existe'}}
+          </div>
+        </ng-container>
+      </div>
+      <div class="" style="text-align: end;">
+        <div class="" >
+          <button pButton type="button"  label="Cancelar" class="p-button-secondary"
+          style="margin-top:10px; margin-right: 10px;" [routerLink]="['../']"  [disabled]="disabled"></button>
+          <button pButton type="button"  label="Buscar" class="p-button-primary"
+          style="margin-top:10px"  [disabled]="disabled"></button>
+        </div>
+
+      </div>
+
+    </div>
+
   </ng-template>
 </app-main-container>

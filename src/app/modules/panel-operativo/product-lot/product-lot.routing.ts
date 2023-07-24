@@ -18,6 +18,10 @@ const routes: Routes = [
     path:'edit/:id',
     component:EditComponent,
    },
+   {
+    path:'raw-materials-used',
+    loadChildren: () => import('../raw-materials-used/raw-materials-used.module').then( mod => mod.RawMaterialsUsedModule)
+  }
 ];
 
 export const ProductLotRoutes = RouterModule.forChild(routes);

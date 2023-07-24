@@ -6,7 +6,7 @@ export interface ProductsFormModel {
   // cantidad:number;
   status?:boolean;
   // id:string;
-  recipes:RecipesModel;
+  recipeId:RecipesModel;
 }
 
 export interface RecipesModel{
