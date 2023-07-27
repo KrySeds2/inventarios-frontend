@@ -1,0 +1,49 @@
+<app-main-container class="grid-container">
+  <ng-template appHeader>
+    <div class="grid">
+      <div class="col-12 md:col-6">
+        <p class="header">Fabricacion de pedido</p>
+      </div>
+      <div class="col-12 md:col-6">
+        <p class="status">Estado: por hacer </p>
+      </div>
+      <div class="hr col-12">
+        <hr>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12 md:col-4">
+        <p class="tri">Pedido: 85634 </p>
+      </div>
+      <div class="col-12 md:col-4">
+        <p class="tri">Cantidad: 2 </p>
+      </div>
+      <div class="col-12 md:col-4">
+        <p class="tri">Producto: PR-02 </p>
+      </div>
+      <div class="hr col-12">
+        <hr>
+      </div>
+    </div>
+
+  </ng-template>
+  <ng-template appBody>
+    <div class="grid grid-container col-12  ">
+      <div class="col-12 md:col-6 hr1">
+        <p class="subheader">Materia prima requerida para fabricar el producto </p>
+        <hr>
+        <form class="grid grid-container col-12 " [formGroup]="formData">
+          <app-product-manufacturing-form [formData]="formData" class="col-12 grid-container"></app-product-manufacturing-form>
+        </form>
+      </div>
+      <div class="col-12 md:col-6 hr1">
+        <p class="subheader">Agregar paquetes de materias primas</p>
+        <hr>
+        <form class="grid grid-container col-12 " [formGroup]="formData">
+          <app-add-pack-raw-materials [formData]="formData" class="col-12 grid-container"></app-add-pack-raw-materials>
+        </form>
+      </div>
+    </div>
+
+  </ng-template>
+</app-main-container>
