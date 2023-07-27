@@ -8,6 +8,7 @@ export interface ProductsResponse {
   recipeId:RecipesModel;
 }
 export interface RecipesModel{
+  id: string
   material:RawMaterialsResponse;
   amount_to_use:number;
 }
