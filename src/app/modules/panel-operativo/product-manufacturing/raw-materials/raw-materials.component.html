@@ -1,0 +1,68 @@
+<app-main-container class="grid-container">
+  <ng-template appHeader>
+    <!-- <app-title [data]="{
+      header:'Materia prima',
+      subHeader:''
+    }"></app-title> -->
+    <div class="grid">
+      <div class="col-12 md:col-4">
+        <p class="one">Materia prima</p>
+      </div>
+      <div class="col-12 md:col-8" style="text-align: end;">
+        <button pButton type="button" label="Imprimir" class="p-button-primary" style="margin-top:10px"></button>
+      </div>
+      <div class="hr col-12" style="padding-bottom: 1rem;">
+        <hr>
+      </div>
+    </div>
+
+  </ng-template>
+  <ng-template appBody>
+    <div class="grid grid-container">
+      <div class="col-12 md:col-4">
+        <p class="tri">Pedido: 85634 </p>
+      </div>
+      <div class="col-12 md:col-4">
+        <p class="tri">Cantidad: 2 </p>
+      </div>
+      <div class="col-12 md:col-4">
+        <p class="tri">Producto: PR-02 </p>
+      </div>
+      <div class="hr col-12" style="padding-bottom: 1rem;">
+        <hr>
+      </div>
+    </div>
+    <div class="grid grid-container">
+      <div class="col-12 md:col-3">
+        <p class="duo">Materia prima: </p>
+      </div>
+      <div class="col-12 md:col-3">
+        <p class="duo">Cantidad requerida: </p>
+      </div>
+      <div class="hr col-12" style="padding-bottom:1rem;">
+        <hr>
+      </div>
+    </div>
+    <app-table [columns]="columnsTable" [values]="rowsTable">
+      <!-- <ng-template appCaption let-table> -->
+      <!-- <div class="grid grid-nogutter">
+          <app-button-register class="col-3" [routerLink]="['./add']">
+          </app-button-register>
+        </div> -->
+      <!-- </ng-template> -->
+      <ng-template appColGroup>
+      </ng-template>
+      <ng-template appBody let-item let-i="rowIndex" let-column="column">
+        <ng-container [ngSwitch]="column.field">
+        </ng-container>
+      </ng-template>
+    </app-table>
+    <!-- <app-table-resume [resume]="resume"></app-table-resume> -->
+    <div class="col-12" style="text-align: end;">
+      <button pButton type="button" label="Cancelar" class="p-button-secondary"
+        style="margin-top:10px; margin-right: 10px;" (click)="back()"></button>
+      <button pButton type="button" label="Continuar" class="p-button-success" style="margin-top:10px"></button>
+    </div>
+  </ng-template>
+</app-main-container>
+<app-loading #dialogLoading></app-loading>
