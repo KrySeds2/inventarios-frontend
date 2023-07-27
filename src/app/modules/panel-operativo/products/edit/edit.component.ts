@@ -35,8 +35,8 @@ export class EditComponent implements OnInit {
   declareForm():void{
     this.formData = this.fb.group({
       name:[,[Validators.required]],
-      // rawMaterial:[,[Validators.required]],
-      // amount:[,[Validators.required]],
+      rawMaterial:[,[Validators.required]],
+      amount:[,[Validators.required]],
     })
   }
   ngOnInit(): void {

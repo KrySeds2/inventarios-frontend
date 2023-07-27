@@ -20,7 +20,7 @@ export class WarehousesComponent implements OnInit {
   columnsTable: TableHead<WarehousesRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '50px', align: 'center', custom: false },
     { header: 'Nombre', field: 'name', width: '100px', align: 'center' },
-    { header: 'Anaqueles', field: 'shelves', width: '100px', align: 'center' },
+    { header: 'Anaqueles', field: 'shelves', width: '100px', align: 'center' ,custom: true},
     { header: 'Ver anaqueles', field: 'view', width: '100px', align: 'center',custom: true },
     { header: 'Estado', field: 'status', width: '50px', maxWidth: '90px', align: 'center', custom: true },
     { header: 'Editar', field: 'edit', width: '50px', maxWidth: '90px', align: 'center', custom: true, permit: 'write' },
@@ -84,7 +84,8 @@ export class WarehousesComponent implements OnInit {
               id: row.id,
               status: row.status,
               name:row.name,
-              shelves: row.shelves.name,
+              shelvesCount:row.shelves.length,
+              shelves: row.shelves,
               description:row.description
             };
           }

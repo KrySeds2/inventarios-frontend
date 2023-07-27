@@ -7,7 +7,8 @@ import { InventoryCrudService } from 'src/app/shared/services/inventory/inventor
 import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
 import { InventoryResponse } from 'src/app/shared/services/inventory/responses/inventoryResponse';
 import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
-
+import { parseISO, format } from 'date-fns';
+import { utcToZonedTime,format as tzFormat } from 'date-fns-tz';
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
@@ -100,10 +101,10 @@ export class InventoryComponent implements OnInit {
         console.log(response);
         this.rowsTable = response.map(
           (row, index) => {
-            console.log(row?.shelf?.name);
-            console.log(row?.rawMaterial_?.name);
-            console.log(row?.wareh?.name);
-            console.log(row?.amount);
+            // console.log(row?.shelf?.name);
+            // console.log(row?.rawMaterial_?.name);
+            // console.log(row?.wareh?.name);
+            // console.log(row?.amount);
             return {
               index: index + 1,
               id: row.id,
@@ -112,7 +113,7 @@ export class InventoryComponent implements OnInit {
               rawMaterial_: row?.rawMaterial_.name,
               idpackage: row.idpackage,
               amount: row.amount,
-              dateOfExpiry: row.dateOfExpiry,
+              dateOfExpiry: row.dateOfExpiry ? this.formatDate(row.dateOfExpiry): '',
               wareh: row?.wareh.name
             };
           }
@@ -125,7 +126,18 @@ export class InventoryComponent implements OnInit {
       }
     );
   }
+  formatDate(isoDateString: string): string {
+    const date = parseISO(isoDateString);
 
+    // Convierte la fecha a UTC
+    const dateInUTC = utcToZonedTime(date, 'UTC');
+
+    // Formatea la fecha en el formato deseado sin la zona horaria
+    const formattedDate = tzFormat(dateInUTC, "yyyy-MM-dd ", { timeZone: 'UTC' });
+
+    return formattedDate;
+
+  }
   selectedEditConfirm(item: InventoryRow): void {
     this.router.navigate(['./edit', item?.id], { relativeTo: this.route });
   }

@@ -7,7 +7,8 @@ import { ReceptionsCrudService } from 'src/app/shared/services/receptions/recept
 import { DialogErrorComponent } from '@shared/modules/dialogs/dialog-error/dialog-error.component';
 import { LoadingComponent } from '@shared/modules/dialogs/loading/loading.component';
 import { ReceptionsResponse } from 'src/app/shared/services/receptions/responses/receptionsResponse';
-
+import { parseISO, format } from 'date-fns';
+import { utcToZonedTime,format as tzFormat } from 'date-fns-tz';
 @Component({
   selector: 'app-receptions',
   templateUrl: './receptions.component.html',
@@ -106,7 +107,7 @@ export class ReceptionsComponent implements OnInit {
               id: row.id,
               status: row.status,
               folio:row.folio,
-              arrivalDate:row.arrivalDate,
+              arrivalDate:row.arrivalDate ? this.formatDate(row.arrivalDate): '',
               orderStatus:row.orderStatus
             };
           }
@@ -132,6 +133,19 @@ export class ReceptionsComponent implements OnInit {
 
       }
     )
+  }
+
+  formatDate(isoDateString: string): string {
+    const date = parseISO(isoDateString);
+
+    // Convierte la fecha a UTC
+    const dateInUTC = utcToZonedTime(date, 'UTC');
+
+    // Formatea la fecha en el formato deseado sin la zona horaria
+    const formattedDate = tzFormat(dateInUTC, "yyyy-MM-dd HH:mm:ss", { timeZone: 'UTC' });
+
+    return formattedDate;
+
   }
 
   // handleChange(row: any) {

@@ -28,7 +28,7 @@ export class ProductsTransformService {
  toProductsFormModel(response:ProductsResponse):ProductsFormModel{
     return{
       name:response.name,
-      recipeId:response.recipeId
+      recipeId:response.recipeId.id
 
     }
   }

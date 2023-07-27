@@ -6,7 +6,8 @@ import { TableHead } from '@shared/modules/tables/models/tableHead';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsLotResponse } from '@shared/services/products-lot/responses/productsLotResponse';
 import { ProductsLotCrudService } from '@shared/services/products-lot/products-lot-crud.service';
-
+import { parseISO, format } from 'date-fns';
+import { utcToZonedTime,format as tzFormat } from 'date-fns-tz';
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -105,7 +106,7 @@ export class ViewComponent implements OnInit {
               id: row.id,
               status: row.status,
               product:row.product,
-              dateOfExpiry:row.dateOfExpiry,
+              dateOfExpiry:row.dateOfExpiry  ? this.formatDate(row.dateOfExpiry): '',
               loteCode:row.loteCode
             };
           }
@@ -117,7 +118,18 @@ export class ViewComponent implements OnInit {
         }
       );
   }
+  formatDate(isoDateString: string): string {
+    const date = parseISO(isoDateString);
 
+    // Convierte la fecha a UTC
+    const dateInUTC = utcToZonedTime(date, 'UTC');
+
+    // Formatea la fecha en el formato deseado sin la zona horaria
+    const formattedDate = tzFormat(dateInUTC, "yyyy-MM-dd ", { timeZone: 'UTC' });
+
+    return formattedDate;
+
+  }
   selectedEditConfirm(item: ProductLotRow): void {
     this.router.navigate(['./edit', item?.id], { relativeTo: this.route });
   }

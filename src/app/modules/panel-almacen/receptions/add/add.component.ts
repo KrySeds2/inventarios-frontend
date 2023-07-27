@@ -38,8 +38,9 @@ export class AddComponent implements OnInit {
       arrivalDate: [, [Validators.required]],
       rawMaterial: [, [Validators.required]],
       amount: [, [Validators.required]],
+    });
 
-    })
+
   }
   ngOnInit(): void {
   }

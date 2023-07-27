@@ -4,7 +4,7 @@
   <!-- Almacen -->
   <div class="col-12 md:col-6">
     <span class="p-fluid p-float-label">
-      <p-dropdown [options]="listAlmacen" id="wareh" formControlName="wareh" [filter]="false"
+      <p-dropdown [options]="listAlmacen" id="wareh" formControlName="wareh" [placeholder]="'--'" [filter]="false"
         [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'wareh')}">> </p-dropdown>
       <label for="almacen"> Almacen </label>
     </span>
@@ -21,7 +21,7 @@
   <!-- Anaquel -->
   <div class="col-12 md:col-6">
     <span class="p-fluid p-float-label">
-      <p-dropdown [options]="listAnaquel" id="shelf" formControlName="shelf" [filter]="false"
+      <p-dropdown [options]="listAnaquel" id="shelf" formControlName="shelf" [placeholder]="'--'" [filter]="false"
         [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'shelf')}">> </p-dropdown>
       <label for="anaquel"> Anaquel </label>
     </span>
@@ -38,7 +38,7 @@
   <!-- ID unico materia prima -->
   <div class="col-12 md:col-5">
     <span class="p-fluid p-float-label">
-      <p-dropdown [options]="listMateriaPrima" id="rawMaterial_" formControlName="rawMaterial_" [filter]="false"
+      <p-dropdown [options]="listMateriaPrima" id="rawMaterial_" formControlName="rawMaterial_" [placeholder]="'--'" [filter]="false"
         [ngClass]="{ 'error-border_dropdown': validateErrors.valid(formData, 'rawMaterial_')}">> </p-dropdown>
       <label for="materiaPrima"> Identificador unico de la materia prima </label>
     </span>

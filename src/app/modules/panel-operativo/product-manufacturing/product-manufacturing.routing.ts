@@ -1,7 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ViewComponent } from './view/view.component';
-import { AddComponent } from './add/add.component';
-import { EditComponent } from './edit/edit.component';
+import { ManufacturingProductComponent } from './manufacturing-product/manufacturing-product.component';
+import { RawMaterialsComponent } from './raw-materials/raw-materials.component';
+
+
 
 const routes: Routes = [
   {
@@ -12,12 +14,12 @@ const routes: Routes = [
     path:'',
     component:ViewComponent,
    },{
-    path:'add',
-    component:AddComponent,
+    path:'manufacturing-product/:folio',
+    component:ManufacturingProductComponent
    },{
-    path:'edit/:id',
-    component:EditComponent,
-   },
+    path:'raw-material-required',
+    component:RawMaterialsComponent
+   }
 ];
 
 export const ProductManufacturingRoutes = RouterModule.forChild(routes);

@@ -1,1 +1,46 @@
-<p>product-manufacturing-form works!</p>
+<div class="grid grid-container " [formGroup]="formData">
+  <div class="col-12"></div>
+  <div class="col-12 md:col-4">
+    <span class="p-fluid p-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="rawMaterial"
+        [ngClass]="{'error-border':validateErrors.valid(formData,'rawMaterial')}" name="rawMaterial">
+      <label for="float-input">Materia prima</label>
+    </span>
+    <div class="error-container">
+      <ng-container *ngIf="validateErrors.valid(formData,'rawMaterial')">
+        <div *ngIf="validateErrors.validRequired(formData,'rawMaterial')" class="error-message">
+          {{'campo requerido' }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="col-12 md:col-4">
+    <span class="p-fluid p-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="requiredCount"
+        [ngClass]="{'error-border':validateErrors.valid(formData,'requiredCount')}" name="requiredCount">
+      <label for="float-input">Cantidad requerida</label>
+    </span>
+    <div class="error-container">
+      <ng-container *ngIf="validateErrors.valid(formData,'requiredCount')">
+        <div *ngIf="validateErrors.validRequired(formData,'requiredCount')" class="error-message">
+          {{'campo requerido' }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="col-12 md:col-4">
+    <span class="p-fluid p-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="scanCount"
+        [ngClass]="{'error-border':validateErrors.valid(formData,'scanCount')}" name="scanCount">
+      <label for="float-input">Cantidad escaneada</label>
+    </span>
+    <div class="error-container">
+      <ng-container *ngIf="validateErrors.valid(formData,'scanCount')">
+        <div *ngIf="validateErrors.validRequired(formData,'scanCount')" class="error-message">
+          {{'campo requerido' }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

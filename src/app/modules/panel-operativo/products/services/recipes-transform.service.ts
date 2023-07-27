@@ -13,14 +13,14 @@ export class RecipesTransformService {
 
   toCreatePartidasDto(form: RecipesModel): CreateRecipesDto {
     return{
-      material:[form.material],
+      materialId:[form.material],
       amount_to_use:form.amount_to_use,
     }
   }
 
   toUpdatePartidasDto(form: RecipesModel): Partial<UpdateRecipesDto> {
     return{
-      material:[form.material],
+      materialId:[form.material],
       amount_to_use:form.amount_to_use,
     }
   }

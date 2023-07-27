@@ -77,11 +77,14 @@ export class EditComponent implements OnInit {
     //   amount:this.formData.value.cantidad,
     // }
 
-    const form = this.formData.getRawValue();
-    const request =this.inventoryTransformService.toUpdateInventoryDto(form)
-    const partialRequest = Utils.updatePartial(request);
+    // const form = this.formData.getRawValue();
+    // const request =this.inventoryTransformService.toUpdateInventoryDto(form)
+    // const partialRequest = Utils.updatePartial(request);
 
-    this.inventoryCrudService.update(partialRequest,this.id).subscribe(
+    let request = this.inventoryTransformService.toCreateInventoryDto(this.formData.getRawValue());
+    let partialRequest = Utils.updatePartial(request);
+
+    this.inventoryCrudService.update(partialRequest,this.response.id).subscribe(
       (response) => {
         this.dialogLoading.setDisplay(false);
         this.dialogSuccess.setDisplay(true, response);
@@ -93,27 +96,11 @@ export class EditComponent implements OnInit {
   }
 
   getItem(id: string): void {
-    this.inventoryCrudService.getOne(id).subscribe(
-      (resp) => {
-        console.log(resp);
-        this.response=resp;
-        const form = this.inventoryTransformService.toInventoryFormModel(resp);
-        console.log('form',form);
-        this.formData.patchValue(form);
-        // this.formData.patchValue({
-        //   rawMaterial_:this.response.rawMaterial_,
-        //   amount:this.response.amount,
-        //   dateOfExpiry:this.response.dateOfExpiry,
-        //   idpackage:this.response.idpackage,
-        //   shelf:this.response.shelf,
-        //   status:this.response.status,
-        //   wareh:this.response.wareh,
-        // });
-      }, (error) => {
-        console.log(error);
-        this.dialogLoading.setDisplay(false);
-        this.dialogErrorFindItem.setDisplay(true, error);
-      }
+    this.inventoryCrudService.getOne(id).subscribe( resp => {
+      this.response = resp;
+      this.formData.patchValue(this.inventoryTransformService.toInventoryFormModel(resp))
+    }
+
     );
   }
 

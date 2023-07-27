@@ -24,9 +24,6 @@
           <div *ngIf="validateErrors.validRequired(formData,'folio')" class="error-message">
             {{'campo requerido' }}
           </div>
-          <div *ngIf="validateErrors.validAlreadyTaken(formData, 'folio')" class="error-message">
-            {{'Este folio ya existe'}}
-          </div>
         </ng-container>
       </div>
       <div class="" style="text-align: end;">
@@ -34,7 +31,7 @@
           <button pButton type="button"  label="Cancelar" class="p-button-secondary"
           style="margin-top:10px; margin-right: 10px;" [routerLink]="['../']"  [disabled]="disabled"></button>
           <button pButton type="button"  label="Buscar" class="p-button-primary"
-          style="margin-top:10px"  [disabled]="disabled"></button>
+          style="margin-top:10px" (click)="buscarPedido()" [disabled]="disabled"></button>
         </div>
 
       </div>

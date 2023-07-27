@@ -30,6 +30,9 @@
             (active)="dialogConfirmStatus.setDisplay(true,item)">
             </t-status>
           </ng-container>
+          <ng-container *ngSwitchCase="'shelves'">
+            <p>{{ item?.shelves }}</p>
+          </ng-container>
           <ng-container *ngSwitchCase="'delete'">
             <t-delete (click)="dialogConfirmDelete.setDisplay(true,item)"></t-delete>
           </ng-container>
