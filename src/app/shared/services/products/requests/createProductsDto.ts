@@ -2,7 +2,7 @@ import { RawMaterialsResponse } from "@shared/services/raw-materials/responses/r
 
 export interface CreateProductsDto {
   name:string;
-  recipeId:RecipesModel;
+  recipeId:string;
 }
 export interface RecipesModel{
   material:RawMaterialsResponse;
