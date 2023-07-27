@@ -1,5 +1,5 @@
 export interface TableRow {
-  index: number;
+  index?: number;
   id?: string;
   position?: number;
   color?: string;
