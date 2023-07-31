@@ -21,8 +21,8 @@ export class ReceptionsComponent implements OnInit {
   columnsTable: TableHead<ReceptionsRow>[] = [
     { header: 'N°', field: 'index', width: '20px', maxWidth: '20px', align: 'center', custom: false },
     { header: 'Folio', field: 'folio', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Fecha de llegada', field: 'arrivalDate', width: '90px', maxWidth: '100px', align: 'center' },
-    { header: 'Estado del pedido', field: 'orderStatus', width: '90px', maxWidth: '140px', align: 'center'},
+    { header: 'Fecha de llegada', field: 'arrivalDate', width: '90px', maxWidth: '140px', align: 'center' },
+    { header: 'Estado del pedido', field: 'orderStatus', width: '90px', maxWidth: '100px', align: 'center',custom: true },
     { header: 'Editar', field: 'edit', width: '60px', maxWidth: '80px', align: 'center', custom: true, permit: 'write' },
     { header: 'Estado', field: 'status', width: '60px', maxWidth: '80px', align: 'center', custom: true },
     { header: 'Eliminar', field: 'delete', width: '50px', maxWidth: '90px', align: 'center', custom: true },
@@ -82,18 +82,7 @@ export class ReceptionsComponent implements OnInit {
     this.setResume();
   }
 
-  getColorClass(orderStatus: string): string {
-    switch (orderStatus) {
-      case 'iniciado':
-        return 'status-finalizado';
-      case 'en proceso':
-        return 'status-enproceso';
-      case 'finalizado':
-        return 'status-terminado';
-      default:
-        return '';
-    }
-  }
+
 
   getItemsOfTable():void{
     this.receptionsCrudService.getAll().subscribe(
@@ -170,6 +159,19 @@ export class ReceptionsComponent implements OnInit {
         this.setResume();
       }
     );
+  }
+
+  getOrderStatusStyle(orderStatus: string): any {
+    switch (orderStatus.toLowerCase()) {
+      case 'porhacer':
+        return { color: 'yellow' }; // Estilo para 'por hacer'
+      case 'finalizado':
+        return { color: 'green' }; // Estilo para 'finalizado'
+      case 'en proceso':
+        return { color: 'gray' }; // Estilo para 'en proceso'
+      default:
+        return {}; // Estilo predeterminado si no coincide con ninguna de las palabras anteriores
+    }
   }
 
   //resumen
