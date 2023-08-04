@@ -1,14 +1,14 @@
 import { CreateUserRequests } from "./createUserRequests";
 
 export interface UpdateUserRequests extends CreateUserRequests {
-  // name: string;
+  username: string;
   //   firstName: string;
   //   lastName: string;
   //   jobTitle: string;
   //   phone: string;
-  //   password: string;
-  //   imageId: string;
-  //   profileId: string;
-  //   status: boolean;
+    password: string;
+    imageId: string;
+    profilesId: string;
+    status: boolean;
   //   operator: boolean;
 }

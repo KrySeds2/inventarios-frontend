@@ -1,18 +1,15 @@
+import { ProfileResponse } from "@shared/services/profiles/responses/profileResponse";
+
 export interface UserResponse {
-  // id: string;
-  // dateCreate: string;
-  // dateUpdate: string;
-  email: string;
-  name: string;
-  // firstName: string;
-  // lastName: string;
+  status: boolean;
+  id: string;
+  dateCreate: string;
+  dateUpdate: string;
   // jobTitle: string;
   // phone: string;
   imageId: string
   // status: boolean;
   // operator: boolean;
-  needUpdatePass: boolean;
   username: string;
-  password: string;
-  profilesId: string;
+  profiles:ProfileResponse;
 }

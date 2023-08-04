@@ -1,0 +1,145 @@
+<div class="grid grid-container fieldForm" [formGroup]="formData">
+  <div class="col-12 md:col-4">
+    <app-image [parentform]="formData.get('image')" [height]="'150px'" [width]="'150px'" [cover]="true"
+      [labelName]="'Foto' " [borderRadious]="'50%'" #imageComponent>
+    </app-image>
+  </div>
+  <div class="col-12 md:col-8 lg:col-8">
+    <div class="grid grid-container">
+      <!-- <div class="col-12">
+        <app-sub-header [data]="{header:'Informacion personal'}"></app-sub-header>
+      </div> -->
+      <!--nombre-->
+      <!-- <div class="col-12 md:col-12">
+        <span class="p-fluid p-float-label">
+          <input id="float-input" type="text" size="30" pInputText formControlName="name" name="name"
+            [ngClass]="{'error-border':validateErrors.valid(formData,'name')}">
+          <label for="float-input">{{'Nombre' }}</label>
+        </span>
+        <div class="error-container">
+          <ng-container *ngIf="validateErrors.valid(formData,'name')">
+            <div *ngIf="validateErrors.validRequired(formData,'name')" class="error-message">
+              {{'Requerido' }}
+            </div>
+          </ng-container>
+        </div>
+      </div> -->
+      <!--last name-->
+      <!-- <div class="col-12 md:col-6">
+        <span class="p-fluid p-float-label">
+          <input id="float-input" type="text" size="30" pInputText formControlName="lastName" name="lastname"
+            [ngClass]="{'error-border':validateErrors.valid(formData,'lastName')}">
+          <label for="float-input">{{'Apellido paterno'
+            }}</label>
+        </span>
+        <div class="error-container">
+          <ng-container *ngIf="validateErrors.valid(formData,'lastName')">
+            <div *ngIf="validateErrors.validRequired(formData,'lastName')" class="error-message">
+              {{'Requerido' }}
+            </div>
+          </ng-container>
+        </div>
+      </div> -->
+      <!--second last name-->
+      <!-- <div class="col-12 md:col-6">
+        <span class="p-fluid p-float-label">
+          <input id="float-input" type="text" size="30" pInputText formControlName="secondLastName" name="lastname"
+            [ngClass]="{'error-border':validateErrors.valid(formData,'secondLastName')}">
+          <label for="float-input">{{'Apellido materno'
+            }}</label>
+        </span>
+        <div class="error-container">
+          <ng-container *ngIf="validateErrors.valid(formData,'secondLastName')">
+            <div *ngIf="validateErrors.validRequired(formData,'secondLastName')" class="error-message">
+              {{'Requerido' }}
+            </div>
+          </ng-container>
+        </div>
+      </div> -->
+
+
+
+      <div class="col-12">
+        <app-sub-header [data]="{header: 'Usuario del sistema'}"></app-sub-header>
+      </div>
+      <!--Username-->
+      <div class="col-12 md:col-6">
+        <span class="p-fluid p-float-label">
+          <input id="float-input" type="text" size="30" pInputText  name="username"
+          >
+          <label for="float-input">{{'Usuario'
+            }}</label>
+        </span>
+      </div>
+      <!--Type profile-->
+      <div class="col-12 md:col-6">
+        <span class="p-fluid p-float-label-dropdown">
+          <p-dropdown id="float-input-profile" [options]="profiles" formControlName="profile"
+            [placeholder]="'--' "
+            [ngClass]="{'error-border_dropdown':validateErrors.valid(formData,'profile')}"></p-dropdown>
+          <label for="float-input-profile">{{'Perfil'
+            }}</label>
+        </span>
+        <div class="error-container">
+          <ng-container *ngIf="validateErrors.valid(formData,'profile')">
+            <div *ngIf="validateErrors.validRequired(formData,'profile')" class="error-message">
+              {{'Requerido'  }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!--password-->
+      <!--Username-->
+      <div class="col-12 md:col-6">
+        <span class="p-fluid p-float-label">
+          <input id="float-input" type="password" size="30" pInputText  name="password"
+          >
+          <label for="float-input">{{'Contraseña'
+            }}</label>
+        </span>
+      </div>
+      <!--confirm password-->
+      <!-- <div class="col-12 md:col-6">
+        <span class="p-fluid p-float-label">
+
+          <input type="password" pPassword formControlName="passwordConfirm" promptLabel="'confirmpassword.confirmPassword'
+              " weakLabel="'confirmpassword.weakPassword'
+              " mediumLabel="'confirmpassword.mediumPassword'
+              " strongLabel="'confirmpassword.strongPassword'
+              " ngClass="{'error-border':validateErrors.valid(formData,'passwordConfirm')}" />
+          <label for="float-input">{{'Confirmar contraseña'
+            }}</label>
+        </span>
+        <div class="error-container">
+          <ng-container *ngIf="validateErrors.valid(formData,'passwordConfirm')">
+            <div *ngIf="validateErrors.validRequired(formData,'passwordConfirm')" class="error-message">
+              {{'global.requiredMessage.fieldRequired' }}
+            </div>
+            <div *ngIf="validateErrors.validError(formData,'noEqual','passwordConfirm')" class="error-message">
+              {{libraryTranslate+'errors.passwordMatch'}}
+            </div>
+          </ng-container>
+        </div>
+      </div> -->
+
+
+
+
+      <!--operator-->
+      <!-- <div class="col-12 md:col-6" *ngIf="this.companyType === 'FAC' ">
+        <span class="p-fluid p-float-label-dropdown">
+          <p-inputSwitch formControlName="operator"></p-inputSwitch>
+          <label for="float-input">Operador?</label>
+        </span>
+        <div class="error-container">
+          <ng-container *ngIf="validateErrors.valid(formData,'operator')">
+            <div *ngIf="validateErrors.validRequired(formData,'operator')" class="error-message">
+              {{'requerido' }}
+            </div>
+          </ng-container>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

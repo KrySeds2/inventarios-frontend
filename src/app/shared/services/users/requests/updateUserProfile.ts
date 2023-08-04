@@ -1,8 +1,8 @@
 export interface UpdateUserProfile {
-  // name: string;
+  name: string;
   // firstName: string;
   // lastName: string;
   // phone: string;
-  // password: string;
-  // imageId: string;
+  password: string;
+  imageId: string;
 }

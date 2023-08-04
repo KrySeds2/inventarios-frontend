@@ -1,0 +1,111 @@
+<app-main-container>
+  <ng-template appHeader>
+    <app-title [data]="{
+      header:'Usuarios',
+      subHeader:'Lista de usuarios'
+    }"></app-title>
+  </ng-template>
+  <ng-template appButtons> </ng-template>
+  <ng-template appBody>
+    <app-table [values]="rowsTable" [columns]="columnsTable" exportFilename="usuarios"
+      [loading]="loadingTable">
+
+      <ng-template appCaption let-table>
+        <div class="grid grid-nogutter">
+          <div class="col-12 md:col-2" >
+            <app-button-register [routerLink]="['../add']"  ></app-button-register>
+          </div>
+          <div class="col-offset-4"></div>
+          <div class="col-6">
+
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template appBody let-item let-i="rowIndex" let-column="column">
+        <ng-container [ngSwitch]="column.field">
+          <ng-container *ngSwitchCase="'image'">
+            <t-image [src]="item.image" class="col-image"></t-image>
+          </ng-container>
+          <ng-container *ngSwitchCase="'detail'">
+            <t-details [routerLink]="['../details',item.id]"></t-details>
+          </ng-container>
+          <ng-container *ngSwitchCase="'edit'">
+            <t-edit (active)="dialogConfirmEdit.setDisplay(true,item)"></t-edit>
+          </ng-container>
+          <ng-container *ngSwitchCase="'status'">
+            <t-status
+              [checked]="item.status"
+              (active)="dialogConfirmStatus.setDisplay(true,item)">
+            </t-status>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </app-table>
+    <app-table-resume [resume]="resume"></app-table-resume>
+  </ng-template>
+</app-main-container>
+
+<!--DIALOG CONFIRM EDIT-->
+<app-dialog-confirm #dialogConfirmEdit>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+      var(--CT002)"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de editar el siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+   Usuario
+    <p>{{'User-'+item?.username}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm (onBack)="dialogConfirmEdit.setDisplay(false)"
+    (onConfirm)="selectedEditConfirm(dialogConfirmEdit.getBody())">
+  </app-button-confirm>
+  </ng-template>
+
+</app-dialog-confirm>
+
+<!--DIALOG CONFIRM Delete-->
+<app-dialog-confirm #dialogConfirmDelete>
+  <ng-template appIcon>
+    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+              var(--CT002);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    ¿Estas seguro de eliminar el siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+   Usuario
+   <p>{{'User-'+item?.username}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm (onBack)="dialogConfirmDelete.setDisplay(false)"
+      (onConfirm)="deleteItem(dialogConfirmDelete.getBody())">
+    </app-button-confirm>
+  </ng-template>
+</app-dialog-confirm>
+
+<!--DIALOG CONFIRM STATUS-->
+<app-dialog-confirm #dialogConfirmStatus>
+  <ng-template appIcon>
+      <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color:
+          var(--CT002);"></i>
+  </ng-template>
+  <ng-template appHeader>
+      ¿Estas seguro de modificar el estado del siguiente registro?
+  </ng-template>
+  <ng-template appBody let-item>
+    Usuario
+    <p>{{'User-'+item?.username}}</p>
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-confirm
+    (onBack)="dialogConfirmStatus.setDisplay(false)"
+    (onConfirm)="selectedStatusConfirm(dialogConfirmStatus.getBody())">
+  </app-button-confirm>
+</ng-template>
+</app-dialog-confirm>
+
+<app-loading #dialogLoading></app-loading>

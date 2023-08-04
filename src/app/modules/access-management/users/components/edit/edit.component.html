@@ -1,0 +1,38 @@
+<app-main-container>
+  <ng-template appHeader>
+    <app-title [data]="{
+      header:'Actualizar usuarios',
+      subHeader:'Formulario de actualizacion'
+    }"></app-title>
+  </ng-template>
+  <ng-template appButtons> </ng-template>
+  <ng-template appBody>
+    <form class="grid grid-container col-12 md:col-11 lg:col-8" [formGroup]="formData" (ngSubmit)="submit()">
+      <app-form [formData]="formData" class="col-12" #form ></app-form>
+      <!--Buttons-->
+          <app-formButtons [update]="true" class="col-12"></app-formButtons>
+    </form>
+  </ng-template>
+</app-main-container>
+
+<!--DIALOG LOADING -->
+<app-loading #dialogLoading></app-loading>
+
+<!--DIALOG SUCCESS-->
+<app-dialog-confirm #dialogSuccess>
+  <ng-template appIcon>
+    <i class="far fa-check-circle" style="font-size: 5rem; color: var(--CT007);"></i>
+  </ng-template>
+  <ng-template appHeader>
+    {{'dialogs.success.header' | translate }}
+  </ng-template>
+  <ng-template appBody>
+    {{'dialogs.success.body' | translate }}
+  </ng-template>
+  <ng-template appButtons>
+    <app-button-continue (click)="back()"></app-button-continue>
+  </ng-template>
+</app-dialog-confirm>
+
+<!--DIALOG ERROR-->
+<app-dialog-error #dialogError (confirm)="submit()"></app-dialog-error>

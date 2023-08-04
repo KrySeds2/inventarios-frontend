@@ -10,47 +10,25 @@ import { UpdateUserProfile } from './requests/updateUserProfile';
   providedIn: 'root'
 })
 export class UsersService {
-  url: string = '/user';
+  url='/user';
   constructor(private http: HttpService) { }
 
-  create(body: CreateUserRequests){
-    return this.http.post(this.url,body);
+  create(body:CreateUserRequests):Observable<UserResponse> {
+    return this.http.post(this.url,body)
   }
-  update(body: Partial <UpdateUserRequests>, id: string){
-    return this.http.put(`${this.url}/${id}`,body);
+  update(body: Partial <UpdateUserRequests>, id: string): Observable<UserResponse>{
+    return this.http.patch(`${this.url}/${id}`, body);
   }
-  getAll(companyId: string): Observable<UserResponse[]>{
-    return this.http.get<UserResponse[]>(`/companies/${companyId}/users`);
+  updateStatus(body: Partial <UpdateUserRequests>, id: string): Observable<UserResponse>{
+    return this.http.patch(`${this.url}/status/${id}`, body);
   }
-  getModules(){
-    return this.http.get(`/extra-reports/user-monitor-modules`);
+  delete( id: string): Observable<any>{
+    return this.http.delete(`${this.url}/${id}`);
   }
-  getUserCompany(companyId: string): Observable<UserResponse[]>{
-    return this.http.get<UserResponse[]>(`/users/company/${companyId}`);
+  getAll(params=''): Observable<UserResponse[]>{
+    return this.http.get<UserResponse[]>(this.url+params);
   }
-  getAllUsers(): Observable<UserResponse[]>{
-    return this.http.get<UserResponse[]>(`/users/list-all-users`);
-  }
-  getOne(id): Observable<UserResponse>{
+  getOne(id): Observable<UserResponse> {
     return this.http.get<UserResponse>(`${this.url}/${id}`);
-  }
-  getByEmail(params:string): Observable<UserResponse[]> {
-    return this.http.get<UserResponse[]>(`/users/company/?${params}`);
-  }
-  getProfileUser(): Observable<UserResponse> {
-    return this.http.get('/users/profile');
-  }
-  updateUserProfile(body: Partial<UpdateUserProfile>): Observable<UserResponse> {
-    return this.http.put('/users/profile',body);
-  }
-  resetPassword(body: Partial<UpdateUserProfile>): Observable<UserResponse> {
-    return this.http.put('/users/reset-password',body);
-  }
-  //-----Custom-------------------------
-  getCompany():Observable<any>{
-    return this.http.get<any>(`${this.url}/company`);
-  }
-  updateStatus(status:boolean, id: string){
-    return this.http.put(`${this.url}/activate/${id}`,{status:status});
   }
 }
