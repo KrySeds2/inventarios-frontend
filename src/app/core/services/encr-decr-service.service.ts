@@ -10,7 +10,7 @@ import * as CryptoJs from 'crypto-js';
   providedIn: 'root'
 })
 export class EncrDecrServiceService {
-
+  private secretKey!: string;
   /**
    *Creates an instance of EncrDecrServiceService.
    * @memberof EncrDecrServiceService
@@ -43,5 +43,9 @@ export class EncrDecrServiceService {
 
     return decrypted.toString(CryptoJs.enc.Utf8);
   }
+  encrypt(data: string){
+    return CryptoJs.AES.encrypt(data, this.secretKey).toString();
+  }
+
 
 }

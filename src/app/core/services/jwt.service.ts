@@ -75,6 +75,10 @@ export class JwtService {
     // }
 
   }
+  saveToken(token: string) {
+    let data = this.crypto.encrypt(token);
+    localStorage.setItem('token', data);
+  }
 
 }
 

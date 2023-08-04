@@ -8,7 +8,7 @@ import { UserResponseModel } from './response/auth.response';
 // import { SetupFunctionService } from 'src/app/modules/setup/services/setup-function.service';
 import * as jwt_decode from 'jwt-decode';
 import { EncrDecrServiceService } from './encr-decr-service.service';
-
+var token=null;
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AuthService {
   private url = `${environment.apiLogin}/auth/login`;
   userToken: string;
   public userProfile;
-
+  // token: string;
   constructor(
     private http: HttpClient,
     private crypto:EncrDecrServiceService,
@@ -37,9 +37,12 @@ export class AuthService {
     return this.http.post(this.url, request, { observe: 'response' }).pipe(
       map(
           (resp) => {
-          this.saveUserToken(resp.body['access_token']);
+          this.saveUserToken(resp.body['token']);
+            token = resp.body['token'];
           // this.saveUserInfo(resp.body['user']);
+
           //  await this.saveAccessInfo(resp.body['user']);
+
           return resp.body;
         },
       ));
@@ -79,6 +82,8 @@ export class AuthService {
   private getUserToken() {
     if (localStorage.getItem('token')) {
       this.userToken = localStorage.getItem('token');
+      // console.log(this.userToken);
+      console.log( this.userToken)
     } else {
       this.userToken = '';
     }
@@ -105,5 +110,15 @@ export class AuthService {
   recoverValidator(username:string,code:string){
     return this.http.post(`${environment.apiUrl}/auth/recover/validator`,{username:username,code:code})
   }
+
+  public isAuthenticated(): boolean {
+    if (this.getUserToken().length < 2) {
+      return false;
+    }
+
+
+
+  }
+
 
 }
